@@ -1,12 +1,36 @@
+using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HillerødSejlklub.Pages.Medlem
 {
     public class TilføjMedlemModel : PageModel
     {
-        public void OnGet()
+        private IMedlemService _medlemService;
+
+        public TilføjMedlemModel(IMedlemService medlemService)
         {
+            _medlemService = medlemService;
+        }
+
+        [BindProperty]
+
+        public ClassLibrary.Models.Medlem medlem { get; set; }
+
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            _medlemService.AddMedlem(medlem);
+            return RedirectToPage("GetAllItems");
         }
     }
 }
