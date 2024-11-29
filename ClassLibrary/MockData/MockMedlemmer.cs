@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.MockData
+namespace ClassLibrary.MockData;
+
+public class MockMedlemmer
 {
-    internal class MockMedlem
-    {
-    }
 }
