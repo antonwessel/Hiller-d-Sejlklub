@@ -14,7 +14,7 @@ public class MedlemService : IMedlemService
 
     public void AddMedlem(Medlem medlem)
     {
-        throw new NotImplementedException();
+        _medlemList.Add(medlem);
     }
 
     public Medlem DeleteMedlem(string? email)

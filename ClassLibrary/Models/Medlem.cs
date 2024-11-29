@@ -23,5 +23,10 @@ namespace ClassLibrary.Models
             TelefonNummer = telefonNummer;
             Email = email;
         }
+
+        public Medlem()
+        {
+
+        }
     }
 }

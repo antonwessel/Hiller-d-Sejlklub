@@ -15,8 +15,7 @@ namespace HillerødSejlklub.Pages.Medlem
         }
 
         [BindProperty]
-
-        public ClassLibrary.Models.Medlem medlem { get; set; }
+        public ClassLibrary.Models.Medlem Medlem { get; set; }
 
         public IActionResult OnGet()
         {
@@ -29,8 +28,8 @@ namespace HillerødSejlklub.Pages.Medlem
             {
                 return Page();
             }
-            _medlemService.AddMedlem(medlem);
-            return RedirectToPage("GetAllItems");
+            _medlemService.AddMedlem(Medlem);
+            return RedirectToPage("Medlemmer");
         }
     }
 }
