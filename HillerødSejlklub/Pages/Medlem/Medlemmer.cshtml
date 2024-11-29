@@ -1,0 +1,24 @@
+﻿@page
+@model HillerødSejlklub.Pages.Medlem.MedlemmerModel
+@{
+}
+
+<h1>test</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Navn</th>
+            <th>Telefonnummer</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var medlem in Model.Medlemmer) {
+        <tr>
+            <td>@medlem.Navn</td>
+            <td>@medlem.TelefonNummer</td>
+            <td>@medlem.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
