@@ -19,12 +19,35 @@ public class MedlemService : IMedlemService
 
     public Medlem DeleteMedlem(string? email)
     {
-        throw new NotImplementedException();
+        Medlem medlemToDelete = null;
+
+        foreach (var medlem in _medlemList)
+        {
+            if (email == medlem.Email)
+            {
+                medlemToDelete = medlem;
+                break;
+            }
+        }
+
+        // to avoid null reference exception
+        if (medlemToDelete != null)
+        {
+            _medlemList.Remove(medlemToDelete);
+        }
+        return medlemToDelete;
     }
 
     public Medlem GetMedlem(string email)
     {
-        throw new NotImplementedException();
+        foreach (var medlem in _medlemList)
+        {
+            if (email == medlem.Email)
+            {
+                return medlem;
+            }
+        }
+        return null;
     }
 
     public List<Medlem> GetMedlemmer() => _medlemList;
