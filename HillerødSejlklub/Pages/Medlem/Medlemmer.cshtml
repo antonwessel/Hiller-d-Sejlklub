@@ -16,8 +16,8 @@
         </thead>
         <tbody>
             @foreach (var medlem in Model.Medlemmer)
-            {
-                <tr>
+        {
+            <tr>
                     <td>@medlem.Navn</td>
                     <td>@medlem.TelefonNummer</td>
                     <td>@medlem.Email</td>
@@ -25,9 +25,12 @@
                         <a class="btn btn-danger btn-sm" asp-page="SletMedlem" asp-route-email="@medlem.Email" title="Slet">
                             <i class="bi bi-trash"></i> Slet
                         </a>
+                        <a class="btn btn-primary btn-sm" asp-page="RedigerMedlem" asp-route-email="@medlem.Email" title="Rediger">
+                            <i class="bi bi-pencil"></i> Rediger
+                        </a>
                     </td>
                 </tr>
-            }
+        }
         </tbody>
     </table>
     <a class="btn btn-success" asp-page="TilFøjMedlem">
