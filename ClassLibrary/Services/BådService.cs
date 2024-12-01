@@ -20,12 +20,27 @@ public class BådService : IBådService
 
     public Båd DeleteBåd(string? navn)
     {
-        throw new NotImplementedException();
+        foreach (var båd in _bådeListe)
+        {
+            if (båd.Navn == navn)
+            {
+                _bådeListe.Remove(båd);
+                return båd;
+            }
+        }
+        return null;
     }
 
     public Båd GetBåd(string navn)
     {
-        throw new NotImplementedException();
+        foreach (var båd in _bådeListe)
+        {
+            if (båd.Navn == navn)
+            {
+                return båd;
+            }
+        }
+        return null;
     }
 
     public List<Båd> GetBåde() => _bådeListe;
