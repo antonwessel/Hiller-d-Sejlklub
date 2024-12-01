@@ -1,0 +1,28 @@
+﻿@page
+@model HillerødSejlklub.Pages.Både.TilføjBådModel
+@{
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Tilføj Båd</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="@Model.Båd.Navn" class="form-label"></label>
+            <input asp-for="@Model.Båd.Navn" class="form-control" />
+            <span asp-validation-for="@Model.Båd.Navn" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Båd.BådType" class="form-label"></label>
+            <input asp-for="@Model.Båd.BådType" class="form-control" />
+            <span asp-validation-for="@Model.Båd.BådType" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Båd.BådModel" class="form-label"></label>
+            <input asp-for="@Model.Båd.BådModel" class="form-control" />
+            <span asp-validation-for="@Model.Båd.BådModel" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Opret
+        </button>
+    </form>
+</div>
