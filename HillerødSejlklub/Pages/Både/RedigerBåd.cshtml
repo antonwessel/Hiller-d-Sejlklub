@@ -27,6 +27,11 @@
                     <input asp-for="Båd.BådModel" class="form-control" />
                     <span asp-validation-for="Båd.BådModel" class="text-danger"></span>
                 </div>
+                <div class="mb-3">
+                    <label asp-for="Båd.BilledeUrl" class="form-label"></label>
+                    <input asp-for="Båd.BilledeUrl" class="form-control" />
+                    <span asp-validation-for="Båd.BilledeUrl" class="text-danger"></span>
+                </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="submit" class="btn btn-primary">Opdater</button>
                     <a asp-page="AlleBåde" class="btn btn-link">Tilbage til både</a>

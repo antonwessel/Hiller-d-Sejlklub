@@ -53,6 +53,7 @@ public class BådService : IBådService
             {
                 bd.BådModel = båd.BådModel;
                 bd.BådType = båd.BådType;
+                bd.BilledeUrl = båd.BilledeUrl;
                 break;
             }
         }

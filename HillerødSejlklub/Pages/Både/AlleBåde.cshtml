@@ -4,36 +4,31 @@
 }
 
 <div class="container mt-5">
-    <h1 class="mb-4">Både</h1>
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Navn</th>
-                <th>Bådtype</th>
-                <th>Model</th>
-                <th>Håndtering</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var båd in Model.Både)
-            {
-                <tr>
-                    <td>@båd.Navn</td>
-                    <td>@båd.BådType</td>
-                    <td>@båd.BådModel</td>
-                    <td>
-                        <a class="btn btn-danger btn-sm" asp-page="SletBåd" asp-route-navn="@båd.Navn" title="Slet">
-                            <i class="bi bi-trash"></i> Slet
-                        </a>
-                        <a class="btn btn-primary btn-sm" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger">
+    <h1 class="mb-4 text-center">Vores Både</h1>
+    <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBåd">
+        <i class="bi bi-plus-circle"></i> Tilføj en ny båd
+    </a>
+    <div class="row">
+        @foreach (var båd in Model.Både)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0">
+                    <img src="@båd.BilledeUrl" class="card-img-top rounded-top" alt="@båd.Navn" style="height: 200px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">@båd.Navn</h5>
+                        <p class="text-muted mb-4">
+                            <strong>Bådtype:</strong> @båd.BådType<br />
+                            <strong>Model:</strong> @båd.BådModel
+                        </p>
+                        <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger">
                             <i class="bi bi-pencil"></i> Rediger
                         </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <a class="btn btn-success" asp-page="TilFøjBåd">
-        <i class="bi bi-flag"></i> Tilføj båd
-    </a>
+                        <a class="btn btn-outline-danger btn-sm" asp-page="SletBåd" asp-route-navn="@båd.Navn" title="Slet">
+                            <i class="bi bi-trash"></i> Slet
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
