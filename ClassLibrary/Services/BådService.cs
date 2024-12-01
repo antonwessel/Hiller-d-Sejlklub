@@ -47,6 +47,14 @@ public class BådService : IBådService
 
     public void UpdateBåd(Båd båd)
     {
-        throw new NotImplementedException();
+        foreach (var bd in _bådeListe)
+        {
+            if (bd.Navn == båd.Navn)
+            {
+                bd.BådModel = båd.BådModel;
+                bd.BådType = båd.BådType;
+                break;
+            }
+        }
     }
 }

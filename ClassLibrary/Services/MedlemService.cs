@@ -63,6 +63,7 @@ public class MedlemService : IMedlemService
             {
                 medle.Navn = medlem.Navn;
                 medle.TelefonNummer = medlem.TelefonNummer;
+                break;
             }
         }
     }
