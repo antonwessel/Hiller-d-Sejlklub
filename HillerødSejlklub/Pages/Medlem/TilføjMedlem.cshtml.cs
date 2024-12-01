@@ -9,13 +9,13 @@ public class TilføjMedlemModel : PageModel
 {
     private IMedlemService _medlemService;
 
+    [BindProperty]
+    public ClassLibrary.Models.Medlem Medlem { get; set; }
+
     public TilføjMedlemModel(IMedlemService medlemService)
     {
         _medlemService = medlemService;
     }
-
-    [BindProperty]
-    public ClassLibrary.Models.Medlem Medlem { get; set; }
 
     public IActionResult OnGet()
     {
