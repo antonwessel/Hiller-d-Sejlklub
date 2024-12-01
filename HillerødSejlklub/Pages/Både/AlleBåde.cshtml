@@ -1,0 +1,39 @@
+﻿@page
+@model HillerødSejlklub.Pages.Både.AlleBådeModel
+@{
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Både</h1>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Navn</th>
+                <th>Bådtype</th>
+                <th>Model</th>
+                <th>Håndtering</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var båd in Model.Både)
+            {
+                <tr>
+                    <td>@båd.Navn</td>
+                    <td>@båd.BådType</td>
+                    <td>@båd.BådModel</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" asp-page="SletBåd" asp-route-email="@båd.Navn" title="Slet">
+                            <i class="bi bi-trash"></i> Slet
+                        </a>
+                        <a class="btn btn-primary btn-sm" asp-page="RedigerBåd" asp-route-email="@båd.Navn" title="Rediger">
+                            <i class="bi bi-pencil"></i> Rediger
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success" asp-page="TilFøjBåd">
+        <i class="bi bi-flag"></i> Tilføj båd
+    </a>
+</div>
