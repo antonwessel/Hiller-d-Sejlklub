@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace ClassLibrary.Models;
 
@@ -16,11 +17,17 @@ public class Båd
     [StringLength(100, ErrorMessage = "Navn må højst være 100 tegn.")]
     public string Navn { get; set; }
 
-    public Båd(string bådType, string model, string navn)
+    [Required(ErrorMessage = "BilledeUrl er påkrævet.")]
+    [Url(ErrorMessage = "BilledeUrl skal være en gyldig URL.")]
+    [RegularExpression(@".+\.(jpg|jpeg|png|gif|bmp)$", ErrorMessage = "BilledeUrl skal være et link til en gyldig billedfil (jpg, jpeg, png, gif, bmp).")]
+    public string BilledeUrl { get; set; }
+
+    public Båd(string bådType, string model, string navn, string billedeUrl)
     {
         BådType = bådType;
         BådModel = model;
         Navn = navn;
+        BilledeUrl = billedeUrl;
     }
 
     public Båd()
