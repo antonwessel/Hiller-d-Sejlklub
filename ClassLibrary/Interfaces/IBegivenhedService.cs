@@ -9,10 +9,10 @@ namespace ClassLibrary.Interfaces
 {
     public interface IBegivenhedService
     {
-        List<Event> GetBegivenhed();
+        List<Event> GetEvents();
         void AddBegivenhed(Event begivenhed);
         void UpdateBegivenhed(Event begivenhed);
-        Event GetBegivenheder(string navn);
+        Event GetEvent(string navn);
         Event DeleteBegivenhed(string navn);
 
     }

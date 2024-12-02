@@ -20,7 +20,7 @@ namespace HillerødSejlklub.Pages.Begivenhed
 
         public void OnGet()
         {
-            BegivenhedList = _begivenhedService.GetBegivenhed();
+            BegivenhedList = _begivenhedService.GetEvents();
         }
     }
 }

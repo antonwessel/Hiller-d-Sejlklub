@@ -42,12 +42,12 @@ namespace ClassLibrary.Services
             throw new NotImplementedException();
         }
 
-        public List<Event> GetBegivenhed()
+        public List<Event> GetEvents()
         {
             return events;
         }
 
-        public Event GetBegivenheder(string navn)
+        public Event GetEvent(string navn)
         {
             throw new NotImplementedException();
         }
