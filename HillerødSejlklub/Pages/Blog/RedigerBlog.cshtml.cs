@@ -15,14 +15,14 @@ namespace HillerødSejlklub.Pages.Blog
 
         public ClassLibrary.Models.Blog Blog { get; set; }
 
-        public RedigerBlogModel(IBlogService blogService) 
+        public RedigerBlogModel(IBlogService blogService)
         {
-           _blogService = blogService;
+            _blogService = blogService;
         }
 
-        public IActionResult OnGet(string navn)
+        public IActionResult OnGet(string BlogTitel)
         {
-            Blog = _blogService.GetBlog(navn);
+            Blog = _blogService.GetBlog(BlogTitel);
             return Page();
         }
         public IActionResult OnPost()
