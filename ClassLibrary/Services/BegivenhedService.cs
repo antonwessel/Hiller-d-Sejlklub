@@ -20,7 +20,7 @@ namespace ClassLibrary.Services
             throw new NotImplementedException();
         }
 
-        public List<Begivenhed> GetBegivenhed()
+        public List<Begivenhed> GetBegivenheder()
         {
             throw new NotImplementedException();
         }
@@ -31,6 +31,16 @@ namespace ClassLibrary.Services
         }
 
         public void UpdateBegivenhed(Begivenhed begivenhed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Begivenhed> GetBegivenhed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Begivenhed GetBegivenheder(string navn)
         {
             throw new NotImplementedException();
         }

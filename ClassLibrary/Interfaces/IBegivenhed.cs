@@ -12,7 +12,7 @@ namespace ClassLibrary.Interfaces
         List<Begivenhed> GetBegivenhed();
         void AddBegivenhed(Begivenhed begivenhed);
         void UpdateBegivenhed(Begivenhed begivenhed);
-        Begivenhed GetBegivenhed(string navn);
+        Begivenhed GetBegivenheder(string navn);
         Begivenhed DeleteBegivenhed(string navn);
 
     }
