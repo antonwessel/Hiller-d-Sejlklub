@@ -47,6 +47,14 @@ public class BlogService : IBlogService
 
     public void UpdateBlog(Blog blog)
     {
-        throw new NotImplementedException();
+        foreach (var bd in _blogListe)
+        {
+            if (bd.BlogTitel == blog.BlogTitel)
+            {
+                bd.BlogForfatter = blog.BlogForfatter;
+                bd.BlogIndhold = blog.BlogIndhold;
+                break;
+            }
+        }
     }
 }
