@@ -1,13 +1,21 @@
 ﻿using ClassLibrary.Interfaces;
+using ClassLibrary.MockData;
 using ClassLibrary.Models;
 
 namespace ClassLibrary.Services;
 
 public class BlogService : IBlogService
 {
+    private List<Blog> _blogListe;
+
+    public BlogService()
+    {
+        _blogListe = MockBlog.GetBlogsAsList();
+    }
+
     public void AddBlog(Blog blog)
     {
-        throw new NotImplementedException();
+        _blogListe.Add(blog);
     }
 
     public Blog DeleteBlog(string? titel)
@@ -20,7 +28,7 @@ public class BlogService : IBlogService
         throw new NotImplementedException();
     }
 
-    public List<Blog> GetBlogs() => MockData.MockBlog.GetBlogsAsList();
+    public List<Blog> GetBlogs() => _blogListe;
 
     public void UpdateBlog(Blog blog)
     {
