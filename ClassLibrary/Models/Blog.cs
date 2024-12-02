@@ -8,5 +8,9 @@ namespace ClassLibrary.Models
 {
 	public class Blog
 	{
+		public string BlogTitel { get; set; }
+		public string BlogDato { get; set; }
+		public string BlogForfatter  { get; set; }
+
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.MockData
 {
-	internal class MockBlog
+	public class MockBlog
 	{
 	}
 }

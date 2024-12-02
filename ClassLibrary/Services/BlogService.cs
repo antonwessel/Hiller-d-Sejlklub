@@ -8,5 +8,6 @@ namespace ClassLibrary.Services
 {
 	public class BlogService
 	{
+		private List<Blog> 
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-	internal class IBlogService
+	public class IBlogService
 	{
 	}
 }
