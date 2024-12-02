@@ -9,11 +9,11 @@ namespace ClassLibrary.Interfaces
 {
     internal interface IBegivenhed
     {
-        List<Begivenhed> GetBegivenhed();
-        void AddBegivenhed(Begivenhed begivenhed);
-        void UpdateBegivenhed(Begivenhed begivenhed);
-        Begivenhed GetBegivenheder(string navn);
-        Begivenhed DeleteBegivenhed(string navn);
+        List<Event> GetBegivenhed();
+        void AddBegivenhed(Event begivenhed);
+        void UpdateBegivenhed(Event begivenhed);
+        Event GetBegivenheder(string navn);
+        Event DeleteBegivenhed(string navn);
 
     }
 }

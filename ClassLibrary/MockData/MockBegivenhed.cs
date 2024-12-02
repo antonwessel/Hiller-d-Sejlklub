@@ -9,13 +9,13 @@ namespace ClassLibrary.MockData;
 
 public class MockBegivenhed
 {
-    private static Dictionary<string, Begivenhed> _begivenheder = new()
+    private static Dictionary<string, Event> _begivenheder = new()
     {
-        { "SuperSejleSøndag", new Begivenhed("SuperSejleSøndag", "27-06-2025","Roskilde")},
-        { "SejleMesterdag", new Begivenhed("SejleMesterdag", "15-02-2025","København") }
+        { "SuperSejleSøndag", new Event("SuperSejleSøndag", "27-06-2025","Roskilde")},
+        { "SejleMesterdag", new Event("SejleMesterdag", "15-02-2025","København") }
     };
 
 
-    public static List<Begivenhed> GetBegivenheder() => _begivenheder.Values.ToList();
+    public static List<Event> GetBegivenheder() => _begivenheder.Values.ToList();
 }
 
