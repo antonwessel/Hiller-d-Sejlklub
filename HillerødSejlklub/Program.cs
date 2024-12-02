@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 // Dependency injections
 builder.Services.AddSingleton<IMedlemService, MedlemService>();
 builder.Services.AddSingleton<IBådService, BådService>();
+builder.Services.AddSingleton<IBegivenhedService, BegivenhedService>();
 
 var app = builder.Build();
 

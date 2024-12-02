@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Services
 {
-    public class BegivenhedService : IBegivenhed
+    public class BegivenhedService : IBegivenhedService
     {
         List<Event> events = new List<Event>();
         public BegivenhedService()
@@ -44,7 +44,7 @@ namespace ClassLibrary.Services
 
         public List<Event> GetBegivenhed()
         {
-            throw new NotImplementedException();
+            return events;
         }
 
         public Event GetBegivenheder(string navn)

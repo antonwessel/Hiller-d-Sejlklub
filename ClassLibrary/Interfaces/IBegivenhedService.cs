@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-    internal interface IBegivenhed
+    public interface IBegivenhedService
     {
         List<Event> GetBegivenhed();
         void AddBegivenhed(Event begivenhed);
