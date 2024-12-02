@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClassLibrary.Models;
 
-namespace ClassLibrary.Interfaces
+namespace ClassLibrary.Interfaces;
+
+public interface IBlogService
 {
-	public class IBlogService
-	{
-	}
+    List<Blog> GetBlogs();
+    void AddBlog(Blog blog);
+    void UpdateBlog(Blog blog);
+    Blog GetBlog(string titel);
+    Blog DeleteBlog(string? titel);
 }

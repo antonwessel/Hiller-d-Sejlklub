@@ -1,13 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClassLibrary.Interfaces;
+using ClassLibrary.Models;
 
-namespace ClassLibrary.Services
+namespace ClassLibrary.Services;
+
+public class BlogService : IBlogService
 {
-	public class BlogService
-	{
-		private List<Blog> 
-	}
+    public void AddBlog(Blog blog)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Blog DeleteBlog(string? titel)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Blog GetBlog(string titel)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<Blog> GetBlogs()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateBlog(Blog blog)
+    {
+        throw new NotImplementedException();
+    }
 }
