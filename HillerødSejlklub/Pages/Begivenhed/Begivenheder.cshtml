@@ -1,0 +1,41 @@
+﻿@page
+@model HillerødSejlklub.Pages.Begivenhed.BegivenhederModel
+@{
+}
+
+test
+
+<<div class="container mt-5">
+    <h1 class="mb-4">Vores Medlemmer</h1>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Navn</th>
+                <th>Dato</th>
+                <th>Lokation</th>
+                <th>Håndtering</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var begivenhed in Model.BegivenhedList)
+            {
+                <tr>
+                    <td>@begivenhed.Navn</td>
+                    <td>@begivenhed.Dato</td>
+                    <td>@begivenhed.Lokation</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" asp-page="SletMedlem" asp-route-email="@begivenhed.Navn" title="Slet">
+                            <i class="bi bi-trash"></i> Slet
+                        </a>
+                        <a class="btn btn-primary btn-sm" asp-page="RedigerMedlem" asp-route-email="@begivenhed.Navn" title="Rediger">
+                            <i class="bi bi-pencil"></i> Rediger
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success" asp-page="TilFøjBegivenhed">
+        <i class="bi bi-person-plus"></i> Tilføj begivenhed
+    </a>
+</div>
