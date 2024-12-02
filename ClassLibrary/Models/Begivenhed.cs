@@ -11,15 +11,14 @@ namespace ClassLibrary.Models
         public string Navn {  get; set; }
         public string Dato {  get; set; }
         public string Lokation {  get; set; }
-        public string Medlemmer {  get; set; }
+       // public string Medlemmer {  get; set; } vi venter med det
 
-        public Begivenhed(string navn, string dato, string lokation, string medlemmer) 
+        public Begivenhed(string navn, string dato, string lokation) 
         { 
             Navn = navn;
             Dato = dato;
             Lokation = lokation;
-            Medlemmer = medlemmer;
-
+            //Medlemmer = medlemmer;
 
         }
     }
