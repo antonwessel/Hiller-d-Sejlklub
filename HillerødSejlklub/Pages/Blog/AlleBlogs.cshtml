@@ -1,0 +1,27 @@
+﻿@page
+@model HillerødSejlklub.Pages.Blog.AlleBlogsModel
+@{
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Vores Blogs</h1>
+    <div class="row justify-content-center">
+        @foreach (var blog in Model.Blogs)
+        {
+            <div class="col-12 mb-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">@blog.BlogTitel</h5>
+                        <p class="text-muted mb-2">
+                            <strong>Forfatter:</strong> @blog.BlogForfatter<br />
+                            <strong>Dato:</strong> @blog.BlogDato
+                        </p>
+                        <p class="card-text">
+                            @blog.BlogIndhold
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
