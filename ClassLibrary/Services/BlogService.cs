@@ -18,14 +18,29 @@ public class BlogService : IBlogService
         _blogListe.Add(blog);
     }
 
-    public Blog DeleteBlog(string? titel)
+    public Blog DeleteBlog(string? navn)
     {
-        throw new NotImplementedException();
+        foreach (var blog in _blogListe)
+        {
+            if (blog.BlogTitel == navn)
+            {
+                _blogListe.Remove(blog);
+                return blog;
+            }
+        }
+        return null;
     }
 
-    public Blog GetBlog(string titel)
+    public Blog GetBlog(string navn)
     {
-        throw new NotImplementedException();
+        foreach (var blog in _blogListe)
+        {
+            if (blog.BlogTitel == navn)
+            {
+                return blog;
+            }
+        }
+        return null;
     }
 
     public List<Blog> GetBlogs() => _blogListe;
