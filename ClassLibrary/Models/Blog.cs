@@ -15,6 +15,7 @@ namespace ClassLibrary.Models
 
         public Blog(string blogTitel, string blogForfatter, string blogIndhold)
         {
+            // Mock data bruger den her
             BlogTitel = blogTitel;
             BlogDato = DateTime.Now;
             BlogForfatter = blogForfatter;
@@ -23,7 +24,8 @@ namespace ClassLibrary.Models
 
         public Blog()
         {
-
+            // Razor Pages bruger den her constructor
+            BlogDato = DateTime.Now;
         }
     }
 }
