@@ -20,10 +20,7 @@ public class BlogService : IBlogService
         throw new NotImplementedException();
     }
 
-    public List<Blog> GetBlogs()
-    {
-        throw new NotImplementedException();
-    }
+    public List<Blog> GetBlogs() => MockData.MockBlog.GetBlogsAsList();
 
     public void UpdateBlog(Blog blog)
     {
