@@ -22,6 +22,10 @@
                         <p class="card-text">
                             @blog.BlogIndhold
                         </p>
+                        
+                        <a class="btn btn-outline-danger btn-sm" asp-page="SletBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Slet">
+                            <i class="bi bi-trash"></i> Slet
+                        </a>
                     </div>
                 </div>
             </div>
