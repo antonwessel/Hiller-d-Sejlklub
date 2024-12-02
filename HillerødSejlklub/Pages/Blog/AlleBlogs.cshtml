@@ -5,6 +5,9 @@
 
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Vores Blogs</h1>
+    <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBlog">
+        <i class="bi bi-plus-circle"></i> Tilføj en ny blog
+    </a>
     <div class="row justify-content-center">
         @foreach (var blog in Model.Blogs)
         {
