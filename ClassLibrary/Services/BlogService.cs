@@ -6,31 +6,32 @@ namespace ClassLibrary.Services;
 
 public class BlogService : IBlogService
 {
-	private List<Blog> _blogListe;
+    private List<Blog> _blogListe;
 
-	public BlogService()
-	{
-		_blogListe = MockBlog.GetBlogsAsList();
-	}
-	public void AddBlog(Blog blog)
-	{
-		_blogListe.Add(blog);
-	}
+    public BlogService()
+    {
+        _blogListe = MockBlog.GetBlogsAsList();
+    }
 
-	public Blog DeleteBlog(string? titel)
-	{
-		throw new NotImplementedException();
-	}
+    public void AddBlog(Blog blog)
+    {
+        _blogListe.Add(blog);
+    }
 
-	public Blog GetBlog(string titel)
-	{
-		throw new NotImplementedException();
-	}
+    public Blog DeleteBlog(string? titel)
+    {
+        throw new NotImplementedException();
+    }
 
-	public List<Blog> GetBlogs() => MockData.MockBlog.GetBlogsAsList();
+    public Blog GetBlog(string titel)
+    {
+        throw new NotImplementedException();
+    }
 
-	public void UpdateBlog(Blog blog)
-	{
-		throw new NotImplementedException();
-	}
+    public List<Blog> GetBlogs() => _blogListe;
+
+    public void UpdateBlog(Blog blog)
+    {
+        throw new NotImplementedException();
+    }
 }

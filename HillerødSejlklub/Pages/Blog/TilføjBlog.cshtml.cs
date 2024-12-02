@@ -4,36 +4,35 @@ using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HillerødSejlklub.Pages.Blog
+namespace HillerødSejlklub.Pages.Blog;
+
+public class TilføjBlogModel : PageModel
 {
-    public class TilføjBlogModel : PageModel
+    private IBlogService _blogService;
+
+    [BindProperty]
+
+    public ClassLibrary.Models.Blog Blog { get; set; }
+
+
+    public TilføjBlogModel(IBlogService blogService)
     {
-     private IBlogService _blogService;
+        _blogService = blogService;
+    }
 
-        [BindProperty]
+    public IActionResult OnGet()
+    {
+        return Page();
+    }
 
-        public ClassLibrary.Models.Blog Blog { get; set; }
-
-
-        public TilføjBlogModel(IBlogService blogService)
-        {
-            _blogService = blogService;
-        }
-
-        public IActionResult OnGet()
+    public IActionResult OnPost()
+    {
+        if (!ModelState.IsValid)
         {
             return Page();
         }
+        _blogService.AddBlog(Blog);
+        return RedirectToPage("AlleBlogs");
+    }
 
-		public IActionResult OnPost()
-		{
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
-			_blogService.AddBlog(Blog);
-			return RedirectToPage("AlleBlogs");
-		}
-
-	}
 }
