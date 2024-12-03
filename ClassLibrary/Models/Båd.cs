@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
 
 namespace ClassLibrary.Models;
 
@@ -22,15 +21,19 @@ public class Båd
     [RegularExpression(@".+\.(jpg|jpeg|png|gif|bmp)$", ErrorMessage = "BilledeUrl skal være et link til en gyldig billedfil (jpg, jpeg, png, gif, bmp).")]
     public string BilledeUrl { get; set; }
 
-    public Båd(string bådType, string model, string navn, string billedeUrl)
+    public List<Maintenance> Maintenances { get; set; } // Til vedligeholdese liste
+
+    public Båd(string bådType, string model, string navn, string billedeUrl, List<Maintenance> maintenances)
     {
         BådType = bådType;
         BådModel = model;
         Navn = navn;
         BilledeUrl = billedeUrl;
+        Maintenances = maintenances;
     }
 
     public Båd()
     {
+        Maintenances = new List<Maintenance>();
     }
 }

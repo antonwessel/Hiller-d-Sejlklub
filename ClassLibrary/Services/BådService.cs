@@ -7,10 +7,21 @@ namespace ClassLibrary.Services;
 public class BådService : IBådService
 {
     private List<Båd> _bådeListe;
+    private readonly IMaintenanceService _maintenanceService;
 
-    public BådService()
+    public BådService(IMaintenanceService maintenanceService)
     {
         _bådeListe = MockBåd.GetBoatsAsList();
+        _maintenanceService = maintenanceService;
+
+        // Tilføj fra mock data
+        foreach (var båd in _bådeListe)
+        {
+            foreach (var maintenance in båd.Maintenances)
+            {
+                _maintenanceService.AddMaintenance(båd.Navn, maintenance);
+            }
+        }
     }
 
     public void AddBåd(Båd båd)
@@ -20,42 +31,27 @@ public class BådService : IBådService
 
     public Båd DeleteBåd(string? navn)
     {
-        foreach (var båd in _bådeListe)
+        // forsøg at find en båd der matcher navn
+        var båd = _bådeListe.FirstOrDefault(b => b.Navn == navn);
+        if (båd != null)
         {
-            if (båd.Navn == navn)
-            {
-                _bådeListe.Remove(båd);
-                return båd;
-            }
+            _bådeListe.Remove(båd);
         }
-        return null;
+        return båd;
     }
 
-    public Båd GetBåd(string navn)
-    {
-        foreach (var båd in _bådeListe)
-        {
-            if (båd.Navn == navn)
-            {
-                return båd;
-            }
-        }
-        return null;
-    }
+    public Båd GetBåd(string navn) => _bådeListe.FirstOrDefault(b => b.Navn == navn);
 
     public List<Båd> GetBåde() => _bådeListe;
 
     public void UpdateBåd(Båd båd)
     {
-        foreach (var bd in _bådeListe)
+        var existingBåd = _bådeListe.FirstOrDefault(b => b.Navn == båd.Navn);
+        if (existingBåd != null)
         {
-            if (bd.Navn == båd.Navn)
-            {
-                bd.BådModel = båd.BådModel;
-                bd.BådType = båd.BådType;
-                bd.BilledeUrl = båd.BilledeUrl;
-                break;
-            }
+            existingBåd.BådModel = båd.BådModel;
+            existingBåd.BådType = båd.BådType;
+            existingBåd.BilledeUrl = båd.BilledeUrl;
         }
     }
 }
