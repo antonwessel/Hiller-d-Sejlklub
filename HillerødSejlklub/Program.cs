@@ -10,6 +10,8 @@ builder.Services.AddSingleton<IMedlemService, MedlemService>();
 builder.Services.AddSingleton<IBådService, BådService>();
 builder.Services.AddSingleton<IBegivenhedService, BegivenhedService>();
 builder.Services.AddSingleton<IBlogService, BlogService>();
+builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();
+
 
 var app = builder.Build();
 
