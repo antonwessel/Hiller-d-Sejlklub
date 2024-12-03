@@ -9,4 +9,5 @@ public interface IBådService
     void UpdateBåd(Båd båd);
     Båd GetBåd(string navn);
     Båd DeleteBåd(string? navn);
+    List<Maintenance> GetMaintenances(string navn);
 }

@@ -45,6 +45,19 @@ public class BådService : IBådService
 
     public List<Båd> GetBåde() => _bådeListe;
 
+    public List<Maintenance> GetMaintenances(string navn)
+    {
+        List<Maintenance> list = [];
+        foreach (var bd in _bådeListe)
+        {
+            if (bd.Navn == navn)
+            {
+                list = bd.Maintenances;
+            }
+        }
+        return list;
+    }
+
     public void UpdateBåd(Båd båd)
     {
         foreach (var bd in _bådeListe)

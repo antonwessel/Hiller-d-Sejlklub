@@ -1,0 +1,27 @@
+﻿@page
+@model HillerødSejlklub.Pages.Både.MaintenanceBoatModel
+@{
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Vedligeholdelser af @Model.Båd.Navn</h1>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Status</th>
+                <th>Dato</th>
+                <th>Beskrivelse</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var maintenance in Model.Maintenances)
+            {
+                <tr>
+                    <td>@maintenance.Status</td>
+                    <td>@maintenance.Date</td>
+                    <td>@maintenance.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
