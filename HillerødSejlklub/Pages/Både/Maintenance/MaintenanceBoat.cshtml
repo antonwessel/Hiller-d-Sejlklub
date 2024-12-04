@@ -18,15 +18,25 @@
                     <th scope="col">Status</th>
                     <th scope="col">Oprettelsesdato</th>
                     <th scope="col">Beskrivelse</th>
+                    <th scope="col">Håndtering</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var maintenance in Model.Maintenances)
                 {
+                    
                     <tr>
                         <td>@maintenance.Status</td>
                         <td>@maintenance.Date</td>
                         <td>@maintenance.Description</td>
+                        <td>
+                            @* <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger"> *@
+                            @*     <i class="bi bi-pencil"></i> Rediger *@
+                            @* </a> *@
+                            <a class="btn btn-outline-danger btn-sm" asp-page="DeleteMaintenance" asp-route-bådNavn="@Model.Båd.Navn" asp-route-maintenanceId="@maintenance.MaintenanceId" title="Slet">
+                                <i class="bi bi-trash"></i> Slet
+                            </a>
+                        </td>
                     </tr>
                 }
             </tbody>

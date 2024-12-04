@@ -13,6 +13,7 @@ public class MaintenanceBoatModel : PageModel
     [BindProperty]
     public List<ClassLibrary.Models.Maintenance> Maintenances { get; set; }
 
+
     [BindProperty]
     public Båd Båd { get; set; }
 
