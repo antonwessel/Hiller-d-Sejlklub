@@ -37,6 +37,19 @@ public class MaintenanceService : IMaintenanceService
         }
     }
 
+    public Maintenance GetMaintenance(string bådNavn, Guid maintenanceId)
+    {
+        List<Maintenance> maintenancesForBoat = GetMaintenances(bådNavn);
+        foreach (var maintenance in maintenancesForBoat)
+        {
+            if (maintenance.MaintenanceId == maintenanceId)
+            {
+                return maintenance;
+            }
+        }
+        return null;
+    }
+
     public List<Maintenance> GetMaintenances(string bådNavn)
     {
         // prøv at få listen af vedligeholdelser baseret på bådNavn
