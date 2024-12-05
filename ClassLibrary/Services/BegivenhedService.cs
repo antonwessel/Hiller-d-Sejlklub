@@ -64,7 +64,18 @@ namespace ClassLibrary.Services
 
         public void UpdateBegivenhed(Event begivenhed)
         {
-            throw new NotImplementedException();
+           foreach (var events in _eventList)
+            {
+               if ( events.Navn ==  begivenhed.Navn)
+
+                { 
+                events.Navn = begivenhed.Navn;
+
+                events.Lokation = begivenhed.Lokation;
+
+                    break;
+                }
+            }
         }
     }
 }
