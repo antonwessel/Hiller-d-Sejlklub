@@ -24,7 +24,20 @@ namespace ClassLibrary.Services
 
         public Event DeleteBegivenhed(string navn)
         {
-            throw new NotImplementedException();
+            Event begivenhedToDelete = null;
+
+            foreach (var begivenhed in events)
+            {
+                if(navn == begivenhed.Navn)
+                    begivenhedToDelete = begivenhed;
+                break;
+            }
+
+            if (begivenhedToDelete != null)
+            {
+                events.Remove(begivenhedToDelete);
+            }
+            return begivenhedToDelete;
         }
 
         public List<Event> GetBegivenheder()
