@@ -1,10 +1,32 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Hillerød Sejlklub";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Velkommen til Hillerød Sejlklub</h1>
+        <p class="lead">Vi elsker at sejle og dele glæden med andre.</p>
+    </div>
+
+    <div class="text-center mb-4">
+        <p class="fs-5">
+            Hillerød Sejlklub er for alle, der kan lide at sejle.
+            Hos os kan du lære at sejle, få nye venner og nyde naturen på vandet.
+        </p>
+        <p class="fs-5">
+            Vi sejler for sjov, men også for at blive bedre. Klubben er for både børn og voksne.
+            Alle er velkomne - nybegyndere og erfarne sejlere.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-stretch">
+            <img src="images/hillerød-sejlklub1.jpg" class="img-fluid w-100 h-100 rounded shadow" style="object-fit: cover;" alt="Sejlklub billede 1">
+        </div>
+        <div class="col-md-6 d-flex align-items-stretch">
+            <img src="images/hillerød-sejlklub2.jpg" class="img-fluid w-100 h-100 rounded shadow" style="object-fit: cover;" alt="Sejlklub billede 2">
+        </div>
+    </div>
 </div>
