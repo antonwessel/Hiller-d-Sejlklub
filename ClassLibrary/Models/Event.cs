@@ -33,7 +33,5 @@ namespace ClassLibrary.Models
 
         public Event() { Dato = DateTime.Now; }
 
-
-
     }
 }

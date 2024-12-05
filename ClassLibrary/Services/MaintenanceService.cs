@@ -37,6 +37,19 @@ public class MaintenanceService : IMaintenanceService
         }
     }
 
+    public Maintenance GetMaintenance(string bådNavn, Guid maintenanceId)
+    {
+        List<Maintenance> maintenancesForBoat = GetMaintenances(bådNavn);
+        foreach (var maintenance in maintenancesForBoat)
+        {
+            if (maintenance.MaintenanceId == maintenanceId)
+            {
+                return maintenance;
+            }
+        }
+        return null;
+    }
+
     public List<Maintenance> GetMaintenances(string bådNavn)
     {
         // prøv at få listen af vedligeholdelser baseret på bådNavn
@@ -51,8 +64,8 @@ public class MaintenanceService : IMaintenanceService
     {
         if (_maintenanceData.TryGetValue(bådNavn, out var maintenances))
         {
-            // Find det indeks i listen som matcher vores Dato og Beskrivelse
-            var index = maintenances.FindIndex(m => m.Date == maintenance.Date && m.Description == maintenance.Description);
+            // Find det indeks i listen som matcher Id
+            var index = maintenances.FindIndex(m => m.MaintenanceId == maintenance.MaintenanceId);
             if (index >= 0)
             {
                 // Erstat (opdater) gamle med nye vedligeholdelse
