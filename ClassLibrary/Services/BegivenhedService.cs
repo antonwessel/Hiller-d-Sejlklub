@@ -19,7 +19,7 @@ namespace ClassLibrary.Services
 
         public void AddBegivenhed(Event begivenhed)
         {
-            throw new NotImplementedException();
+         
         }
 
         public Event DeleteBegivenhed(string navn)
