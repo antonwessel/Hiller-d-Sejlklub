@@ -19,7 +19,7 @@ namespace ClassLibrary.Services
 
         public void AddBegivenhed(Event begivenhed)
         {
-         
+         events.Add(begivenhed);
         }
 
         public Event DeleteBegivenhed(string navn)

@@ -57,14 +57,6 @@ public class MedlemService : IMedlemService
     {
         // Email bruges som id og kan ikke ændres. Brug et ID, hvis email skal kunne ændres.
 
-        foreach (var medle in _medlemList)
-        {
-            if (medle.Email == medlem.Email)
-            {
-                medle.Navn = medlem.Navn;
-                medle.TelefonNummer = medlem.TelefonNummer;
-                break;
-            }
-        }
+     
     }
 }
