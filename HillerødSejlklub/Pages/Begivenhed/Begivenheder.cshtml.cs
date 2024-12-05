@@ -9,8 +9,8 @@ namespace HillerødSejlklub.Pages.Begivenhed
     {
         private IBegivenhedService _begivenhedService;
 
-        public string Navn {  get; set; }
-        public List<Event> BegivenhedList { get; set; }
+
+        public List<Event> Begivenheder { get; set; }
 
         public BegivenhederModel(IBegivenhedService begivenhedService)
         {
@@ -20,7 +20,7 @@ namespace HillerødSejlklub.Pages.Begivenhed
 
         public void OnGet()
         {
-            BegivenhedList = _begivenhedService.GetEvents();
+            Begivenheder = _begivenhedService.GetEvents();
         }
     }
 }
