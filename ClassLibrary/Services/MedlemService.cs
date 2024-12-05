@@ -53,10 +53,23 @@ public class MedlemService : IMedlemService
     public List<Medlem> GetMedlemmer() => _medlemList;
 
 
-    public void UpdateMedlem(Medlem medlem)
-    {
+    
+    
         // Email bruges som id og kan ikke ændres. Brug et ID, hvis email skal kunne ændres.
 
-     
+        public void UpdateMedlem(Medlem medlem)
+        {
+            // Email bruges som id og kan ikke ændres. Brug et ID, hvis email skal kunne ændres.
+
+            foreach (var medle in _medlemList)
+            {
+                if (medle.Email == medlem.Email)
+                {
+                    medle.Navn = medlem.Navn;
+                    medle.TelefonNummer = medlem.TelefonNummer;
+                    break;
+                }
+            }
+        }
     }
-}
+
