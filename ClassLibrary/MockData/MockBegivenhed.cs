@@ -16,6 +16,6 @@ public class MockBegivenhed
     };
 
 
-    public static List<Event> GetBegivenheder() => _begivenheder.Values.ToList();
+    public static List<Event> GetBegivenhederAsList() => _begivenheder.Values.ToList();
 }
 

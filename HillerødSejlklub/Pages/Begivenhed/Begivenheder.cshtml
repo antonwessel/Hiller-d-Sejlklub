@@ -17,17 +17,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var begivenhed in Model.BegivenhedList)
+            @foreach (var begivenhed in Model.Begivenheder)
             {
                 <tr>
                     <td>@begivenhed.Navn</td>
                     <td>@begivenhed.Dato</td>
                     <td>@begivenhed.Lokation</td>
                     <td>
-                        <a class="btn btn-danger btn-sm" asp-page="SletMedlem" asp-route-email="@begivenhed.Navn" title="Slet">
+                        <a class="btn btn-danger btn-sm" asp-page="SletBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Slet">
                             <i class="bi bi-trash"></i> Slet
                         </a>
-                        <a class="btn btn-primary btn-sm" asp-page="RedigerMedlem" asp-route-email="@begivenhed.Navn" title="Rediger">
+                        <a class="btn btn-primary btn-sm" asp-page="RedigerBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Rediger">
                             <i class="bi bi-pencil"></i> Rediger
                         </a>
                     </td>

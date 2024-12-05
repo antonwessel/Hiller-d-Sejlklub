@@ -21,5 +21,7 @@ namespace ClassLibrary.Models
             //Medlemmer = medlemmer;
 
         }
+
+        public Event() { }
     }
 }

@@ -11,43 +11,56 @@ namespace ClassLibrary.Services
 {
     public class BegivenhedService : IBegivenhedService
     {
-        List<Event> events = new List<Event>();
+        List<Event> _eventList;
+
+
         public BegivenhedService()
         {
-            events = MockBegivenhed.GetBegivenheder();
+            _eventList = MockData.MockBegivenhed.GetBegivenhederAsList();
         }
 
-        public void AddBegivenhed(Event begivenhed)
+            public void AddBegivenhed(Event events)
         {
-            throw new NotImplementedException();
+            _eventList.Add(events);
         }
 
-        public Event DeleteBegivenhed(string navn)
+        public Event DeleteBegivenhed(string? navn)
         {
-            throw new NotImplementedException();
-        }
+            Event eventToDelete = null;
 
-        public List<Event> GetBegivenheder()
-        {
-            return events;
-        }
+            foreach (Event events in _eventList)
+            {
+                if (navn == events.Navn)
+                {
+                    eventToDelete = events;
+                    break;
+                }
+            }
+            if (eventToDelete != null)
+            {
+                _eventList.Remove(eventToDelete);
+            }
+            return eventToDelete;
 
-        public Event GetBegivenhed(string navn)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateBegivenhed(Event begivenhed)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Event> GetEvents()
-        {
-            return events;
         }
 
         public Event GetEvent(string navn)
+        {
+            foreach (var events in _eventList)
+            {
+                if (navn == events.Navn)
+                {
+                    return events;
+                }
+
+            }
+            return null;
+        }
+
+        public List<Event> GetEvents() => _eventList;
+              
+
+        public void UpdateBegivenhed(Event begivenhed)
         {
             throw new NotImplementedException();
         }
