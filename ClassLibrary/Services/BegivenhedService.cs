@@ -21,7 +21,9 @@ namespace ClassLibrary.Services
 
             public void AddBegivenhed(Event events)
         {
-            _eventList.Add(events);
+
+         events.Add(begivenhed);
+
         }
 
         public Event DeleteBegivenhed(string? navn)
