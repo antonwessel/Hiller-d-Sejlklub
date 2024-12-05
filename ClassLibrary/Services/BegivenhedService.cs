@@ -19,10 +19,10 @@ namespace ClassLibrary.Services
             _eventList = MockData.MockBegivenhed.GetBegivenhederAsList();
         }
 
-            public void AddBegivenhed(Event events)
+       public void AddBegivenhed(Event begivenhed)
         {
 
-         events.Add(begivenhed);
+         _eventList.Add(begivenhed);
 
         }
 
