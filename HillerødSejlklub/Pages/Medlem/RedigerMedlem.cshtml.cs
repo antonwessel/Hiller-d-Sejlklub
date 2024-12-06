@@ -19,7 +19,7 @@ public class RedigerMedlemModel : PageModel
 
     public IActionResult OnGet(string email)
     {
-        // Kun admins der må være her
+        // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
             return RedirectToPage("Medlemmer");

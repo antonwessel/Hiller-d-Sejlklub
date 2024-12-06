@@ -1,3 +1,4 @@
+using ClassLibrary.Helpers;
 using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using ClassLibrary.Services;
@@ -21,6 +22,12 @@ namespace HillerødSejlklub.Pages.Blog
 
         public IActionResult OnGet(string BlogTitel)
         {
+            // Kun admins må være her
+            if (!AdminState.IsAdminLoggedIn)
+            {
+                return RedirectToPage("AlleBlogs");
+            }
+
             Blog = _blogService.GetBlog(BlogTitel);
             return Page();
         }

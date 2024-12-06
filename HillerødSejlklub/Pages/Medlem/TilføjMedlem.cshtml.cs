@@ -20,7 +20,7 @@ public class TilføjMedlemModel : PageModel
 
     public IActionResult OnGet()
     {
-        // Kun admins der må være her
+        // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
             return RedirectToPage("Medlemmer");
