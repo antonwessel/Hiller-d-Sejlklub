@@ -1,17 +1,21 @@
 ﻿@page
+@using ClassLibrary.Helpers
 @model HillerødSejlklub.Pages.Både.AlleBådeModel
 @{
 }
 
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Vores Både</h1>
-    <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBåd">
-        <i class="bi bi-plus-circle"></i> Tilføj en ny båd
-    </a>
+    @if (AdminState.IsAdminLoggedIn)
+    {
+        <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBåd">
+            <i class="bi bi-plus-circle"></i> Tilføj en ny båd
+        </a>
+    }
     <div class="row">
         @foreach (var båd in Model.Både)
-    {
-        <div class="col-md-4 mb-4">
+        {
+            <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-0">
                     <img src="@båd.BilledeUrl" class="card-img-top rounded-top" alt="@båd.Navn" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
@@ -20,18 +24,21 @@
                             <strong>Bådtype:</strong> @båd.BådType<br />
                             <strong>Model:</strong> @båd.BådModel
                         </p>
-                        <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger">
-                            <i class="bi bi-pencil"></i> Rediger
-                        </a>
-                        <a class="btn btn-outline-danger btn-sm" asp-page="SletBåd" asp-route-navn="@båd.Navn" title="Slet">
-                            <i class="bi bi-trash"></i> Slet
-                        </a>
-                        <a class="btn btn-outline-primary btn-sm me-2" asp-page="Maintenance/MaintenanceBoat" asp-route-navn="@båd.Navn" title="Maintenance">
-                            <i class="bi bi-wrench"></i> Vedligeholdelse
-                        </a>
+                        @if (AdminState.IsAdminLoggedIn)
+                        {
+                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger">
+                                <i class="bi bi-pencil"></i> Rediger
+                            </a>
+                            <a class="btn btn-outline-danger btn-sm" asp-page="SletBåd" asp-route-navn="@båd.Navn" title="Slet">
+                                <i class="bi bi-trash"></i> Slet
+                            </a>
+                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="Maintenance/MaintenanceBoat" asp-route-navn="@båd.Navn" title="Maintenance">
+                                <i class="bi bi-wrench"></i> Vedligeholdelse
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
-    }
+        }
     </div>
 </div>

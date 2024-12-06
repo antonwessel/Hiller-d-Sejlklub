@@ -1,3 +1,4 @@
+using ClassLibrary.Helpers;
 using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,16 @@ public class MaintenanceBoatModel : PageModel
         _maintenanceService = maintenanceService;
     }
 
-    public void OnGet(string navn)
+    public IActionResult OnGet(string navn)
     {
+        // Kun admins må være her
+        if (!AdminState.IsAdminLoggedIn)
+        {
+            return RedirectToPage("../AlleBåde");
+        }
+
         Båd = _bådService.GetBåd(navn);
         Maintenances = _maintenanceService.GetMaintenances(navn);
+        return Page();
     }
 }

@@ -1,3 +1,4 @@
+using ClassLibrary.Helpers;
 using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,12 @@ public class DeleteMaintenanceModel : PageModel
 
     public IActionResult OnGet(string bådNavn, Guid maintenanceId)
     {
+        // Kun admins må være her
+        if (!AdminState.IsAdminLoggedIn)
+        {
+            return RedirectToPage("../AlleBåde");
+        }
+
         Båd = _bådService.GetBåd(bådNavn);
         Maintenance = _maintenanceService.GetMaintenance(bådNavn, maintenanceId);
         return Page();
