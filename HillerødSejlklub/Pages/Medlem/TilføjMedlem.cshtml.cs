@@ -1,3 +1,4 @@
+using ClassLibrary.Helpers;
 using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -19,6 +20,12 @@ public class TilføjMedlemModel : PageModel
 
     public IActionResult OnGet()
     {
+        // Kun admins må være her
+        if (!AdminState.IsAdminLoggedIn)
+        {
+            return RedirectToPage("Medlemmer");
+        }
+
         return Page();
     }
 

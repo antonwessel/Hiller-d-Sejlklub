@@ -1,3 +1,4 @@
+using ClassLibrary.Helpers;
 using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,12 @@ public class RedigerBådModel : PageModel
 
     public IActionResult OnGet(string navn)
     {
+        // Kun admins må være her
+        if (!AdminState.IsAdminLoggedIn)
+        {
+            return RedirectToPage("AlleBåde");
+        }
+
         Båd = _bådService.GetBåd(navn);
         return Page();
     }
