@@ -1,3 +1,4 @@
+using ClassLibrary.Helpers;
 using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,6 +19,12 @@ public class SletMedlemModel : PageModel
 
     public IActionResult OnGet(string email)
     {
+        // Kun admins der må være her
+        if (!AdminState.IsAdminLoggedIn)
+        {
+            return RedirectToPage("Medlemmer");
+        }
+
         // 'asp-route-email' under Medlemmer.cshtml bliver brugt med parameter 'email'. Argumentet til email bliver givet når man klikker (router) til denne page.
 
         Medlem = _medlemService.GetMedlem(email);
