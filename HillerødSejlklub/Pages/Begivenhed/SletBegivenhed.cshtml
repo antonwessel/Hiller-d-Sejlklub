@@ -1,19 +1,19 @@
 ﻿@page
 @model HillerødSejlklub.Pages.Begivenhed.SletBegivenhedModel
 @{
-    <div class="container mt-5">
-        <h1 class="mb-4 text-danger">Sletning</h1>
-        <div class="alert alert-danger">
-            <h5>Er du sikker på at slette <strong>@Model.Begivenhed.Navn</strong>?</h5>
-            <form method="post" class="mt-3">
-                <button type="submit" class="btn btn-danger me-2">
-                    <i class="bi bi-check-circle"></i> Ja
-                </button>
-                <a class="btn btn-primary" asp-page="Begivenheder">
-                    <i class="bi bi-x-circle"></i> Nej
-                </a>
-            </form>
-        </div>
-    </div>
-
 }
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-danger">Sletning</h1>
+    <div class="alert alert-danger">
+        <h5>Er du sikker på at slette <strong>@Model.Begivenhed.Navn</strong>?</h5>
+        <form method="post" class="mt-3">
+            <button type="submit" class="btn btn-danger me-2">
+                <i class="bi bi-check-circle"></i> Ja
+            </button>
+            <a class="btn btn-primary" asp-page="Begivenheder">
+                <i class="bi bi-x-circle"></i> Nej
+            </a>
+        </form>
+    </div>
+</div>

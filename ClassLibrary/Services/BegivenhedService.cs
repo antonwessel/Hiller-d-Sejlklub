@@ -7,74 +7,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Services
+namespace ClassLibrary.Services;
+
+public class BegivenhedService : IBegivenhedService
 {
-    public class BegivenhedService : IBegivenhedService
+    List<Event> _eventList;
+
+
+    public BegivenhedService()
     {
-        List<Event> _eventList;
+        _eventList = MockData.MockBegivenhed.GetBegivenhederAsList();
+    }
 
+   public void AddBegivenhed(Event begivenhed)
+    {
 
-        public BegivenhedService()
+     _eventList.Add(begivenhed);
+
+    }
+
+    public Event DeleteBegivenhed(string? navn)
+    {
+        Event eventToDelete = null;
+
+        foreach (Event events in _eventList)
         {
-            _eventList = MockData.MockBegivenhed.GetBegivenhederAsList();
-        }
-
-       public void AddBegivenhed(Event begivenhed)
-        {
-
-         _eventList.Add(begivenhed);
-
-        }
-
-        public Event DeleteBegivenhed(string? navn)
-        {
-            Event eventToDelete = null;
-
-            foreach (Event events in _eventList)
+            if (navn == events.Navn)
             {
-                if (navn == events.Navn)
-                {
-                    eventToDelete = events;
-                    break;
-                }
+                eventToDelete = events;
+                break;
             }
-            if (eventToDelete != null)
+        }
+        if (eventToDelete != null)
+        {
+            _eventList.Remove(eventToDelete);
+        }
+        return eventToDelete;
+
+    }
+
+    public Event GetEvent(string navn)
+    {
+        foreach (var events in _eventList)
+        {
+            if (navn == events.Navn)
             {
-                _eventList.Remove(eventToDelete);
+                return events;
             }
-            return eventToDelete;
 
         }
+        return null;
+    }
 
-        public Event GetEvent(string navn)
+    public List<Event> GetEvents() => _eventList;
+          
+
+    public void UpdateBegivenhed(Event begivenhed)
+    {
+       foreach (var events in _eventList)
         {
-            foreach (var events in _eventList)
-            {
-                if (navn == events.Navn)
-                {
-                    return events;
-                }
+           if ( events.Navn ==  begivenhed.Navn)
 
-            }
-            return null;
-        }
+            { 
+            events.Dato = begivenhed.Dato;
 
-        public List<Event> GetEvents() => _eventList;
-              
+            events.Lokation = begivenhed.Lokation;
 
-        public void UpdateBegivenhed(Event begivenhed)
-        {
-           foreach (var events in _eventList)
-            {
-               if ( events.Navn ==  begivenhed.Navn)
-
-                { 
-                events.Dato = begivenhed.Dato;
-
-                events.Lokation = begivenhed.Lokation;
-
-                    break;
-                }
+                break;
             }
         }
     }

@@ -15,21 +15,21 @@
                 <th>Dato</th>
                 <th>Lokation</th>
                 @if (AdminState.IsAdminLoggedIn)
-                {
-                    <th>Håndtering</th>
-                }
+            {
+                <th>Håndtering</th>
+            }
             </tr>
         </thead>
         <tbody>
             @foreach (var begivenhed in Model.Begivenheder)
-            {
-                <tr>
+        {
+            <tr>
                     <td>@begivenhed.Navn</td>
                     <td>@begivenhed.Dato</td>
                     <td>@begivenhed.Lokation</td>
                     @if (AdminState.IsAdminLoggedIn)
-                    {
-                        <td>
+                {
+                    <td>
                             <a class="btn btn-danger btn-sm" asp-page="SletBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
@@ -37,15 +37,15 @@
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
                         </td>
-                    }
+                }
                 </tr>
-            }
+        }
         </tbody>
     </table>
     @if (AdminState.IsAdminLoggedIn)
-    {
-        <a class="btn btn-success" asp-page="TilFøjBegivenhed">
+{
+    <a class="btn btn-success" asp-page="TilFøjBegivenhed">
             <i class="bi bi-person-plus"></i> Tilføj begivenhed
         </a>
-    }
+}
 </div>

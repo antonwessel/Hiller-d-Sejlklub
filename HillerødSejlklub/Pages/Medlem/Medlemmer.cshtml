@@ -13,21 +13,21 @@
                 <th>Telefonnummer</th>
                 <th>Email</th>
                 @if (AdminState.IsAdminLoggedIn)
-                {
-                    <th>Håndtering</th>
-                }
+            {
+                <th>Håndtering</th>
+            }
             </tr>
         </thead>
         <tbody>
             @foreach (var medlem in Model.Medlemmer)
-            {
-                <tr>
+        {
+            <tr>
                     <td>@medlem.Navn</td>
                     <td>@medlem.TelefonNummer</td>
                     <td>@medlem.Email</td>
                     @if (AdminState.IsAdminLoggedIn)
-                    {
-                        <td>
+                {
+                    <td>
                             <a class="btn btn-danger btn-sm" asp-page="SletMedlem" asp-route-email="@medlem.Email" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
@@ -35,14 +35,15 @@
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
                         </td>
-                    }
+                }
                 </tr>
-            }
+        }
         </tbody>
     </table>
     @if (AdminState.IsAdminLoggedIn) {
     <a class="btn btn-success" asp-page="TilFøjMedlem">
         <i class="bi bi-person-plus"></i> Tilføj medlem
     </a>
-    }
+    
+}
 </div>
