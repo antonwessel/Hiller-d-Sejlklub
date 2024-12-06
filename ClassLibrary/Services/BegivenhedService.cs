@@ -69,7 +69,7 @@ namespace ClassLibrary.Services
                if ( events.Navn ==  begivenhed.Navn)
 
                 { 
-                events.Navn = begivenhed.Navn;
+                events.Dato = begivenhed.Dato;
 
                 events.Lokation = begivenhed.Lokation;
 
