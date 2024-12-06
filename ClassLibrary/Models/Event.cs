@@ -15,7 +15,7 @@ namespace ClassLibrary.Models
         [Required(ErrorMessage = "Dato er påkrævet.")]
         [DataType(DataType.Date, ErrorMessage = "Datoen skal være i et korrekt format.")]
         
-        public DateTime Dato { get; set; }
+        public string Dato { get; set; }
 
         [Required(ErrorMessage = "Lokation er påkrævet.")]
         [StringLength(200, ErrorMessage = "Lokationen må ikke være længere end 200 tegn.")]
@@ -25,13 +25,13 @@ namespace ClassLibrary.Models
         public Event(string navn, string dato, string lokation) 
         { 
             Navn = navn;
-            Dato = DateTime.Now;
+            Dato = dato;
             Lokation = lokation;
             //Medlemmer = medlemmer;
 
         }
 
-        public Event() { Dato = DateTime.Now; }
+        public Event() {  }
 
     }
 }
