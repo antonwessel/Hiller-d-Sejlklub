@@ -10,7 +10,7 @@ public class MockBegivenhed
             "Sommersejlads",
             new Event(
                 "Sommersejlads",
-                "10-07-2025",
+                new DateTime(2025, 7, 10, 14, 30, 0),
                 "Esrum Sø",
                 [
                     new Medlem("Ib Andersen", "24473004", "ib.andersen@hillerodsejlklub.dk"),
@@ -22,7 +22,7 @@ public class MockBegivenhed
             "Efterårstur",
             new Event(
                 "Efterårstur",
-                "15-09-2025",
+                new DateTime(2025, 9, 15, 10, 0, 0),
                 "Nødebo Jollehavn",
                 [
                     new Medlem("Lars Nielsen", "55667788", "lars.nielsen@hillerodsejlklub.dk"),

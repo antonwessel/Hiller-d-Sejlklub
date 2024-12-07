@@ -1,9 +1,7 @@
 ﻿@page
 @model HillerødSejlklub.Pages.Begivenhed.RedigerBegivenhedModel
 @{
-
 }
-
 
 <div class="container mt-5">
     <div class="card shadow-sm">
@@ -20,8 +18,8 @@
                     <small class="form-text text-muted">Dette felt kan ikke redigeres.</small>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Event.Dato" class="form-label">Dato</label>
-                    <input asp-for="Event.Dato" class="form-control" type="date" />
+                    <label asp-for="Event.Dato" class="form-label">Dato og Tid</label>
+                    <input asp-for="Event.Dato" class="form-control" type="datetime-local" />
                     <span asp-validation-for="Event.Dato" class="text-danger"></span>
                 </div>
                 <div class="mb-3">

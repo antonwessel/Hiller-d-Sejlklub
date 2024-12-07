@@ -10,7 +10,7 @@ public class Event
 
     [Required(ErrorMessage = "Dato er påkrævet.")]
     [DataType(DataType.Date, ErrorMessage = "Datoen skal være i et korrekt format.")]
-    public string Dato { get; set; }
+    public DateTime Dato { get; set; }
 
     [Required(ErrorMessage = "Lokation er påkrævet.")]
     [StringLength(200, ErrorMessage = "Lokationen må ikke være længere end 200 tegn.")]
@@ -20,17 +20,16 @@ public class Event
 
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Event(string navn, string dato, string lokation, List<Medlem> participants)
+    public Event(string navn, DateTime dato, string lokation, List<Medlem> participants)
     {
         Navn = navn;
         Dato = dato;
         Lokation = lokation;
-        Participants = participants;
+        Participants = participants ?? [];
     }
 
     public Event()
     {
         Participants = [];
     }
-
 }
