@@ -4,48 +4,41 @@
 @{
 }
 
-
-
 <div class="container mt-5">
-    <h1 class="mb-4">Begivenheder   </h1>
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Navn</th>
-                <th>Dato</th>
-                <th>Lokation</th>
-                @if (AdminState.IsAdminLoggedIn)
-                {
-                    <th>Håndtering</th>
-                }
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var begivenhed in Model.Begivenheder)
-            {
-                <tr>
-                    <td>@begivenhed.Navn</td>
-                    <td>@begivenhed.Dato</td>
-                    <td>@begivenhed.Lokation</td>
-                    @if (AdminState.IsAdminLoggedIn)
-                    {
-                        <td>
-                            <a class="btn btn-danger btn-sm" asp-page="SletBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Slet">
-                                <i class="bi bi-trash"></i> Slet
-                            </a>
-                            <a class="btn btn-primary btn-sm" asp-page="RedigerBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Rediger">
-                                <i class="bi bi-pencil"></i> Rediger
-                            </a>
-                        </td>
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
+    <h1 class="mb-4">Begivenheder</h1>
+    <div class="row g-3">
+        @foreach (var begivenhed in Model.Begivenheder)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@begivenhed.Navn</h5>
+                        <p class="card-text">
+                            <strong>Dato:</strong> @begivenhed.Dato<br />
+                            <strong>Lokation:</strong> @begivenhed.Lokation
+                        </p>
+                        @if (AdminState.IsAdminLoggedIn)
+                        {
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-danger btn-sm" asp-page="SletBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Slet">
+                                    <i class="bi bi-trash"></i> Slet
+                                </a>
+                                <a class="btn btn-primary btn-sm" asp-page="RedigerBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Rediger">
+                                    <i class="bi bi-pencil"></i> Rediger
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
     @if (AdminState.IsAdminLoggedIn)
     {
-        <a class="btn btn-success" asp-page="TilFøjBegivenhed">
-            <i class="bi bi-calendar-plus"></i> Tilføj begivenhed
-        </a>
+        <div class="mt-4">
+            <a class="btn btn-success" asp-page="TilFøjBegivenhed">
+                <i class="bi bi-calendar-plus"></i> Tilføj begivenhed
+            </a>
+        </div>
     }
 </div>
