@@ -6,7 +6,7 @@ namespace HillerødSejlklub.Pages.Begivenhed.Participation;
 
 public class ParticipationListModel : PageModel
 {
-    private IBegivenhedService _begivenhedService;
+    private readonly IBegivenhedService _begivenhedService;
 
     [BindProperty]
     public List<ClassLibrary.Models.Medlem> Participants { get; set; }
