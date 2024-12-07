@@ -14,5 +14,5 @@ public interface IBegivenhedService
     void UpdateBegivenhed(Event begivenhed);
     Event GetEvent(string navn);
     Event DeleteBegivenhed(string navn);
-
+    void AddParticipantToEvent(Medlem participant, Event @event);
 }
