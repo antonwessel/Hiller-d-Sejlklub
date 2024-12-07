@@ -1,9 +1,4 @@
 ﻿using ClassLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.MockData;
 
@@ -11,11 +6,31 @@ public class MockBegivenhed
 {
     private static Dictionary<string, Event> _begivenheder = new()
     {
-        { "SuperSejleSøndag", new Event("SuperSejleSøndag", "27-06-2025","Roskilde")},
-        { "SejleMesterdag", new Event("SejleMesterdag", "15-02-2025","København") }
+        {
+            "Sommersejlads",
+            new Event(
+                "Sommersejlads",
+                new DateTime(2025, 7, 10, 14, 30, 0),
+                "Esrum Sø",
+                [
+                    new Medlem("Ib Andersen", "24473004", "ib.andersen@hillerodsejlklub.dk"),
+                    new Medlem("Emma Pedersen", "26807755", "emma.pedersen@hillerodsejlklub.dk")
+                ]
+            )
+        },
+        {
+            "Efterårstur",
+            new Event(
+                "Efterårstur",
+                new DateTime(2025, 9, 15, 10, 0, 0),
+                "Nødebo Jollehavn",
+                [
+                    new Medlem("Lars Nielsen", "55667788", "lars.nielsen@hillerodsejlklub.dk"),
+                    new Medlem("Marie Jensen", "88776655", "marie.jensen@hillerodsejlklub.dk")
+                ]
+            )
+        }
     };
-
 
     public static List<Event> GetBegivenhederAsList() => _begivenheder.Values.ToList();
 }
-

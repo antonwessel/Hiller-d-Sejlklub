@@ -26,12 +26,6 @@ public class MaintenanceBoatModel : PageModel
 
     public IActionResult OnGet(string navn)
     {
-        // Kun admins må være her
-        if (!AdminState.IsAdminLoggedIn)
-        {
-            return RedirectToPage("../AlleBåde");
-        }
-
         Båd = _bådService.GetBåd(navn);
         Maintenances = _maintenanceService.GetMaintenances(navn);
         return Page();

@@ -1,36 +1,32 @@
 ﻿using ClassLibrary.Interfaces;
-using ClassLibrary.MockData;
 using ClassLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.Services;
 
 public class BegivenhedService : IBegivenhedService
 {
-    List<Event> _eventList;
-
+    private List<Event> _eventsList;
 
     public BegivenhedService()
     {
-        _eventList = MockData.MockBegivenhed.GetBegivenhederAsList();
+        _eventsList = MockData.MockBegivenhed.GetBegivenhederAsList();
     }
 
-   public void AddBegivenhed(Event begivenhed)
+    public void AddBegivenhed(Event begivenhed)
     {
+        _eventsList.Add(begivenhed);
+    }
 
-     _eventList.Add(begivenhed);
-
+    public void AddParticipantToEvent(Medlem participant, Event @event)
+    {
+        throw new NotImplementedException();
     }
 
     public Event DeleteBegivenhed(string? navn)
     {
         Event eventToDelete = null;
 
-        foreach (Event events in _eventList)
+        foreach (Event events in _eventsList)
         {
             if (navn == events.Navn)
             {
@@ -40,7 +36,7 @@ public class BegivenhedService : IBegivenhedService
         }
         if (eventToDelete != null)
         {
-            _eventList.Remove(eventToDelete);
+            _eventsList.Remove(eventToDelete);
         }
         return eventToDelete;
 
@@ -48,7 +44,7 @@ public class BegivenhedService : IBegivenhedService
 
     public Event GetEvent(string navn)
     {
-        foreach (var events in _eventList)
+        foreach (var events in _eventsList)
         {
             if (navn == events.Navn)
             {
@@ -59,20 +55,29 @@ public class BegivenhedService : IBegivenhedService
         return null;
     }
 
-    public List<Event> GetEvents() => _eventList;
-          
+    public List<Event> GetEvents() => _eventsList;
+
+    public List<Medlem> GetParticipants(Guid eventId)
+    {
+        foreach (var @event in _eventsList)
+        {
+            if (eventId == @event.Id)
+            {
+                return @event.Participants;
+            }
+        }
+        return null;
+    }
 
     public void UpdateBegivenhed(Event begivenhed)
     {
-       foreach (var events in _eventList)
+        foreach (var events in _eventsList)
         {
-           if ( events.Navn ==  begivenhed.Navn)
+            if (events.Navn == begivenhed.Navn)
 
-            { 
-            events.Dato = begivenhed.Dato;
-
-            events.Lokation = begivenhed.Lokation;
-
+            {
+                events.Dato = begivenhed.Dato;
+                events.Lokation = begivenhed.Lokation;
                 break;
             }
         }
