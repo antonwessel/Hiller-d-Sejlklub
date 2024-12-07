@@ -22,5 +22,6 @@ public class AddParticipantModel : PageModel
 
     public IActionResult OnGet()
     {
+        return Page();
     }
 }
