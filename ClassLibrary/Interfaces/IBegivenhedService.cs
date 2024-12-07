@@ -15,4 +15,5 @@ public interface IBegivenhedService
     Event GetEvent(string navn);
     Event DeleteBegivenhed(string navn);
     void AddParticipantToEvent(Medlem participant, Event @event);
+    List<Medlem> GetParticipants(Guid eventId);
 }

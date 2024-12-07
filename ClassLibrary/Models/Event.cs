@@ -16,15 +16,21 @@ public class Event
     [StringLength(200, ErrorMessage = "Lokationen må ikke være længere end 200 tegn.")]
     public string Lokation { get; set; }
 
-    public List<Medlem> Participants { get; set; } = [];
+    public List<Medlem> Participants { get; set; }
 
-    public Event(string navn, string dato, string lokation)
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Event(string navn, string dato, string lokation, List<Medlem> participants)
     {
         Navn = navn;
         Dato = dato;
         Lokation = lokation;
+        Participants = participants;
     }
 
-    public Event() { }
+    public Event()
+    {
+        Participants = [];
+    }
 
 }

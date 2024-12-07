@@ -10,7 +10,7 @@ namespace ClassLibrary.Models;
 public class Blog
 {
     [Required(ErrorMessage = "Titlen er påkrævet.")]
-[StringLength(100, ErrorMessage = "Titel må højst være 100 tegn.")]
+    [StringLength(100, ErrorMessage = "Titel må højst være 100 tegn.")]
     public string BlogTitel { get; set; }
 
     public DateTime BlogDato { get; set; }
@@ -22,13 +22,14 @@ public class Blog
     [StringLength(5000, ErrorMessage = "Indhold må højst være 5000 tegn.")]
     public string BlogIndhold { get; set; }
 
-    public Blog(string blogTitel, string blogForfatter, string blogIndhold)
+    public Blog(string blogTitel, string blogForfatter, string blogIndhold, DateTime dateWritten)
     {
         // Mock data bruger den her
         BlogTitel = blogTitel;
         BlogDato = DateTime.Now;
         BlogForfatter = blogForfatter;
         BlogIndhold = blogIndhold;
+        BlogDato = dateWritten;
     }
 
     public Blog()
