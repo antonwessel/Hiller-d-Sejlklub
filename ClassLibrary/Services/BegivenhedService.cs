@@ -5,7 +5,7 @@ namespace ClassLibrary.Services;
 
 public class BegivenhedService : IBegivenhedService
 {
-    private List<Event> _eventsList;
+    private readonly List<Event> _eventsList;
 
     public BegivenhedService()
     {
@@ -41,10 +41,12 @@ public class BegivenhedService : IBegivenhedService
                 break;
             }
         }
+
         if (eventToDelete != null)
         {
             _eventsList.Remove(eventToDelete);
         }
+
         return eventToDelete;
 
     }
@@ -83,10 +85,10 @@ public class BegivenhedService : IBegivenhedService
         {
             if (eventId == @event.Id)
             {
-                return @event.Participants ?? new List<Medlem>();
+                return @event.Participants ?? []; // Tjek om Participants er null
             }
         }
-        return new List<Medlem>();
+        return [];
     }
 
 

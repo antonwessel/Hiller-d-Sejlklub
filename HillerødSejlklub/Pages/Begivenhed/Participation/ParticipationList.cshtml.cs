@@ -39,27 +39,12 @@ public class ParticipationListModel : PageModel
 
     public IActionResult OnPost(Guid eventId)
     {
-        if (NewParticipantId == Guid.Empty)
-        {
-            ModelState.AddModelError("", "Vælg venligst en deltager.");
-            LoadData(eventId);
-            return Page();
-        }
-
+        // Find den valgte deltager fra listen af medlemmer
         var selectedParticipant = _medlemService.GetMedlemmer()
             .FirstOrDefault(m => m.Id == NewParticipantId);
 
-        if (selectedParticipant == null)
-        {
-            ModelState.AddModelError("", "Valgt deltager blev ikke fundet.");
-            LoadData(eventId);
-            return Page();
-        }
-
         _begivenhedService.AddParticipantToEvent(selectedParticipant, eventId);
-
         LoadData(eventId);
-
         return Page();
     }
 
@@ -68,7 +53,7 @@ public class ParticipationListModel : PageModel
         CurrentEvent = _begivenhedService.GetEvent(eventId);
         Participants = _begivenhedService.GetParticipants(eventId);
 
-
+        // Hent alle tilgængelige deltagere, som ikke allerede er med
         AllAvailableParticipants = _medlemService.GetMedlemmer()
             .Where(member => !Participants.Contains(member))
             .ToList();
