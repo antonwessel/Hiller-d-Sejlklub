@@ -5,7 +5,7 @@ namespace ClassLibrary.Services;
 
 public class BegivenhedService : IBegivenhedService
 {
-    private List<Event> _eventsList;
+    private readonly List<Event> _eventsList;
 
     public BegivenhedService()
     {
@@ -17,9 +17,16 @@ public class BegivenhedService : IBegivenhedService
         _eventsList.Add(begivenhed);
     }
 
-    public void AddParticipantToEvent(Medlem participant, Event @event)
+    public void AddParticipantToEvent(Medlem participant, Guid eventId)
     {
-        throw new NotImplementedException();
+        foreach (var evt in _eventsList)
+        {
+            if (evt.Id == eventId)
+            {
+                evt.Participants.Add(participant);
+                break;
+            }
+        }
     }
 
     public Event DeleteBegivenhed(string? navn)
@@ -34,21 +41,36 @@ public class BegivenhedService : IBegivenhedService
                 break;
             }
         }
+
         if (eventToDelete != null)
         {
             _eventsList.Remove(eventToDelete);
         }
+
         return eventToDelete;
 
     }
 
     public Event GetEvent(string navn)
     {
-        foreach (var events in _eventsList)
+        foreach (var @event in _eventsList)
         {
-            if (navn == events.Navn)
+            if (navn == @event.Navn)
             {
-                return events;
+                return @event;
+            }
+
+        }
+        return null;
+    }
+
+    public Event GetEvent(Guid id)
+    {
+        foreach (var @event in _eventsList)
+        {
+            if (@event.Id == id)
+            {
+                return @event;
             }
 
         }
@@ -63,11 +85,12 @@ public class BegivenhedService : IBegivenhedService
         {
             if (eventId == @event.Id)
             {
-                return @event.Participants;
+                return @event.Participants ?? []; // Tjek om Participants er null
             }
         }
-        return null;
+        return [];
     }
+
 
     public void UpdateBegivenhed(Event begivenhed)
     {

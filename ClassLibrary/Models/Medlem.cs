@@ -4,6 +4,9 @@ namespace ClassLibrary.Models;
 
 public class Medlem
 {
+    [Key] // Indicates this is the primary key if used with Entity Framework
+    public Guid Id { get; set; } = Guid.NewGuid(); // Automatically assigns a new GUID
+
     [Required(ErrorMessage = "Navn er påkrævet.")]
     [StringLength(50, ErrorMessage = "Navn må ikke være længere end 50 tegn.")]
     public string Navn { get; set; }
@@ -18,6 +21,7 @@ public class Medlem
 
     public Medlem(string navn, string telefonNummer, string email)
     {
+        Id = Guid.NewGuid(); // Assign a unique ID
         Navn = navn;
         TelefonNummer = telefonNummer;
         Email = email;
@@ -25,6 +29,20 @@ public class Medlem
 
     public Medlem()
     {
+        Id = Guid.NewGuid(); // Assign a unique ID
+    }
 
+    public override bool Equals(object obj)
+    {
+        if (obj is not Medlem other)
+            return false;
+
+        // Members are considered equal if their Id is the same
+        return this.Id == other.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return Id.GetHashCode();
     }
 }
