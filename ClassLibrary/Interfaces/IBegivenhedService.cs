@@ -13,7 +13,8 @@ public interface IBegivenhedService
     void AddBegivenhed(Event begivenhed);
     void UpdateBegivenhed(Event begivenhed);
     Event GetEvent(string navn);
+    Event GetEvent(Guid id);
     Event DeleteBegivenhed(string navn);
-    void AddParticipantToEvent(Medlem participant, Event @event);
+    void AddParticipantToEvent(Medlem participant, Guid eventId);
     List<Medlem> GetParticipants(Guid eventId);
 }
