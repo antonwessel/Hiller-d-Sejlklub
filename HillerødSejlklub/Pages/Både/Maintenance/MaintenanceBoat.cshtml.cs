@@ -17,7 +17,6 @@ public class MaintenanceBoatModel : PageModel
     [BindProperty]
     public float MaintenancesDone { get; set; }
 
-
     [BindProperty]
     public Båd Båd { get; set; }
 

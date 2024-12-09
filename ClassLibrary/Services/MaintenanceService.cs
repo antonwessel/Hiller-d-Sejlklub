@@ -62,16 +62,15 @@ public class MaintenanceService : IMaintenanceService
 
     public float GetMaintenancesDone(string bådNavn)
     {
-        int totalMaintenances = _maintenanceData[bådNavn].Count;
-        int maintenancesDone = 0;
-        foreach (var maintenance in _maintenanceData[bådNavn])
+        if (!_maintenanceData.ContainsKey(bådNavn) || _maintenanceData[bådNavn].Count == 0)
         {
-            if (maintenance.Status == Maintenance.WorkStatus.Færdig)
-            {
-                maintenancesDone++;
-            }
+            return 0; // Returner 0%, hvis der ikke er vedligeholdelser
         }
-        return ((float)maintenancesDone / totalMaintenances) * 100;
+
+        int totalMaintenances = _maintenanceData[bådNavn].Count;
+        int maintenancesDone = _maintenanceData[bådNavn].Count(m => m.Status == Maintenance.WorkStatus.Færdig);
+
+        return ((float)maintenancesDone / totalMaintenances) * 100; // Returner procent
     }
 
     public void UpdateMaintenance(string bådNavn, Maintenance maintenance)
