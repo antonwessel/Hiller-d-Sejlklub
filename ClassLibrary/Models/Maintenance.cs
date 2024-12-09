@@ -14,10 +14,10 @@ public class Maintenance
 
     public Guid MaintenanceId { get; set; }
 
-    public Maintenance(WorkStatus status, string description)
+    public Maintenance(WorkStatus status, string description, DateTime date)
     {
         Status = status;
-        Date = DateTime.Now;
+        Date = date;
         Description = description;
         MaintenanceId = Guid.NewGuid();
     }
@@ -28,5 +28,5 @@ public class Maintenance
         MaintenanceId = Guid.NewGuid();
     }
 
-    public enum WorkStatus { Pending, WorkingOn, Done }
+    public enum WorkStatus { Afventer, Igang, Færdig }
 }
