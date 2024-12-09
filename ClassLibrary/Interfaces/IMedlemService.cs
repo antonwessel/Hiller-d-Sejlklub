@@ -9,6 +9,5 @@ public interface IMedlemService
     void UpdateMedlem(Medlem medlem);
     Medlem GetMedlem(string email);
     Medlem DeleteMedlem(string? email);
-
-
+    List<Medlem> FilterMembersByName(string name); // Brugt til søge funktion
 }
