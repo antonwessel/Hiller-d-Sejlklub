@@ -51,6 +51,12 @@ public class BegivenhedService : IBegivenhedService
 
     }
 
+    public List<Event> FilterByDates(DateTime startDate, DateTime endDate)
+    {
+        // Return all events that matches the interval
+        return _eventsList.Where(evt => evt.Dato >= startDate && evt.Dato <= endDate).ToList();
+    }
+
     public Event GetEvent(string navn)
     {
         foreach (var @event in _eventsList)

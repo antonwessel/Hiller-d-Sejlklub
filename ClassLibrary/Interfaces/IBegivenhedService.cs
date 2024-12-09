@@ -17,4 +17,5 @@ public interface IBegivenhedService
     Event DeleteBegivenhed(string navn);
     void AddParticipantToEvent(Medlem participant, Guid eventId);
     List<Medlem> GetParticipants(Guid eventId);
+    List<Event> FilterByDates(DateTime startDate, DateTime endDate);
 }
