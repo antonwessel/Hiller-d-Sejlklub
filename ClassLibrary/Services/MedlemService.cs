@@ -38,6 +38,12 @@ public class MedlemService : IMedlemService
         return medlemToDelete;
     }
 
+    public List<Medlem> FilterMembersByName(string name)
+    {
+        // Return all members which matches 'name'
+        return _medlemList.Where(m => m.Navn.Contains(name, StringComparison.CurrentCultureIgnoreCase)).ToList();
+    }
+
     public Medlem GetMedlem(string email)
     {
         foreach (var medlem in _medlemList)
@@ -52,24 +58,18 @@ public class MedlemService : IMedlemService
 
     public List<Medlem> GetMedlemmer() => _medlemList;
 
-
-    
-    
+    public void UpdateMedlem(Medlem medlem)
+    {
         // Email bruges som id og kan ikke ændres. Brug et ID, hvis email skal kunne ændres.
-
-        public void UpdateMedlem(Medlem medlem)
+        foreach (var medle in _medlemList)
         {
-            // Email bruges som id og kan ikke ændres. Brug et ID, hvis email skal kunne ændres.
-
-            foreach (var medle in _medlemList)
+            if (medle.Email == medlem.Email)
             {
-                if (medle.Email == medlem.Email)
-                {
-                    medle.Navn = medlem.Navn;
-                    medle.TelefonNummer = medlem.TelefonNummer;
-                    break;
-                }
+                medle.Navn = medlem.Navn;
+                medle.TelefonNummer = medlem.TelefonNummer;
+                break;
             }
         }
     }
+}
 
