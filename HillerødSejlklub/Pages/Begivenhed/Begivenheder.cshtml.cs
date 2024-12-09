@@ -28,4 +28,16 @@ public class BegivenhederModel : PageModel
     {
         Begivenheder = _begivenhedService.GetEvents();
     }
+
+    public IActionResult OnPostFilter()
+    {
+        Begivenheder = _begivenhedService.FilterByDates(MinDate, MaxDate);
+        return Page();
+    }
+
+    public IActionResult OnPostReset()
+    {
+        Begivenheder = _begivenhedService.GetEvents();
+        return Page();
+    }
 }

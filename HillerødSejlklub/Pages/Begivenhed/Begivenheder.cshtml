@@ -7,23 +7,24 @@
 <div class="container mt-5">
     <h1 class="mb-4">Begivenheder</h1>
 
-    <!-- Add an explanatory heading -->
     <p class="text-muted">Brug datoerne nedenfor til at filtrere begivenheder efter start- og slutdato.</p>
 
-    <form method="post" asp-page-handler="Filter" class="d-flex align-items-center mb-3 gap-2" style="max-width: 500px;">
-        <!-- Start date field -->
-        <div class="input-group input-group-sm">
-            <label class="input-group-text" for="MinDate">Startdato</label>
-            <input type="date" asp-for="MinDate" id="MinDate" class="form-control" placeholder="Startdato">
-        </div>
-        <!-- End date field -->
-        <div class="input-group input-group-sm">
-            <label class="input-group-text" for="MaxDate">Slutdato</label>
-            <input type="date" asp-for="MaxDate" id="MaxDate" class="form-control" placeholder="Slutdato">
-        </div>
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-sm">Find</button>
-    </form>
+    <div class="d-flex flex-column align-items-start mb-3" style="max-width: 400px;">
+        <form method="post" asp-page-handler="Filter" class="d-flex align-items-center gap-2 w-100">
+            <div class="input-group input-group-sm flex-nowrap">
+                <label for="MinDate" class="form-label visually-hidden">Startdato</label>
+                <input type="date" asp-for="MinDate" class="form-control" placeholder="Startdato">
+            </div>
+            <div class="input-group input-group-sm flex-nowrap">
+                <label for="MaxDate" class="form-label visually-hidden">Slutdato</label>
+                <input type="date" asp-for="MaxDate" class="form-control" placeholder="Slutdato">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Find</button>
+        </form>
+        <form method="post" asp-page-handler="Reset" class="mt-2">
+            <button type="submit" class="btn btn-secondary btn-sm">Nulstil</button>
+        </form>
+    </div>
 
     <div class="row g-3">
         @foreach (var begivenhed in Model.Begivenheder)
