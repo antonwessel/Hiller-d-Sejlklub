@@ -15,9 +15,9 @@
         <div class="mb-3">
             <label asp-for="Maintenance.Status" class="form-label">Status</label>
             <select asp-for="Maintenance.Status" class="form-select">
-                <option value="Pending">Venter med at blive arbejdet på</option>
-                <option value="WorkingOn">Bliver arbejdet på</option>
-                <option value="Done">Er færdigt</option>
+                <option value="Afventer">Venter med at blive arbejdet på</option>
+                <option value="Igang">Bliver arbejdet på</option>
+                <option value="Færdig">Er færdigt</option>
             </select>
             <span asp-validation-for="Maintenance.Status" class="text-danger"></span>
         </div>

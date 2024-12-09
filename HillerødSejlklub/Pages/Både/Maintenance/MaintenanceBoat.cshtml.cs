@@ -14,6 +14,8 @@ public class MaintenanceBoatModel : PageModel
     [BindProperty]
     public List<ClassLibrary.Models.Maintenance> Maintenances { get; set; }
 
+    [BindProperty]
+    public float MaintenancesDone { get; set; }
 
     [BindProperty]
     public Båd Båd { get; set; }
@@ -28,6 +30,7 @@ public class MaintenanceBoatModel : PageModel
     {
         Båd = _bådService.GetBåd(navn);
         Maintenances = _maintenanceService.GetMaintenances(navn);
+        MaintenancesDone = _maintenanceService.GetMaintenancesDone(navn);
         return Page();
     }
 }
