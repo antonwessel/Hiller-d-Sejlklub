@@ -5,6 +5,10 @@
 }
 
 <div class="container mt-5">
+    <a asp-page="../Begivenheder" class="btn btn-secondary btn-sm mt-3">
+        <i class="bi bi-arrow-left"></i> Tilbage
+    </a>
+
     <h2 class="text-center mb-4">Deltagere</h2>
     @if (Model.Participants.Any())
     {
@@ -53,3 +57,4 @@
         </div>
     }
 </div>
+
