@@ -7,6 +7,10 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="fw-bold">Vedligeholdelser af @Model.Båd.Navn</h1>
+
+        <!-- progress bar here-->
+        <p>@Model.MaintenancesDone</p>
+
         @if (AdminState.IsAdminLoggedIn)
         {
             <a class="btn btn-success d-flex align-items-center" asp-page="AddMaintenance" asp-route-bådNavn="@Model.Båd.Navn">
