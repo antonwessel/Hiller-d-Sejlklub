@@ -7,9 +7,12 @@ public class MedlemService : IMedlemService
 {
     private List<Medlem> _medlemList;
 
-    public MedlemService()
+    public IJsonDataService<Medlem> JsonDataService { get; }
+
+    public MedlemService(IJsonDataService<Medlem> jsonDataService)
     {
         _medlemList = MockData.MockMedlem.GetMembersAsList();
+        JsonDataService = jsonDataService;
     }
 
     public void AddMedlem(Medlem medlem)
@@ -19,18 +22,7 @@ public class MedlemService : IMedlemService
 
     public Medlem DeleteMedlem(string? email)
     {
-        Medlem medlemToDelete = null;
-
-        foreach (var medlem in _medlemList)
-        {
-            if (email == medlem.Email)
-            {
-                medlemToDelete = medlem;
-                break;
-            }
-        }
-
-        // to avoid null reference exception
+        Medlem medlemToDelete = _medlemList.FirstOrDefault(m => m.Email == email);
         if (medlemToDelete != null)
         {
             _medlemList.Remove(medlemToDelete);
@@ -40,36 +32,25 @@ public class MedlemService : IMedlemService
 
     public List<Medlem> FilterMembersByName(string name)
     {
-        // Return all members which matches 'name'
-        return _medlemList.Where(m => m.Navn.Contains(name, StringComparison.CurrentCultureIgnoreCase)).ToList();
+        return _medlemList
+            .Where(m => m.Navn.Contains(name, StringComparison.CurrentCultureIgnoreCase))
+            .ToList();
     }
 
     public Medlem GetMedlem(string email)
     {
-        foreach (var medlem in _medlemList)
-        {
-            if (email == medlem.Email)
-            {
-                return medlem;
-            }
-        }
-        return null;
+        return _medlemList.FirstOrDefault(m => m.Email == email);
     }
 
     public List<Medlem> GetMedlemmer() => _medlemList;
 
     public void UpdateMedlem(Medlem medlem)
     {
-        // Email bruges som id og kan ikke ændres. Brug et ID, hvis email skal kunne ændres.
-        foreach (var medle in _medlemList)
+        var existingMedlem = _medlemList.FirstOrDefault(m => m.Email == medlem.Email);
+        if (existingMedlem != null)
         {
-            if (medle.Email == medlem.Email)
-            {
-                medle.Navn = medlem.Navn;
-                medle.TelefonNummer = medlem.TelefonNummer;
-                break;
-            }
+            existingMedlem.Navn = medlem.Navn;
+            existingMedlem.TelefonNummer = medlem.TelefonNummer;
         }
     }
 }
-

@@ -10,4 +10,5 @@ public interface IMedlemService
     Medlem GetMedlem(string email);
     Medlem DeleteMedlem(string? email);
     List<Medlem> FilterMembersByName(string name); // Brugt til søge funktion
+    IJsonDataService<Medlem> JsonDataService { get; }
 }
