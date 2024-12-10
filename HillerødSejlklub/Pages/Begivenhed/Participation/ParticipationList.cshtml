@@ -11,8 +11,8 @@
 
     <h2 class="text-center mb-4">Deltagere</h2>
     @if (Model.Participants.Any())
-    {
-        <table class="table table-striped table-bordered">
+{
+    <table class="table table-striped table-bordered">
             <thead class="table-primary">
                 <tr>
                     <th>Navn</th>
@@ -22,39 +22,39 @@
             </thead>
             <tbody>
                 @foreach (var participant in Model.Participants)
-                {
-                    <tr>
+            {
+                <tr>
                         <td>@participant.Navn</td>
                         <td>@participant.TelefonNummer</td>
                         <td>@participant.Email</td>
                     </tr>
-                }
+            }
             </tbody>
         </table>
-    }
-    else
-    {
-        <div class="alert alert-warning text-center" role="alert">
+}
+else
+{
+    <div class="alert alert-warning text-center" role="alert">
             Ingen deltagere fundet for denne begivenhed.
         </div>
-    }
+}
 
     @if (AdminState.IsAdminLoggedIn)
-    {
-        <div class="mt-5">
+{
+    <div class="mt-5">
             <form method="post" asp-page-handler="OnPost" asp-route-eventId="@Model.CurrentEvent.Id" class="d-flex align-items-center gap-2">
                 <select asp-for="NewParticipantId" class="form-select form-select-sm w-auto" aria-label="Vælg deltager" required>
                     <option value="" disabled selected>Vælg deltager</option>
                     @foreach (var participant in Model.AllAvailableParticipants)
-                    {
-                        <option value="@participant.Id">@participant.Navn</option>
-                    }
+                {
+                    <option value="@participant.Id">@participant.Navn</option>
+                }
                 </select>
                 <button type="submit" class="btn btn-primary btn-sm">
                     <i class="bi bi-plus-circle"></i> Tilføj
                 </button>
             </form>
         </div>
-    }
+}
 </div>
 

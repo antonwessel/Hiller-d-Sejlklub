@@ -26,8 +26,8 @@
 
     <div class="row g-3">
         @foreach (var begivenhed in Model.Begivenheder)
-        {
-            <div class="col-md-6 col-lg-4">
+    {
+        <div class="col-md-6 col-lg-4">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">@begivenhed.Navn</h5>
@@ -36,8 +36,8 @@
                             <strong>Lokation:</strong> @begivenhed.Lokation
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
-                        {
-                            <div class="d-flex justify-content-between align-items-center mt-3">
+                    {
+                        <div class="d-flex justify-content-between align-items-center mt-3">
                                 <a class="btn btn-danger btn-sm me-2" asp-page="SletBegivenhed" asp-route-Navn="@begivenhed.Navn" title="Slet">
                                     <i class="bi bi-trash"></i> Slet
                                 </a>
@@ -48,25 +48,25 @@
                                     <i class="bi bi-people"></i> Deltagerliste
                                 </a>
                             </div>
-                        }
-                        else
-                        {
-                            <a class="btn btn-secondary btn-sm mt-3" asp-page="Participation/ParticipationList" asp-route-eventId="@begivenhed.Id" title="Deltagerliste">
+                    }
+                    else
+                    {
+                        <a class="btn btn-secondary btn-sm mt-3" asp-page="Participation/ParticipationList" asp-route-eventId="@begivenhed.Id" title="Deltagerliste">
                                 <i class="bi bi-people"></i> Deltagerliste
                             </a>
-                        }
+                    }
                     </div>
                 </div>
             </div>
-        }
+    }
     </div>
 
     @if (AdminState.IsAdminLoggedIn)
-    {
-        <div class="mt-4">
+{
+    <div class="mt-4">
             <a class="btn btn-success" asp-page="TilFøjBegivenhed">
                 <i class="bi bi-calendar-plus"></i> Tilføj begivenhed
             </a>
         </div>
-    }
+}
 </div>
