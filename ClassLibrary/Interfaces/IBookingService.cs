@@ -11,6 +11,8 @@ namespace ClassLibrary.Interfaces
     {
         void AddBooking(Båd båd, Medlem medlem);
         void UpdateBooking(Booking booking);
+
+        // Kunne man bruge Id i stedet til at finde en booking?
         Booking DeleteBooking(string navn);
     }
 }

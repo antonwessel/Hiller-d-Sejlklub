@@ -22,7 +22,22 @@ namespace ClassLibrary.Models
             this.båd = båd;
         }
 
-        
-        
+        // Overvej at brug auto properties. Lige nu kan man ikke få fat på dataen udefra. Id kan også bare oprettes inde i constructor. Såsom dette...
+
+        //public Guid Id { get; set; }
+        //public DateTime DateBooked { get; set; }
+        //public Medlem MedlemToBook { get; set; }
+        //public Båd BoatToBook { get; set; }
+
+        //public Booking(DateTime date, Medlem medlem, Båd boat)
+        //{
+        //    Id = Guid.NewGuid();
+        //    DateBooked = date;
+        //    MedlemToBook = medlem;
+        //    BoatToBook = boat;
+        //}
+
+
+
     }
 }
