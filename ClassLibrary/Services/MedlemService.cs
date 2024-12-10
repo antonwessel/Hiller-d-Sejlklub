@@ -5,19 +5,20 @@ namespace ClassLibrary.Services;
 
 public class MedlemService : IMedlemService
 {
-    private List<Medlem> _medlemList;
+    private List<Medlem> _medlemList = [];
 
     public IJsonDataService<Medlem> JsonDataService { get; }
 
     public MedlemService(IJsonDataService<Medlem> jsonDataService)
     {
-        _medlemList = MockData.MockMedlem.GetMembersAsList();
         JsonDataService = jsonDataService;
+        _medlemList = JsonDataService.LoadData().ToList();
     }
 
     public void AddMedlem(Medlem medlem)
     {
         _medlemList.Add(medlem);
+        JsonDataService.SaveData(_medlemList);
     }
 
     public Medlem DeleteMedlem(string? email)
@@ -27,6 +28,7 @@ public class MedlemService : IMedlemService
         {
             _medlemList.Remove(medlemToDelete);
         }
+        JsonDataService.SaveData(_medlemList);
         return medlemToDelete;
     }
 
@@ -52,5 +54,6 @@ public class MedlemService : IMedlemService
             existingMedlem.Navn = medlem.Navn;
             existingMedlem.TelefonNummer = medlem.TelefonNummer;
         }
+        JsonDataService.SaveData(_medlemList);
     }
 }

@@ -4,6 +4,8 @@ namespace ClassLibrary.MockData;
 
 public class MockMedlem
 {
+    // This class is no longer used as we have data persistence
+
     private static Dictionary<string, Medlem> _medlemmer = new()
     {
         { "ib.andersen@hillerodsejlklub.dk", new Medlem("Ib Andersen", "24473004", "ib.andersen@hillerodsejlklub.dk") },
