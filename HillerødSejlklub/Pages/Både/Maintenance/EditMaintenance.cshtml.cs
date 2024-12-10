@@ -1,6 +1,6 @@
-using ClassLibrary.Helpers;
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Helpers;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,7 +16,7 @@ public class EditMaintenanceModel : PageModel
     public Båd Båd { get; set; }
 
     [BindProperty]
-    public ClassLibrary.Models.Maintenance Maintenance { get; set; }
+    public ClassLibrary.Core.Models.Maintenance Maintenance { get; set; }
 
     public EditMaintenanceModel(IMaintenanceService maintenanceService, IBådService bådService)
     {

@@ -1,6 +1,6 @@
-using ClassLibrary.Helpers;
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Helpers;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

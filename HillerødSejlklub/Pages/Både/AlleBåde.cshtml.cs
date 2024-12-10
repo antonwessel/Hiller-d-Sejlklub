@@ -1,5 +1,5 @@
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HillerødSejlklub.Pages.Både;

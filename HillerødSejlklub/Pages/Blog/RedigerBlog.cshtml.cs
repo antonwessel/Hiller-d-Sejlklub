@@ -1,6 +1,5 @@
-using ClassLibrary.Helpers;
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Helpers;
+using ClassLibrary.Core.Interfaces;
 using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,7 +13,7 @@ public class RedigerBlogModel : PageModel
 
     [BindProperty]
 
-    public ClassLibrary.Models.Blog Blog { get; set; }
+    public ClassLibrary.Core.Models.Blog Blog { get; set; }
 
     public RedigerBlogModel(IBlogService blogService)
     {

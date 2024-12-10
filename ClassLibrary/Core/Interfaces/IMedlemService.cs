@@ -1,6 +1,6 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary.Core.Models;
 
-namespace ClassLibrary.Interfaces;
+namespace ClassLibrary.Core.Interfaces;
 
 public interface IMedlemService
 {
@@ -10,4 +10,5 @@ public interface IMedlemService
     Medlem GetMedlem(string email);
     Medlem DeleteMedlem(string? email);
     List<Medlem> FilterMembersByName(string name); // Brugt til søge funktion
+    IJsonDataService<Medlem> JsonDataService { get; }
 }

@@ -1,6 +1,5 @@
-using ClassLibrary.Helpers;
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,7 +11,7 @@ public class MaintenanceBoatModel : PageModel
     private readonly IMaintenanceService _maintenanceService;
 
     [BindProperty]
-    public List<ClassLibrary.Models.Maintenance> Maintenances { get; set; }
+    public List<ClassLibrary.Core.Models.Maintenance> Maintenances { get; set; }
 
     [BindProperty]
     public float MaintenancesDone { get; set; }

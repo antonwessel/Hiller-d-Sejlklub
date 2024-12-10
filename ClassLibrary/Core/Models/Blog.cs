@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Models;
+namespace ClassLibrary.Core.Models;
 
 public class Blog
 {

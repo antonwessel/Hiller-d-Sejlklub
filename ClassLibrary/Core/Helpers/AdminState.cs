@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.Helpers;
+﻿namespace ClassLibrary.Core.Helpers;
 
 /// <summary>
 /// Holder styr på, om en admin er logget ind. IsAdminLoggedIn viser eller skjuler CRUD-funktioner baseret på det.

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ClassLibrary.Models;
+namespace ClassLibrary.Core.Models;
 
 public class Båd
 {
