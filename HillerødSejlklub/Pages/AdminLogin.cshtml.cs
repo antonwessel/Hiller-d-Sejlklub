@@ -1,4 +1,4 @@
-using ClassLibrary.Helpers;
+using ClassLibrary.Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

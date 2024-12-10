@@ -1,5 +1,6 @@
-using ClassLibrary.Helpers;
-using ClassLibrary.Interfaces;
+using ClassLibrary.Core.Helpers;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,7 +13,7 @@ public class RedigerBegivenhedModel : PageModel
 
     [BindProperty]
 
-    public ClassLibrary.Models.Event Event { get; set; }
+    public Event Event { get; set; }
     public RedigerBegivenhedModel(IBegivenhedService begivenhedService)
     {
         _begivenhedService = begivenhedService;

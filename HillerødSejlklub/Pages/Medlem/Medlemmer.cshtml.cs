@@ -1,4 +1,4 @@
-using ClassLibrary.Interfaces;
+using ClassLibrary.Core.Interfaces;
 using ClassLibrary.MockData;
 using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ public class MedlemmerModel : PageModel
     [BindProperty]
     public string NameSearch { get; set; }
 
-    public List<ClassLibrary.Models.Medlem> Medlemmer { get; set; }
+    public List<ClassLibrary.Core.Models.Medlem> Medlemmer { get; set; }
 
     public MedlemmerModel(IMedlemService medlemService)
     {

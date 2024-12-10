@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.Interfaces;
+﻿namespace ClassLibrary.Core.Interfaces;
 
 /// <summary>
 /// Used for saving and loading to JSON files.

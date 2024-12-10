@@ -1,5 +1,5 @@
-﻿using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+﻿using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 
 namespace ClassLibrary.Services;
 

@@ -1,6 +1,6 @@
-﻿using ClassLibrary.Interfaces;
+﻿using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using ClassLibrary.MockData;
-using ClassLibrary.Models;
 
 namespace ClassLibrary.Services;
 

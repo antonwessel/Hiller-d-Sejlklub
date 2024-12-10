@@ -1,5 +1,5 @@
-using ClassLibrary.Helpers;
-using ClassLibrary.Interfaces;
+using ClassLibrary.Core.Helpers;
+using ClassLibrary.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,7 +10,7 @@ public class RedigerMedlemModel : PageModel
     private IMedlemService _medlemService;
 
     [BindProperty]
-    public ClassLibrary.Models.Medlem Medlem { get; set; }
+    public ClassLibrary.Core.Models.Medlem Medlem { get; set; }
 
     public RedigerMedlemModel(IMedlemService medlemService)
     {

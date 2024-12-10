@@ -1,5 +1,5 @@
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -13,10 +13,10 @@ public class ParticipationListModel : PageModel
     private readonly IMedlemService _medlemService;
 
     [BindProperty]
-    public List<ClassLibrary.Models.Medlem> Participants { get; set; }
+    public List<ClassLibrary.Core.Models.Medlem> Participants { get; set; }
 
     [BindProperty]
-    public List<ClassLibrary.Models.Medlem> AllAvailableParticipants { get; set; }
+    public List<ClassLibrary.Core.Models.Medlem> AllAvailableParticipants { get; set; }
 
     [Required]
     [BindProperty]

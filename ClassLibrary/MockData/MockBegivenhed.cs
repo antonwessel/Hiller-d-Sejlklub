@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary.Core.Models;
 
 namespace ClassLibrary.MockData;
 

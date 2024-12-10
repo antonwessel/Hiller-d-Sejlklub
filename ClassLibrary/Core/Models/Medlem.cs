@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ClassLibrary.Models;
+namespace ClassLibrary.Core.Models;
 
 public class Medlem
 {
@@ -38,7 +38,7 @@ public class Medlem
             return false;
 
         // Members are considered equal if their Id is the same
-        return this.Id == other.Id;
+        return Id == other.Id;
     }
 
     public override int GetHashCode()

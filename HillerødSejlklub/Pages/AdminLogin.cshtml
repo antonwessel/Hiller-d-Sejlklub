@@ -1,5 +1,5 @@
 ﻿@page
-@using ClassLibrary.Helpers
+@using ClassLibrary.Core.Helpers
 @model HillerødSejlklub.Pages.AdminLoginModel
 @{
     ViewData["Title"] = "Admin Login";
@@ -19,9 +19,9 @@
 
         <!-- hvis login fejler -->
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-    {
-        <div class="text-danger">@Model.ErrorMessage</div>
-    }
+        {
+            <div class="text-danger">@Model.ErrorMessage</div>
+        }
 
         <button type="submit" class="btn btn-primary">Log ind</button>
     </form>

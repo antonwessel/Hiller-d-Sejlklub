@@ -1,6 +1,6 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary.Core.Models;
 
-namespace ClassLibrary.Interfaces;
+namespace ClassLibrary.Core.Interfaces;
 
 public interface IMedlemService
 {

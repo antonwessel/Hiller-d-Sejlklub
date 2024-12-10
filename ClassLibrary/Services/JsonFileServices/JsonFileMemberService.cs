@@ -1,9 +1,9 @@
-﻿using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+﻿using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.Text.Json;
 
-namespace ClassLibrary.Services;
+namespace ClassLibrary.Services.JsonFileServices;
 
 public class JsonFileMemberService : IJsonDataService<Medlem>
 {

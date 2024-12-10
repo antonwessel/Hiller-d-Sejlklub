@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ClassLibrary.Models;
 using ClassLibrary.Services;
-using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using ClassLibrary.Core.Models;
+using ClassLibrary.Core.Interfaces;
 
 namespace HillerødSejlklub.Pages.Begivenhed;
 

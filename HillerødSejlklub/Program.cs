@@ -1,6 +1,7 @@
-using ClassLibrary.Interfaces;
-using ClassLibrary.Models;
+using ClassLibrary.Core.Interfaces;
+using ClassLibrary.Core.Models;
 using ClassLibrary.Services;
+using ClassLibrary.Services.JsonFileServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
