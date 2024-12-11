@@ -20,8 +20,11 @@ public class Båd
     [Url(ErrorMessage = "BilledeUrl skal være en gyldig URL.")]
     [RegularExpression(@".+\.(jpg|jpeg|png|gif|bmp)$", ErrorMessage = "BilledeUrl skal være et link til en gyldig billedfil (jpg, jpeg, png, gif, bmp).")]
     public string BilledeUrl { get; set; }
-
+    public List<Medlem> Participants { get; set; } = [];
     public List<Maintenance> Maintenances { get; set; } // Til vedligeholdese liste
+    public DateTime DateBooked { get; set; }
+    public Båd BoatToBook { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     public Båd(string bådType, string model, string navn, string billedeUrl, List<Maintenance> maintenances)
     {
@@ -30,6 +33,8 @@ public class Båd
         Navn = navn;
         BilledeUrl = billedeUrl;
         Maintenances = maintenances;
+        
+        
     }
 
     public Båd()
