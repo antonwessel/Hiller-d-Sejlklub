@@ -27,7 +27,10 @@ public class JsonFileMemberService : IJsonDataService<Medlem>
 
     public void SaveData(IEnumerable<Medlem> data)
     {
-        var json = JsonSerializer.Serialize(data);
+        var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
+        {
+            WriteIndented = true,
+        });
         File.WriteAllText(FilePath, json);
     }
 }

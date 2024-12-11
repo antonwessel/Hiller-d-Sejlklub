@@ -9,4 +9,5 @@ public interface IBlogService
     void UpdateBlog(Blog blog);
     Blog GetBlog(string titel);
     Blog DeleteBlog(string? titel);
+    IJsonDataService<Blog> JsonDataService { get; }
 }

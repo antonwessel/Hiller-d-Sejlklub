@@ -7,16 +7,16 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Vores Blogs</h1>
     @if (AdminState.IsAdminLoggedIn)
-{
-    <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBlog">
+    {
+        <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBlog">
             <i class="bi bi-plus-circle"></i> Tilføj en ny blog
         </a>
-}
+    }
     <div class="row justify-content-center">
         @foreach (var blog in Model.Blogs)
-    {
-        <div class="col-12 mb-4">
-                <div class="card shadow-sm border-0">
+        {
+            <div class="col-12 mb-4">
+                <div class="card shadow-sm border border-primary rounded">
                     <div class="card-body">
                         <h5 class="card-title text-primary">@blog.BlogTitel</h5>
                         <p class="text-muted mb-2">
@@ -24,21 +24,20 @@
                             <strong>Dato:</strong> @blog.BlogDato.ToString("dd-MM-yyyy") <!-- Kun se dato -->
                         </p>
                         <p class="card-text">
-                            @blog.BlogIndhold
+                            @Html.Raw(blog.BlogIndhold.Replace("\n", "<br>")) <!-- To preserve newlines -->
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
-                    {
-                        <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Rediger">
+                        {
+                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-
-                        <a class="btn btn-outline-danger btn-sm" asp-page="SletBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Slet">
+                            <a class="btn btn-outline-danger btn-sm" asp-page="SletBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
-                    }
+                        }
                     </div>
                 </div>
             </div>
-    }
+        }
     </div>
 </div>
