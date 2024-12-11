@@ -14,6 +14,7 @@ builder.Services.AddSingleton<IBådService, BådService>();
 builder.Services.AddSingleton<IBegivenhedService, BegivenhedService>();
 builder.Services.AddSingleton<IBlogService, BlogService>();
 builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();
+builder.Services.AddSingleton<IBookingService, BookingService>();
 
 // Dependency injections to our json classes
 builder.Services.AddSingleton<IJsonDataService<Medlem>, JsonFileMemberService>();
