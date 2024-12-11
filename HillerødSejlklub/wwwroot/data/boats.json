@@ -1,0 +1,133 @@
+[
+  {
+    "B\u00E5dType": "Sejljolle",
+    "B\u00E5dModel": "J123",
+    "Navn": "Havfruen",
+    "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+    "Maintenances": [
+      {
+        "Status": 0,
+        "Date": "2023-10-10T20:15:00",
+        "Description": "Udskiftning af ror",
+        "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-12-08T22:30:00",
+        "Description": "Reparation af bom",
+        "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
+      }
+    ]
+  },
+  {
+    "B\u00E5dType": "Sejlb\u00E5d",
+    "B\u00E5dModel": "S456",
+    "Navn": "Vinden",
+    "BilledeUrl": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
+    "Maintenances": [
+      {
+        "Status": 0,
+        "Date": "2023-12-01T22:40:00",
+        "Description": "Udskiftning af mast",
+        "MaintenanceId": "e45428dc-d971-4b81-ac25-4c458c74c700"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-12-06T23:50:00",
+        "Description": "Justering af sejlh\u00E6fter",
+        "MaintenanceId": "d8eb5f10-8198-4ea0-8798-531e9b8f5ae8"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-09-10T21:10:00",
+        "Description": "Reparation af sejl",
+        "MaintenanceId": "31b46791-00bd-4a86-b96a-a581c0317228"
+      }
+    ]
+  },
+  {
+    "B\u00E5dType": "Jolle",
+    "B\u00E5dModel": "J789",
+    "Navn": "Lillebror",
+    "BilledeUrl": "https://dansksejlunion.dk/media/dykg05ll/190629-sommerlejr-2019-044.jpg?width=730\u0026height=382\u0026format=jpg\u0026rnd=133209435279400000",
+    "Maintenances": [
+      {
+        "Status": 0,
+        "Date": "2023-11-25T18:35:00",
+        "Description": "T\u00E6tning af l\u00E6kager",
+        "MaintenanceId": "a0821ef9-224b-43d7-885b-3d0157c00e0a"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-12-02T21:25:00",
+        "Description": "Udskiftning af \u00E5rer",
+        "MaintenanceId": "fdf0f6e8-0863-4e0d-9f24-36c0196791b2"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-08-11T16:20:00",
+        "Description": "Maling af bunden",
+        "MaintenanceId": "629aba50-9749-4a36-9ba4-ded900c952bc"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-12-07T19:45:00",
+        "Description": "Udskiftning af s\u00E6der",
+        "MaintenanceId": "9ab8853e-7dbd-438e-8b56-9a2b460b1190"
+      }
+    ]
+  },
+  {
+    "B\u00E5dType": "Kajak",
+    "B\u00E5dModel": "K101",
+    "Navn": "Eventyreren",
+    "BilledeUrl": "https://image.alt.dk/1513646.webp?imageId=1513646\u0026width=960\u0026height=574\u0026format=jpg",
+    "Maintenances": [
+      {
+        "Status": 0,
+        "Date": "2023-12-03T22:55:00",
+        "Description": "Reparation af pagajholder",
+        "MaintenanceId": "4a19a244-43b1-4adc-a9dc-98602119dfd0"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-12-09T20:45:00",
+        "Description": "T\u00E6tning af revner",
+        "MaintenanceId": "d21906a4-b343-4b89-81fe-32e6505da162"
+      }
+    ]
+  },
+  {
+    "B\u00E5dType": "Kapsejladsb\u00E5",
+    "B\u00E5dModel": "R999",
+    "Navn": "Svanen",
+    "BilledeUrl": "https://www.baadmagasinet.dk/images/stories/egen%20ann/_DSC0095-web.jpg",
+    "Maintenances": [
+      {
+        "Status": 0,
+        "Date": "2023-09-10T21:10:00",
+        "Description": "Udskiftning af sejl",
+        "MaintenanceId": "65c29a5e-1fc0-4d6d-962c-951108861b6c"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-12-06T23:50:00",
+        "Description": "Tjek af rig",
+        "MaintenanceId": "d0b9c89d-6540-476c-8c35-e5677e0a6c97"
+      },
+      {
+        "Status": 0,
+        "Date": "2023-11-21T22:40:00",
+        "Description": "Opgradering af skrog",
+        "MaintenanceId": "b62cd02c-c8c5-47c2-b809-1c87168e4f6b"
+      }
+    ]
+  },
+  {
+    "B\u00E5dType": "test",
+    "B\u00E5dModel": "test",
+    "Navn": "test",
+    "BilledeUrl": "https://img.freepik.com/premium-vector/red-boat-with-windows-down-side-is-shown_9493-77425.jpg",
+    "Maintenances": []
+  }
+]
