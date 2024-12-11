@@ -1,0 +1,23 @@
+[
+  {
+    "Navn": "Sommersejlads",
+    "Dato": "2023-07-10T14:00:00",
+    "Lokation": "Esrum S\u00F8",
+    "Participants": [],
+    "Id": "d9c86c01-57a6-44fd-96e0-f98dbfb1fd89"
+  },
+  {
+    "Navn": "Efter\u00E5rshygge",
+    "Dato": "2024-10-15T16:00:00",
+    "Lokation": "N\u00F8debo Jollehavn",
+    "Participants": [],
+    "Id": "277f25ad-a3b1-48f9-951b-d45c800dcb52"
+  },
+  {
+    "Navn": "Julefrokost",
+    "Dato": "2025-12-20T18:00:00",
+    "Lokation": "Hiller\u00F8d Klubhus",
+    "Participants": [],
+    "Id": "1c4d9565-7bab-4c57-b981-fba04463ab32"
+  }
+]

@@ -8,7 +8,7 @@ namespace HillerødSejlklub.Pages.Begivenhed;
 
 public class BegivenhederModel : PageModel
 {
-    private IBegivenhedService _begivenhedService;
+    private IEventService _begivenhedService;
 
     [BindProperty]
     public DateTime MinDate { get; set; }
@@ -18,7 +18,7 @@ public class BegivenhederModel : PageModel
 
     public List<Event> Begivenheder { get; set; }
 
-    public BegivenhederModel(IBegivenhedService begivenhedService)
+    public BegivenhederModel(IEventService begivenhedService)
     {
         _begivenhedService = begivenhedService;
     }

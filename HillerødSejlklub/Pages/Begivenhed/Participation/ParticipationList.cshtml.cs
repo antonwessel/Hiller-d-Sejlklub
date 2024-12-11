@@ -9,7 +9,7 @@ namespace HillerødSejlklub.Pages.Begivenhed.Participation;
 
 public class ParticipationListModel : PageModel
 {
-    private readonly IBegivenhedService _begivenhedService;
+    private readonly IEventService _begivenhedService;
     private readonly IMedlemService _medlemService;
 
     [BindProperty]
@@ -25,7 +25,7 @@ public class ParticipationListModel : PageModel
     [BindProperty]
     public Event CurrentEvent { get; set; }
 
-    public ParticipationListModel(IBegivenhedService begivenhedService, IMedlemService medlemService)
+    public ParticipationListModel(IEventService begivenhedService, IMedlemService medlemService)
     {
         _begivenhedService = begivenhedService;
         _medlemService = medlemService;

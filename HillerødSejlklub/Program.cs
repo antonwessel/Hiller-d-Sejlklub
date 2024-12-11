@@ -10,13 +10,13 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IMedlemService, MedlemService>();
 builder.Services.AddSingleton<IBådService, BådService>();
-builder.Services.AddSingleton<IBegivenhedService, BegivenhedService>();
+builder.Services.AddSingleton<IEventService, EventService>();
 builder.Services.AddSingleton<IBlogService, BlogService>();
 builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();
-builder.Services.AddSingleton<IBookingService, BookingService>();
 
 builder.Services.AddSingleton<IJsonDataService<Medlem>, JsonFileMemberService>();
 builder.Services.AddSingleton<IJsonDataService<Blog>, JsonFileBlogService>();
+builder.Services.AddSingleton<IJsonDataService<Event>, JsonFileEventService>();
 
 
 var app = builder.Build();

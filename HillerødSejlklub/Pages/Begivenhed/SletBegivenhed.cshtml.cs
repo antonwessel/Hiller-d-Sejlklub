@@ -9,14 +9,14 @@ namespace HillerødSejlklub.Pages.Begivenhed;
 
 public class SletBegivenhedModel : PageModel
 {
-    private IBegivenhedService _begivenhedService;
+    private IEventService _begivenhedService;
 
     [BindProperty]
 
     public Event Begivenhed { get; set; }
 
 
-    public SletBegivenhedModel(IBegivenhedService begivenhedService)
+    public SletBegivenhedModel(IEventService begivenhedService)
     {
         _begivenhedService = begivenhedService;
     }
