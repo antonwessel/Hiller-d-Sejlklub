@@ -17,6 +17,7 @@ builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();
 builder.Services.AddSingleton<IJsonDataService<Medlem>, JsonFileMemberService>();
 builder.Services.AddSingleton<IJsonDataService<Blog>, JsonFileBlogService>();
 builder.Services.AddSingleton<IJsonDataService<Event>, JsonFileEventService>();
+builder.Services.AddSingleton<IJsonDataService<Båd>, JsonFileBoatService>();
 
 
 var app = builder.Build();

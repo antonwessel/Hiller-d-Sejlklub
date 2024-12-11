@@ -9,12 +9,14 @@ public class BådService : IBådService
     private List<Båd> _bådeListe;
     private readonly IMaintenanceService _maintenanceService;
 
-    public BådService(IMaintenanceService maintenanceService)
-    {
-        _bådeListe = MockBåd.GetBoatsAsList();
-        _maintenanceService = maintenanceService;
+    public IJsonDataService<Båd> JsonDataService { get; }
 
-        // Tilføj fra mock data
+    public BådService(IMaintenanceService maintenanceService, IJsonDataService<Båd> jsonDataService)
+    {
+        _maintenanceService = maintenanceService;
+        JsonDataService = jsonDataService;
+        _bådeListe = jsonDataService.LoadData().ToList();
+
         foreach (var båd in _bådeListe)
         {
             foreach (var maintenance in båd.Maintenances)
@@ -27,6 +29,7 @@ public class BådService : IBådService
     public void AddBåd(Båd båd)
     {
         _bådeListe.Add(båd);
+        JsonDataService.SaveData(_bådeListe);
     }
 
     public Båd DeleteBåd(string? navn)
@@ -37,6 +40,7 @@ public class BådService : IBådService
         {
             _bådeListe.Remove(båd);
         }
+        JsonDataService.SaveData(_bådeListe);
         return båd;
     }
 
@@ -53,5 +57,6 @@ public class BådService : IBådService
             existingBåd.BådType = båd.BådType;
             existingBåd.BilledeUrl = båd.BilledeUrl;
         }
+        JsonDataService.SaveData(_bådeListe);
     }
 }
