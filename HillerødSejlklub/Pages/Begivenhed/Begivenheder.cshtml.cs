@@ -26,6 +26,8 @@ public class BegivenhederModel : PageModel
 
     public void OnGet()
     {
+        MinDate = DateTime.Today;
+        MaxDate = DateTime.Today.AddYears(1);
         Begivenheder = _begivenhedService.GetEvents();
     }
 
@@ -37,6 +39,8 @@ public class BegivenhederModel : PageModel
 
     public IActionResult OnPostReset()
     {
+        MinDate = DateTime.Today;
+        MaxDate = DateTime.Today.AddYears(1);
         Begivenheder = _begivenhedService.GetEvents();
         return Page();
     }

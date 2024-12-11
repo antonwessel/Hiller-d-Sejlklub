@@ -58,8 +58,11 @@ public class EventService : IEventService
 
     public List<Event> FilterByDates(DateTime startDate, DateTime endDate)
     {
-        // Return all events that matches the interval
-        return _eventsList.Where(evt => evt.Dato >= startDate && evt.Dato <= endDate).ToList();
+        // Gør slutdatoen til hele dagen
+        DateTime adjustedEndDate = endDate.Date.AddDays(1).AddTicks(-1);
+
+        // Find begivenheder i dato-intervallet
+        return _eventsList.Where(evt => evt.Dato >= startDate && evt.Dato <= adjustedEndDate).ToList();
     }
 
     public Event GetEvent(string navn)
