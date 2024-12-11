@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary.Core.Models;
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace ClassLibrary.Core.Models;
 
 public class Booking
 {
@@ -7,11 +9,14 @@ public class Booking
     public Medlem MedlemToBook { get; set; }
     public Båd BoatToBook { get; set; }
 
-    public Booking(DateTime date, Medlem medlem, Båd boat)
+    
+    public Booking(Medlem medlem, Båd boat)
     {
         Id = Guid.NewGuid();
-        DateBooked = date;
         MedlemToBook = medlem;
         BoatToBook = boat;
+        DateBooked = DateTime.Now;
+       
     }
+
 }
