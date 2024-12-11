@@ -1,0 +1,36 @@
+﻿@page
+@model HillerødSejlklub.Pages.Booking.BookingBoatModel
+@{
+}
+
+
+
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <!-- Dato vælger -->
+    <form method="post">
+        <div class="mb-3">
+            <label for="BookingDate" class="form-label">Vælg dato for booking:</label>
+            <input asp-for="BookingDate" type="date" class="form-control" id="BookingDate" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Vis ledige både</button>
+    </form>
+
+    @if (Model.AvailableBoats != null && Model.AvailableBoats.Any())
+    {
+        <h3>Ledige både:</h3>
+        <ul>
+            @foreach (var boat in Model.AvailableBoats)
+            {
+                <li>@boat.Navn (@boat.BådType)</li>
+            }
+        </ul>
+    }
+    else if (Model.AvailableBoats != null)
+    {
+        <p>Der er ingen ledige både for den valgte dato.</p>
+    }
+</div>

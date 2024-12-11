@@ -50,7 +50,7 @@ public class MockBåd
             ]
         ),
         ["Svanen"] = new Båd(
-            "Kapsejladsbåd",
+            "Kapsejladsbå",
             "R999",
             "Svanen",
             "https://www.baadmagasinet.dk/images/stories/egen%20ann/_DSC0095-web.jpg",
