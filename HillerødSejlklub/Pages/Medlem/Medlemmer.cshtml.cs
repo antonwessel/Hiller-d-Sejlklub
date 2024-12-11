@@ -1,6 +1,4 @@
 using ClassLibrary.Core.Interfaces;
-using ClassLibrary.MockData;
-using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
