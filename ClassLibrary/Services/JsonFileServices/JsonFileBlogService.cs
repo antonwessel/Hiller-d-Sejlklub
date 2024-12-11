@@ -5,16 +5,16 @@ using System.Text.Json;
 
 namespace ClassLibrary.Services.JsonFileServices;
 
-public class JsonFileMemberService : IJsonDataService<Medlem>
+public class JsonFileBlogService : IJsonDataService<Blog>
 {
     public string FilePath { get; }
 
-    public JsonFileMemberService(IWebHostEnvironment webHostEnvironment)
+    public JsonFileBlogService(IWebHostEnvironment webHostEnvironment)
     {
-        FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "members.json");
+        FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "blogs.json");
     }
 
-    public IEnumerable<Medlem> LoadData()
+    public IEnumerable<Blog> LoadData()
     {
         if (!File.Exists(FilePath))
         {
@@ -22,10 +22,10 @@ public class JsonFileMemberService : IJsonDataService<Medlem>
         }
 
         var json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<IEnumerable<Medlem>>(json) ?? [];
+        return JsonSerializer.Deserialize<IEnumerable<Blog>>(json) ?? [];
     }
 
-    public void SaveData(IEnumerable<Medlem> data)
+    public void SaveData(IEnumerable<Blog> data)
     {
         var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
