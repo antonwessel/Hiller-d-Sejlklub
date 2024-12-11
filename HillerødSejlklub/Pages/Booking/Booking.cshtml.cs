@@ -13,7 +13,7 @@ namespace HillerødSejlklub.Pages.Booking
             private readonly IBådService _bådService;
 
             [BindProperty]
-            public DateTime BookingDate { get; set; } 
+            public DateTime BookingDate { get; set; }
 
             public List<Båd> AvailableBoats { get; set; } // Liste over ledige både
 
@@ -21,6 +21,9 @@ namespace HillerødSejlklub.Pages.Booking
             {
                 _bookingService = bookingService;
                 _bådService = bådService;
+                BookingDate = DateTime.Now;
+
+
             }
 
             public void OnGet()

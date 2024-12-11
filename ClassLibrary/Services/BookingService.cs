@@ -13,9 +13,9 @@ namespace ClassLibrary.Services
     {
         private readonly List<Booking> _bookings = new();
 
-        public void AddBooking(Båd boat, Medlem medlem, DateTime date)
+        public void AddBooking(Båd boat, Medlem medlem)
         {
-            _bookings.Add(new Booking(date, medlem, boat)); //
+            _bookings.Add(new Booking(medlem, boat));
         }
 
 
