@@ -8,7 +8,7 @@ namespace HillerødSejlklub.Pages.Begivenhed;
 
 public class BegivenhederModel : PageModel
 {
-    private IBegivenhedService _begivenhedService;
+    private IEventService _begivenhedService;
 
     [BindProperty]
     public DateTime MinDate { get; set; }
@@ -18,7 +18,7 @@ public class BegivenhederModel : PageModel
 
     public List<Event> Begivenheder { get; set; }
 
-    public BegivenhederModel(IBegivenhedService begivenhedService)
+    public BegivenhederModel(IEventService begivenhedService)
     {
         _begivenhedService = begivenhedService;
     }
@@ -26,6 +26,8 @@ public class BegivenhederModel : PageModel
 
     public void OnGet()
     {
+        MinDate = DateTime.Today;
+        MaxDate = DateTime.Today.AddYears(1);
         Begivenheder = _begivenhedService.GetEvents();
     }
 
@@ -37,6 +39,8 @@ public class BegivenhederModel : PageModel
 
     public IActionResult OnPostReset()
     {
+        MinDate = DateTime.Today;
+        MaxDate = DateTime.Today.AddYears(1);
         Begivenheder = _begivenhedService.GetEvents();
         return Page();
     }

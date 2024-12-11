@@ -9,11 +9,11 @@ namespace HillerødSejlklub.Pages.Begivenhed;
 public class TilføjBegivenhedModel : PageModel
 {
 
-    private IBegivenhedService _begivenhedService;
+    private IEventService _begivenhedService;
 
     [BindProperty]
     public Event Begivenhed { get; set; }
-    public TilføjBegivenhedModel(IBegivenhedService begivenhedService)
+    public TilføjBegivenhedModel(IEventService begivenhedService)
     {
         _begivenhedService = begivenhedService;
     }

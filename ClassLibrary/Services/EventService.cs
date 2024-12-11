@@ -3,18 +3,21 @@ using ClassLibrary.Core.Models;
 
 namespace ClassLibrary.Services;
 
-public class BegivenhedService : IBegivenhedService
+public class EventService : IEventService
 {
     private readonly List<Event> _eventsList;
+    public IJsonDataService<Event> JsonDataService { get; }
 
-    public BegivenhedService()
+    public EventService(IJsonDataService<Event> jsonDataService)
     {
-        _eventsList = MockData.MockBegivenhed.GetBegivenhederAsList();
+        JsonDataService = jsonDataService;
+        _eventsList = JsonDataService.LoadData().ToList();
     }
 
     public void AddBegivenhed(Event begivenhed)
     {
         _eventsList.Add(begivenhed);
+        JsonDataService.SaveData(_eventsList);
     }
 
     public void AddParticipantToEvent(Medlem participant, Guid eventId)
@@ -24,6 +27,7 @@ public class BegivenhedService : IBegivenhedService
             if (evt.Id == eventId)
             {
                 evt.Participants.Add(participant);
+                JsonDataService.SaveData(_eventsList);
                 break;
             }
         }
@@ -47,14 +51,18 @@ public class BegivenhedService : IBegivenhedService
             _eventsList.Remove(eventToDelete);
         }
 
+        JsonDataService.SaveData(_eventsList);
         return eventToDelete;
 
     }
 
     public List<Event> FilterByDates(DateTime startDate, DateTime endDate)
     {
-        // Return all events that matches the interval
-        return _eventsList.Where(evt => evt.Dato >= startDate && evt.Dato <= endDate).ToList();
+        // Gør slutdatoen til hele dagen
+        DateTime adjustedEndDate = endDate.Date.AddDays(1).AddTicks(-1);
+
+        // Find begivenheder i dato-intervallet
+        return _eventsList.Where(evt => evt.Dato >= startDate && evt.Dato <= adjustedEndDate).ToList();
     }
 
     public Event GetEvent(string navn)
@@ -107,6 +115,7 @@ public class BegivenhedService : IBegivenhedService
             {
                 events.Dato = begivenhed.Dato;
                 events.Lokation = begivenhed.Lokation;
+                JsonDataService.SaveData(_eventsList);
                 break;
             }
         }

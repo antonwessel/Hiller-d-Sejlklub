@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Core.Interfaces;
 
-public interface IBegivenhedService
+public interface IEventService
 {
     List<Event> GetEvents();
     void AddBegivenhed(Event begivenhed);
@@ -18,4 +18,5 @@ public interface IBegivenhedService
     void AddParticipantToEvent(Medlem participant, Guid eventId);
     List<Medlem> GetParticipants(Guid eventId);
     List<Event> FilterByDates(DateTime startDate, DateTime endDate);
+    IJsonDataService<Event> JsonDataService { get; }
 }
