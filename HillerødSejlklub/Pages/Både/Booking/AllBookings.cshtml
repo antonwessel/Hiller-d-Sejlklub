@@ -3,15 +3,39 @@
 @{
 }
 
-@if (!Model.Bookings.Any())
-{
-    <p>No bookings</p>
-}
-else
-{
-    <p>there are some bookings with these Ids:</p>
-    @foreach (var booking in Model.Bookings)
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Alle Bookinger</h1>
+
+    @if (!Model.Bookings.Any())
     {
-        <td>@booking.Id</td>
+        <div class="alert alert-warning text-center" role="alert">
+            <strong>Der er ingen bookinger!</strong>
+        </div>
     }
-}
+    else
+    {
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Booking Dato</th>
+                    <th>Medlemsnavn</th>
+                    <th>Bådens Navn</th>
+                    <th>Bådtype</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model.Bookings)
+                {
+                    <tr>
+                        <td>@booking.Id</td>
+                        <td>@booking.DateBooked.ToString("dd-MM-yyyy HH:mm")</td>
+                        <td>@booking.MedlemToBook.Navn</td>
+                        <td>@booking.BoatToBook.Navn</td>
+                        <td>@booking.BoatToBook.BådType</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

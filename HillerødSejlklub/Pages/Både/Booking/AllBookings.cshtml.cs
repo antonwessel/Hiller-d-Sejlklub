@@ -8,20 +8,17 @@ public class AllBookingsModel : PageModel
 {
     private IBookingService _bookingService;
 
+    public AllBookingsModel(IBookingService bookingService)
+    {
+        _bookingService = bookingService;
+    }
+
     [BindProperty]
-    public List<ClassLibrary.Core.Models.Booking> Bookings { get; set; }
+    public List<ClassLibrary.Core.Models.Booking> Bookings { get; set; } = [];
 
     public IActionResult OnGet(string bådNavn)
     {
-        try
-        {
-            Bookings = _bookingService.GetAllBookings(bådNavn);
-        }
-        catch (NullReferenceException)
-        {
-            Bookings = [];
-        }
-
+        Bookings = _bookingService.GetAllBookings(bådNavn);
         return Page();
     }
 }
