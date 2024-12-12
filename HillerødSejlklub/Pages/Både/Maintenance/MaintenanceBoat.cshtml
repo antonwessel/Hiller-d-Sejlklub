@@ -3,7 +3,7 @@
 @model HillerødSejlklub.Pages.Både.Maintenance.MaintenanceBoatModel
 @{
     // Sikrer, at MaintenancesDone altid er mellem 0 og 100.
-var maintenancesDonePercentage = Math.Clamp(Model.MaintenancesDone, 0f, 100f);
+    var maintenancesDonePercentage = Math.Clamp(Model.MaintenancesDone, 0f, 100f);
 }
 
 <div class="container mt-5">
@@ -23,18 +23,29 @@ var maintenancesDonePercentage = Math.Clamp(Model.MaintenancesDone, 0f, 100f);
                      aria-valuenow="@maintenancesDonePercentage"
                      aria-valuemin="0"
                      aria-valuemax="100">
-                    @maintenancesDonePercentage.ToString("F1")%
+                    @if (maintenancesDonePercentage == 0)
+                    {
+                        <span style="color: black;">0%</span>
+                    }
+                    else
+                    {
+                        @($"{maintenancesDonePercentage.ToString("F1")}%")
+                    }
                 </div>
             </div>
+            @if (maintenancesDonePercentage == 0)
+            {
+                <small class="text-muted d-block mt-1">Ingen vedligeholdelse er udført endnu.</small>
+            }
         </div>
     </div>
 
     @if (maintenancesDonePercentage == 100)
-{
-    <div class="alert alert-success mt-3" role="alert">
+    {
+        <div class="alert alert-success mt-3" role="alert">
             Vedligeholdelsen er færdig!
         </div>
-}
+    }
 
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle">
@@ -44,21 +55,21 @@ var maintenancesDonePercentage = Math.Clamp(Model.MaintenancesDone, 0f, 100f);
                     <th scope="col">Oprettelsesdato</th>
                     <th scope="col">Beskrivelse</th>
                     @if (AdminState.IsAdminLoggedIn)
-                {
-                    <th scope="col">Håndtering</th>
-                }
+                    {
+                        <th scope="col">Håndtering</th>
+                    }
                 </tr>
             </thead>
             <tbody>
                 @foreach (var maintenance in Model.Maintenances)
-            {
-                <tr>
+                {
+                    <tr>
                         <td>@maintenance.Status</td>
                         <td>@maintenance.Date</td>
                         <td>@maintenance.Description</td>
                         @if (AdminState.IsAdminLoggedIn)
-                    {
-                        <td>
+                        {
+                            <td>
                                 <a class="btn btn-outline-primary btn-sm me-2" asp-page="EditMaintenance" asp-route-bådNavn="@Model.Båd.Navn" asp-route-id="@maintenance.MaintenanceId" title="Rediger">
                                     <i class="bi bi-pencil"></i> Rediger
                                 </a>
@@ -66,20 +77,19 @@ var maintenancesDonePercentage = Math.Clamp(Model.MaintenancesDone, 0f, 100f);
                                     <i class="bi bi-trash"></i> Slet
                                 </a>
                             </td>
-                    }
+                        }
                     </tr>
-            }
+                }
             </tbody>
         </table>
     </div>
 
     @if (AdminState.IsAdminLoggedIn)
-{
-    <div class="d-flex justify-content-start mt-3">
+    {
+        <div class="d-flex justify-content-start mt-3">
             <a class="btn btn-sm btn-success" asp-page="AddMaintenance" asp-route-bådNavn="@Model.Båd.Navn">
                 <i class="bi bi-file-plus-fill me-1"></i> Tilføj vedligeholdelse
             </a>
         </div>
-}
+    }
 </div>
-

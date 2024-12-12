@@ -20,7 +20,6 @@ public class AllBookingsModel : PageModel
     }
 
 
-
     public IActionResult OnGet(string bådNavn)
     {
         CurrentBoatName = bådNavn;

@@ -6,7 +6,7 @@
     "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
     "Maintenances": [
       {
-        "Status": 0,
+        "Status": 1,
         "Date": "2023-10-10T20:15:00",
         "Description": "Udskiftning af ror",
         "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
@@ -38,7 +38,7 @@
         "MaintenanceId": "d8eb5f10-8198-4ea0-8798-531e9b8f5ae8"
       },
       {
-        "Status": 0,
+        "Status": 2,
         "Date": "2023-09-10T21:10:00",
         "Description": "Reparation af sejl",
         "MaintenanceId": "31b46791-00bd-4a86-b96a-a581c0317228"
@@ -58,7 +58,7 @@
         "MaintenanceId": "a0821ef9-224b-43d7-885b-3d0157c00e0a"
       },
       {
-        "Status": 0,
+        "Status": 2,
         "Date": "2023-12-02T21:25:00",
         "Description": "Udskiftning af \u00E5rer",
         "MaintenanceId": "fdf0f6e8-0863-4e0d-9f24-36c0196791b2"
@@ -84,7 +84,7 @@
     "BilledeUrl": "https://image.alt.dk/1513646.webp?imageId=1513646\u0026width=960\u0026height=574\u0026format=jpg",
     "Maintenances": [
       {
-        "Status": 0,
+        "Status": 2,
         "Date": "2023-12-03T22:55:00",
         "Description": "Reparation af pagajholder",
         "MaintenanceId": "4a19a244-43b1-4adc-a9dc-98602119dfd0"
@@ -110,7 +110,7 @@
         "MaintenanceId": "65c29a5e-1fc0-4d6d-962c-951108861b6c"
       },
       {
-        "Status": 0,
+        "Status": 1,
         "Date": "2023-12-06T23:50:00",
         "Description": "Tjek af rig",
         "MaintenanceId": "d0b9c89d-6540-476c-8c35-e5677e0a6c97"
