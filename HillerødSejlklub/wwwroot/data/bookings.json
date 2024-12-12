@@ -195,5 +195,35 @@
       "BilledeUrl": "https://img.freepik.com/premium-vector/red-boat-with-windows-down-side-is-shown_9493-77425.jpg",
       "Maintenances": []
     }
+  },
+  {
+    "Id": "8c32d329-210e-43cf-b924-5cbc819a2a27",
+    "DateBooked": "2024-12-13T00:00:00",
+    "MedlemToBook": {
+      "Id": "82e81bff-4c3d-451a-966b-bfeb6d695690",
+      "Navn": "Birgit Jeppesen",
+      "TelefonNummer": "66778899",
+      "Email": "birgit.jeppesen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "B\u00E5dType": "Sejljolle",
+      "B\u00E5dModel": "J123",
+      "Navn": "Havfruen",
+      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "Maintenances": [
+        {
+          "Status": 1,
+          "Date": "2023-10-10T20:15:00",
+          "Description": "Udskiftning af ror",
+          "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+        },
+        {
+          "Status": 0,
+          "Date": "2023-12-08T22:30:00",
+          "Description": "Reparation af bom",
+          "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
+        }
+      ]
+    }
   }
 ]

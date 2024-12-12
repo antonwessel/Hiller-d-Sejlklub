@@ -40,6 +40,14 @@
     {
         <div class="mt-5 p-3 bg-light rounded shadow-sm">
             <h4 class="mb-3">Tilføj Ny Booking</h4>
+
+            @if (ModelState.ContainsKey(string.Empty) && ModelState[string.Empty].Errors.Any())
+            {
+                <div class="alert alert-danger">
+                    <p>Der eksisterer allerede en booking for denne dato.</p>
+                </div>
+            }
+
             <form method="post" asp-page-handler="OnPost" asp-route-bådNavn="@Model.CurrentBoatName" class="row g-2">
                 <div class="col-auto">
                     <select asp-for="MemberToBookId" class="form-select form-select-sm" aria-label="Vælg medlem" required>

@@ -36,6 +36,16 @@ public class AllBookingsModel : PageModel
     {
         MemberToBook = _medlemService.GetMedlem(MemberToBookId);
         BoatToBook = _bådService.GetBåd(bådNavn);
+
+        // Check om der allerede er en booking med samme dato.
+        if (_bookingService.BookingExists(BoatToBook, DateToBook))
+        {
+            ModelState.AddModelError(string.Empty, "Der eksisterer allerede en booking for denne dato.");
+            LoadData(bådNavn);
+            return Page();
+        }
+
+
         _bookingService.AddBooking(BoatToBook, MemberToBook, DateToBook);
         LoadData(bådNavn);
         return Page();

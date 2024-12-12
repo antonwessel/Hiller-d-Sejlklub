@@ -67,4 +67,10 @@ public class BookingService : IBookingService
             }
         }
     }
+
+    public bool BookingExists(Båd boat, DateTime date)
+    {
+        return _bookings.Any(b => b.BoatToBook.Navn == boat.Navn && b.DateBooked.Date == date.Date);
+    }
+
 }

@@ -9,6 +9,7 @@ public interface IBookingService
     void DeleteBooking(Guid id);
     List<Booking> GetAllBookings(string bådNavn);
     IJsonDataService<Booking> JsonDataService { get; }
+    bool BookingExists(Båd boat, DateTime date);
 
 
     List<Båd> GetAvailableBoats(List<Båd> allBoats, DateTime date); // Ny metode
