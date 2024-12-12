@@ -21,6 +21,10 @@
                     <tr>
                         <th scope="col">Booking Dato</th>
                         <th scope="col">Medlemsnavn</th>
+                        @if (AdminState.IsAdminLoggedIn)
+                        {
+                            <th scope="col">Håndtering</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +33,10 @@
                         <tr>
                             <td>@booking.DateBooked.ToString("dd-MM-yyyy")</td>
                             <td>@booking.MedlemToBook.Navn</td>
+                            @if (AdminState.IsAdminLoggedIn)
+                            {
+                                <td><a asp-page="DeleteBooking" asp-route-id="@booking.Id">Slet</a></td>
+                            }
                         </tr>
                     }
                 </tbody>
