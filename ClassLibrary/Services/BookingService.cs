@@ -19,6 +19,18 @@ public class BookingService : IBookingService
         _bookings.Add(new Booking(medlem, boat));
         JsonDataService.SaveData(_bookings);
     }
+    public void AddParticipantToBooking(Medlem participant, Guid id, DateTime date)
+    {
+        foreach (var evt in _bookings)
+        {
+            if (evt.Id == id)
+            {
+                evt.Participants.Add(participant);
+                JsonDataService.SaveData(_bookings);
+                break;
+            }
+        }
+    }
 
     public void DeleteBooking(Guid id)
     {
@@ -32,6 +44,32 @@ public class BookingService : IBookingService
             }
         }
     }
+    public Booking GetBooking(Båd boat)
+    {
+        foreach (var  @booking in _bookings)
+        {
+            if (boat == @booking.boat)
+            {
+                return @booking;
+            }
+
+        }
+        return null;
+    }
+
+    public Booking GetBooking(Guid id)
+    {
+        foreach (var @booking in _bookings)
+        {
+            if (@booking.Id == id)
+            {
+                return @booking;
+            }
+
+        }
+        return null;
+    }
+
 
     public List<Booking> GetAllBookings(string bådNavn)
     {

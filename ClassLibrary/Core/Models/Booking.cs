@@ -4,11 +4,14 @@ namespace ClassLibrary.Core.Models;
 
 public class Booking
 {
+    public Båd boat;
+
     public Guid Id { get; set; }
     public DateTime DateBooked { get; set; }
     public Medlem MedlemToBook { get; set; }
     public Båd BoatToBook { get; set; }
 
+    public List<Medlem> Participants { get; set; } = [];
     public Booking(Medlem medlem, Båd boat)
     {
         Id = Guid.NewGuid();

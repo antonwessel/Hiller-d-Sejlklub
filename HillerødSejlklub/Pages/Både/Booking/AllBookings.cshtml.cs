@@ -26,4 +26,5 @@ public class AllBookingsModel : PageModel
         Bookings = _bookingService.GetAllBookings(bådNavn);
         return Page();
     }
+
 }
