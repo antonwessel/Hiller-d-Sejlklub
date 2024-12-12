@@ -1,88 +1,126 @@
 ﻿using ClassLibrary.Core.Interfaces;
 using ClassLibrary.Core.Models;
-
-namespace ClassLibrary.Services;
+using System.Linq;
 
 public class MaintenanceService : IMaintenanceService
 {
     private readonly Dictionary<string, List<Maintenance>> _maintenanceData;
-    // key er båd navn og hver værdi er en liste af vedligeholdelser
+    private readonly IJsonDataService<Båd> _jsonBoatService;
 
-    public MaintenanceService()
+    public MaintenanceService(IJsonDataService<Båd> jsonBoatService)
     {
-        _maintenanceData = [];
+        _jsonBoatService = jsonBoatService;
+        _maintenanceData = LoadMaintenanceJsonData();
+    }
+
+    public Dictionary<string, List<Maintenance>> LoadMaintenanceJsonData()
+    {
+        var boats = _jsonBoatService.LoadData();
+        var maintenanceData = new Dictionary<string, List<Maintenance>>();
+
+        foreach (var boat in boats)
+        {
+            maintenanceData[boat.Navn] = boat.Maintenances ?? [];
+        }
+
+        return maintenanceData;
+    }
+
+    public void SaveMaintenanceJsonData(string bådNavn, List<Maintenance> maintenances)
+    {
+        var boats = _jsonBoatService.LoadData().ToList();
+        var boat = boats.FirstOrDefault(b => b.Navn == bådNavn);
+        if (boat != null)
+        {
+            boat.Maintenances = maintenances;
+            _jsonBoatService.SaveData(boats);
+        }
     }
 
     public void AddMaintenance(string bådNavn, Maintenance maintenance)
     {
-        // Hvis båden ikke er i listen, opret en ny tom liste. Ellers tilføj vedligeholdelsen.
-        if (!_maintenanceData.TryGetValue(bådNavn, out List<Maintenance>? value))
+        if (!_maintenanceData.TryGetValue(bådNavn, out var maintenances))
         {
-            value = ([]);
-            _maintenanceData[bådNavn] = value;
+            // Hvis båden ikke findes, opret en ny liste
+            maintenances = [];
+            _maintenanceData[bådNavn] = maintenances;
         }
-        value.Add(maintenance);
+
+        // Tjek for at undgå kopier
+        if (!maintenances.Any(m => m.MaintenanceId == maintenance.MaintenanceId))
+        {
+            maintenances.Add(maintenance);
+            SaveMaintenanceJsonData(bådNavn, maintenances);
+        }
     }
 
     public void DeleteMaintenance(string bådNavn, Maintenance maintenance)
     {
-        // Prøv at find listen af vedligeholdelser på den rigtige båd
         if (_maintenanceData.TryGetValue(bådNavn, out var maintenances))
         {
-            // Fjern alle de vedligeholdelser som matcher den vedligeholdelse vi gerne vil fjerne
-            maintenances.RemoveAll(m =>
-                m.Date == maintenance.Date &&
-                m.Description == maintenance.Description &&
-                m.Status == maintenance.Status);
+            // Find den vedligeholdelse, der skal slettes
+            var maintenanceToRemove = maintenances.FirstOrDefault(m => m.MaintenanceId == maintenance.MaintenanceId);
+            if (maintenanceToRemove != null)
+            {
+                maintenances.Remove(maintenanceToRemove);
+                SaveMaintenanceJsonData(bådNavn, maintenances);
+            }
         }
     }
 
     public Maintenance GetMaintenance(string bådNavn, Guid maintenanceId)
     {
-        List<Maintenance> maintenancesForBoat = GetMaintenances(bådNavn);
-        foreach (var maintenance in maintenancesForBoat)
+        // Tjekker om der findes vedligeholdelser for den givne båd
+        if (_maintenanceData.TryGetValue(bådNavn, out var maintenances))
         {
-            if (maintenance.MaintenanceId == maintenanceId)
+            // Gennemgår listen for at finde vedligeholdelsen med det specifikke ID
+            foreach (var maintenance in maintenances)
             {
-                return maintenance;
+                if (maintenance.MaintenanceId == maintenanceId)
+                {
+                    return maintenance;
+                }
             }
         }
+
         return null;
     }
 
     public List<Maintenance> GetMaintenances(string bådNavn)
     {
-        // prøv at få listen af vedligeholdelser baseret på bådNavn
+        // Tjekker om der findes vedligeholdelser for den givne båd
         if (_maintenanceData.TryGetValue(bådNavn, out var maintenances))
         {
             return maintenances;
         }
+
         return [];
     }
 
+
     public float GetMaintenancesDone(string bådNavn)
     {
-        if (!_maintenanceData.ContainsKey(bådNavn) || _maintenanceData[bådNavn].Count == 0)
+        if (!_maintenanceData.TryGetValue(bådNavn, out var maintenances) || maintenances.Count == 0)
         {
-            return 0; // Returner 0%, hvis der ikke er vedligeholdelser
+            return 0f; // Returner 0%, hvis ingen vedligeholdelser findes
         }
 
-        int totalMaintenances = _maintenanceData[bådNavn].Count;
-        int maintenancesDone = _maintenanceData[bådNavn].Count(m => m.Status == Maintenance.WorkStatus.Færdig);
+        int total = maintenances.Count;
+        int done = maintenances.Count(m => m.Status == Maintenance.WorkStatus.Færdig);
 
-        return ((float)maintenancesDone / totalMaintenances) * 100; // Returner procent
+        return ((float)done / total) * 100;
     }
 
     public void UpdateMaintenance(string bådNavn, Maintenance maintenance)
     {
         if (_maintenanceData.TryGetValue(bådNavn, out var maintenances))
         {
-            // Find det indeks i listen som matcher Id
+            // Find indeks for den vedligeholdelse, der skal opdateres
             var index = maintenances.FindIndex(m => m.MaintenanceId == maintenance.MaintenanceId);
             if (index >= 0)
             {
-                // Erstat (opdater) gamle med nye vedligeholdelse
                 maintenances[index] = maintenance;
+                SaveMaintenanceJsonData(bådNavn, maintenances);
             }
         }
     }
