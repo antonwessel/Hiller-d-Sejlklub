@@ -8,9 +8,11 @@
     <h1 class="mb-4 text-center">Vores Blogs</h1>
     @if (AdminState.IsAdminLoggedIn)
     {
-        <a class="btn btn-success btn-lg mb-4" asp-page="TilFøjBlog">
-            <i class="bi bi-plus-circle"></i> Tilføj en ny blog
-        </a>
+        <div class="d-flex justify-content-center mb-4">
+            <a class="btn btn-success btn-lg" asp-page="TilFøjBlog">
+                <i class="bi bi-plus-circle"></i> Tilføj en ny blog
+            </a>
+        </div>
     }
     <div class="row justify-content-center">
         @foreach (var blog in Model.Blogs)

@@ -1,0 +1,17 @@
+﻿@page
+@model HillerødSejlklub.Pages.Både.Booking.AllBookingsModel
+@{
+}
+
+@if (!Model.Bookings.Any())
+{
+    <p>No bookings</p>
+}
+else
+{
+    <p>there are some bookings with these Ids:</p>
+    @foreach (var booking in Model.Bookings)
+    {
+        <td>@booking.Id</td>
+    }
+}

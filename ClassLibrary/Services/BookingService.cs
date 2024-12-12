@@ -1,39 +1,70 @@
 ﻿using ClassLibrary.Core.Interfaces;
 using ClassLibrary.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ClassLibrary.Services
+namespace ClassLibrary.Services;
+
+public class BookingService : IBookingService
 {
-    public class BookingService : IBookingService
+    private readonly List<Booking> _bookings = [];
+    public IJsonDataService<Booking> JsonDataService { get; }
 
+    public BookingService(IJsonDataService<Booking> jsonDataService)
     {
-        private readonly List<Booking> _bookings = new();
+        JsonDataService = jsonDataService;
+        _bookings = JsonDataService.LoadData().ToList();
+    }
 
-        public void AddBooking(Båd boat, Medlem medlem)
+    public void AddBooking(Båd boat, Medlem medlem)
+    {
+        _bookings.Add(new Booking(medlem, boat));
+        JsonDataService.SaveData(_bookings);
+    }
+
+    public void DeleteBooking(Guid id)
+    {
+        foreach (var booking in _bookings)
         {
-            _bookings.Add(new Booking(medlem, boat));
+            if (booking.Id == id)
+            {
+                _bookings.Remove(booking);
+                JsonDataService.SaveData(_bookings);
+                break;
+            }
         }
+    }
 
-
-        public Booking DeleteBooking(Guid id)
+    public List<Booking> GetAllBookings(string bådNavn)
+    {
+        List<Booking> allBookings = [];
+        foreach (var booking in _bookings)
         {
-            throw new NotImplementedException();
+            if (booking.BoatToBook.Navn == bådNavn)
+            {
+                allBookings.Add(booking);
+            }
         }
+        return allBookings;
+    }
 
-        public List<Båd> GetAvailableBoats(List<Båd> allBoats, DateTime date)
-        {
-            var bookedBoats = _bookings.Where(b => b.DateBooked.Date == date.Date).Select(b => b.BoatToBook).ToList();
-            var availableBoats = allBoats.Where(boat => !bookedBoats.Contains(boat)).ToList(); 
-            return availableBoats;
-        }
+    public List<Båd> GetAvailableBoats(List<Båd> allBoats, DateTime date)
+    {
+        var bookedBoats = _bookings.Where(b => b.DateBooked.Date == date.Date).Select(b => b.BoatToBook).ToList();
+        var availableBoats = allBoats.Where(boat => !bookedBoats.Contains(boat)).ToList();
+        return availableBoats;
+    }
 
-        public void UpdateBooking(Booking booking)
+    public void UpdateBooking(Booking booking)
+    {
+        foreach (var bok in _bookings)
         {
-            throw new NotImplementedException();
+            if (bok.Id == booking.Id)
+            {
+                bok.DateBooked = booking.DateBooked;
+                bok.MedlemToBook = booking.MedlemToBook;
+                bok.BoatToBook = booking.BoatToBook;
+                JsonDataService.SaveData(_bookings);
+                break;
+            }
         }
     }
 }
