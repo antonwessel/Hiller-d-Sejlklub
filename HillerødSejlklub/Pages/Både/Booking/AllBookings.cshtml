@@ -4,7 +4,7 @@
 }
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Alle Bookinger</h1>
+    <h1 class="text-center mb-4">Alle Bookinger for @Model.CurrentBoatName</h1>
 
     @if (!Model.Bookings.Any())
     {
@@ -20,8 +20,6 @@
                     <th>Booking ID</th>
                     <th>Booking Dato</th>
                     <th>Medlemsnavn</th>
-                    <th>Bådens Navn</th>
-                    <th>Bådtype</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,8 +29,6 @@
                         <td>@booking.Id</td>
                         <td>@booking.DateBooked.ToString("dd-MM-yyyy HH:mm")</td>
                         <td>@booking.MedlemToBook.Navn</td>
-                        <td>@booking.BoatToBook.Navn</td>
-                        <td>@booking.BoatToBook.BådType</td>
                     </tr>
                 }
             </tbody>
