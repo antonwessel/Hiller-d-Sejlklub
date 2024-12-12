@@ -73,4 +73,5 @@ public class BookingService : IBookingService
         return _bookings.Any(b => b.BoatToBook.Navn == boat.Navn && b.DateBooked.Date == date.Date);
     }
 
+    public Booking GetBooking(Guid id) => _bookings.FirstOrDefault(booking => booking.Id == id);
 }
