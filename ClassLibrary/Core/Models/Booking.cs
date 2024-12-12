@@ -9,14 +9,15 @@ public class Booking
     public Medlem MedlemToBook { get; set; }
     public Båd BoatToBook { get; set; }
 
-    
-    public Booking(Medlem medlem, Båd boat)
+    public Booking(Medlem medlem, Båd boat, DateTime date)
     {
         Id = Guid.NewGuid();
         MedlemToBook = medlem;
         BoatToBook = boat;
-        DateBooked = DateTime.Now;
-       
+        DateBooked = date;
     }
-
+    public Booking()
+    {
+        Id = Guid.NewGuid();
+    }
 }

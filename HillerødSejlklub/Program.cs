@@ -13,11 +13,14 @@ builder.Services.AddSingleton<IBådService, BådService>();
 builder.Services.AddSingleton<IEventService, EventService>();
 builder.Services.AddSingleton<IBlogService, BlogService>();
 builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();
+builder.Services.AddSingleton<IBookingService, BookingService>();
+
 
 builder.Services.AddSingleton<IJsonDataService<Medlem>, JsonFileMemberService>();
 builder.Services.AddSingleton<IJsonDataService<Blog>, JsonFileBlogService>();
 builder.Services.AddSingleton<IJsonDataService<Event>, JsonFileEventService>();
 builder.Services.AddSingleton<IJsonDataService<Båd>, JsonFileBoatService>();
+builder.Services.AddSingleton<IJsonDataService<Booking>, JsonFileBookingService>();
 
 
 var app = builder.Build();
