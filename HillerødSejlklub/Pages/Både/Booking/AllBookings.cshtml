@@ -1,10 +1,11 @@
 ﻿@page
+@using ClassLibrary.Core.Helpers
 @model HillerødSejlklub.Pages.Både.Booking.AllBookingsModel
 @{
 }
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Alle Bookinger for @Model.CurrentBoatName</h1>
+    <h1 class="text-center mb-4">Alle Bookinger for <span class="text-primary">@Model.CurrentBoatName</span></h1>
 
     @if (!Model.Bookings.Any())
     {
@@ -14,24 +15,55 @@
     }
     else
     {
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Booking ID</th>
-                    <th>Booking Dato</th>
-                    <th>Medlemsnavn</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var booking in Model.Bookings)
-                {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered text-center">
+                <thead class="thead-dark">
                     <tr>
-                        <td>@booking.Id</td>
-                        <td>@booking.DateBooked.ToString("dd-MM-yyyy HH:mm")</td>
-                        <td>@booking.MedlemToBook.Navn</td>
+                        <th scope="col">Booking Dato</th>
+                        <th scope="col">Medlemsnavn</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model.Bookings)
+                    {
+                        <tr>
+                            <td>@booking.DateBooked.ToString("dd-MM-yyyy")</td>
+                            <td>@booking.MedlemToBook.Navn</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (AdminState.IsAdminLoggedIn)
+    {
+        <div class="mt-5 p-3 bg-light rounded shadow-sm">
+            <h4 class="mb-3">Tilføj Ny Booking</h4>
+            <form method="post" asp-page-handler="OnPost" asp-route-bådNavn="@Model.CurrentBoatName" class="row g-2">
+                <div class="col-auto">
+                    <select asp-for="MemberToBookId" class="form-select form-select-sm" aria-label="Vælg medlem" required>
+                        <option value="" disabled selected>Vælg deltager</option>
+                        @foreach (var member in Model.AllMembers)
+                        {
+                            <option value="@member.Id">@member.Navn</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <input asp-for="DateToBook"
+                           type="date"
+                           class="form-control form-control-sm"
+                           aria-label="Vælg dato"
+                           value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                           required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="bi bi-plus-circle"></i> Tilføj
+                    </button>
+                </div>
+            </form>
+        </div>
     }
 </div>

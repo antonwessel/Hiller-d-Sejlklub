@@ -44,6 +44,11 @@ public class MedlemService : IMedlemService
         return _medlemList.FirstOrDefault(m => m.Email == email);
     }
 
+    public Medlem GetMedlem(Guid id)
+    {
+        return _medlemList.FirstOrDefault(m => m.Id == id);
+    }
+
     public List<Medlem> GetMedlemmer() => _medlemList;
 
     public void UpdateMedlem(Medlem medlem)

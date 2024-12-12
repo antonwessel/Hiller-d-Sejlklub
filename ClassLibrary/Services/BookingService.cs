@@ -14,9 +14,9 @@ public class BookingService : IBookingService
         _bookings = JsonDataService.LoadData().ToList();
     }
 
-    public void AddBooking(Båd boat, Medlem medlem)
+    public void AddBooking(Båd boat, Medlem medlem, DateTime date)
     {
-        _bookings.Add(new Booking(medlem, boat));
+        _bookings.Add(new Booking(medlem, boat, date));
         JsonDataService.SaveData(_bookings);
     }
 

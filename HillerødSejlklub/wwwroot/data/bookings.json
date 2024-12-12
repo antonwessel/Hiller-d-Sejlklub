@@ -9,8 +9,8 @@
       "Email": "ib.andersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
-      "BådType": "Sejljolle",
-      "BådModel": "J123",
+      "B\u00E5dType": "Sejljolle",
+      "B\u00E5dModel": "J123",
       "Navn": "Havfruen",
       "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
       "Maintenances": [
@@ -39,8 +39,8 @@
       "Email": "emma.pedersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
-      "BådType": "Sejlbåd",
-      "BådModel": "S456",
+      "B\u00E5dType": "Sejlb\u00E5d",
+      "B\u00E5dModel": "S456",
       "Navn": "Vinden",
       "BilledeUrl": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
       "Maintenances": [
@@ -53,10 +53,147 @@
         {
           "Status": 0,
           "Date": "2023-12-06T23:50:00",
-          "Description": "Justering af sejlhæfter",
+          "Description": "Justering af sejlh\u00E6fter",
           "MaintenanceId": "d8eb5f10-8198-4ea0-8798-531e9b8f5ae8"
         }
       ]
+    }
+  },
+  {
+    "Id": "b4023862-31f0-446a-b9c7-636dea212a8d",
+    "DateBooked": "0001-01-01T00:00:00",
+    "MedlemToBook": {
+      "Id": "6895452e-d0c7-4a42-a69f-67d9d349e414",
+      "Navn": "Lone J\u00F8rgensen",
+      "TelefonNummer": "98765432",
+      "Email": "lone.jorgensen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "B\u00E5dType": "Sejljolle",
+      "B\u00E5dModel": "J123",
+      "Navn": "Havfruen",
+      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "Maintenances": [
+        {
+          "Status": 1,
+          "Date": "2023-10-10T20:15:00",
+          "Description": "Udskiftning af ror",
+          "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+        },
+        {
+          "Status": 0,
+          "Date": "2023-12-08T22:30:00",
+          "Description": "Reparation af bom",
+          "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
+        }
+      ]
+    }
+  },
+  {
+    "Id": "550eec2c-3b92-4456-8e82-95b3c7b7c79a",
+    "DateBooked": "0001-01-01T00:00:00",
+    "MedlemToBook": {
+      "Id": "65226f1b-7fba-44bb-b5aa-aa9ace5886b9",
+      "Navn": "Ib Andersen",
+      "TelefonNummer": "24473004",
+      "Email": "ib.andersen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "B\u00E5dType": "Sejljolle",
+      "B\u00E5dModel": "J123",
+      "Navn": "Havfruen",
+      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "Maintenances": [
+        {
+          "Status": 1,
+          "Date": "2023-10-10T20:15:00",
+          "Description": "Udskiftning af ror",
+          "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+        },
+        {
+          "Status": 0,
+          "Date": "2023-12-08T22:30:00",
+          "Description": "Reparation af bom",
+          "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
+        }
+      ]
+    }
+  },
+  {
+    "Id": "694617d1-dfee-483f-a80a-161c868d23f4",
+    "DateBooked": "2005-02-20T00:00:00",
+    "MedlemToBook": {
+      "Id": "a89bf6a5-e7d5-41a1-a439-deae27ffdef3",
+      "Navn": "Morten Larsen",
+      "TelefonNummer": "23456789",
+      "Email": "morten.larsen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "B\u00E5dType": "Sejljolle",
+      "B\u00E5dModel": "J123",
+      "Navn": "Havfruen",
+      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "Maintenances": [
+        {
+          "Status": 1,
+          "Date": "2023-10-10T20:15:00",
+          "Description": "Udskiftning af ror",
+          "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+        },
+        {
+          "Status": 0,
+          "Date": "2023-12-08T22:30:00",
+          "Description": "Reparation af bom",
+          "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
+        }
+      ]
+    }
+  },
+  {
+    "Id": "991cb926-c423-41e2-a25d-6e386192dc07",
+    "DateBooked": "2024-12-12T00:00:00",
+    "MedlemToBook": {
+      "Id": "81af5006-5cd1-4895-b0b5-3b4db32e59fe",
+      "Navn": "Lotte Knudsen",
+      "TelefonNummer": "55664433",
+      "Email": "lotte.knudsen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "B\u00E5dType": "Sejljolle",
+      "B\u00E5dModel": "J123",
+      "Navn": "Havfruen",
+      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "Maintenances": [
+        {
+          "Status": 1,
+          "Date": "2023-10-10T20:15:00",
+          "Description": "Udskiftning af ror",
+          "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+        },
+        {
+          "Status": 0,
+          "Date": "2023-12-08T22:30:00",
+          "Description": "Reparation af bom",
+          "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
+        }
+      ]
+    }
+  },
+  {
+    "Id": "5c60f866-e782-4419-b395-afc76ba9d40f",
+    "DateBooked": "2024-12-12T00:00:00",
+    "MedlemToBook": {
+      "Id": "135b2615-8352-4c0f-9cd7-3dedfb7dfb84",
+      "Navn": "Emma Pedersen",
+      "TelefonNummer": "26807755",
+      "Email": "emma.pedersen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "B\u00E5dType": "asdf",
+      "B\u00E5dModel": "model test",
+      "Navn": "asdf",
+      "BilledeUrl": "https://img.freepik.com/premium-vector/red-boat-with-windows-down-side-is-shown_9493-77425.jpg",
+      "Maintenances": []
     }
   }
 ]

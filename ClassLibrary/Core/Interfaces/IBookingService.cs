@@ -4,7 +4,7 @@ namespace ClassLibrary.Core.Interfaces;
 
 public interface IBookingService
 {
-    void AddBooking(Båd boat, Medlem medlem);
+    void AddBooking(Båd boat, Medlem medlem, DateTime date);
     void UpdateBooking(Booking booking);
     void DeleteBooking(Guid id);
     List<Booking> GetAllBookings(string bådNavn);

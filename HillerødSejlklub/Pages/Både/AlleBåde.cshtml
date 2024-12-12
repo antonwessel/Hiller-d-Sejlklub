@@ -29,15 +29,15 @@
                             <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-bådNavn="@båd.Navn" title="Booking">
-                                <i class="bi bi-calendar-check"></i> Booking
-                            </a>
                             <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="SletBåd" asp-route-navn="@båd.Navn" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
                         }
                         <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-navn="@båd.Navn" title="Maintenance">
                             <i class="bi bi-wrench"></i> Vedligeholdelse
+                        </a>
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-bådNavn="@båd.Navn" title="Booking">
+                            <i class="bi bi-calendar-check"></i> Booking
                         </a>
                     </div>
                 </div>
