@@ -35,7 +35,11 @@
                             <td>@booking.MedlemToBook.Navn</td>
                             @if (AdminState.IsAdminLoggedIn)
                             {
-                                <td><a asp-page="DeleteBooking" asp-route-id="@booking.Id">Slet</a></td>
+                                <td>
+                                    <a asp-page="DeleteBooking" asp-route-id="@booking.Id" class="btn btn-danger btn-sm" role="button">
+                                        <i class="bi bi-trash"></i> Slet
+                                    </a>
+                                </td>
                             }
                         </tr>
                     }
