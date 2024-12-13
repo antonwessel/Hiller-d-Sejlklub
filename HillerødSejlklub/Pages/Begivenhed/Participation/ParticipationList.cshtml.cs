@@ -48,6 +48,14 @@ public class ParticipationListModel : PageModel
         return Page();
     }
 
+    public IActionResult OnPostRemoveParticipant(Guid eventId, Guid participantId)
+    {
+        _begivenhedService.RemoveParticipantFromEvent(participantId, eventId);
+        LoadData(eventId);
+        return Page();
+    }
+
+
     private void LoadData(Guid eventId)
     {
         CurrentEvent = _begivenhedService.GetEvent(eventId);
