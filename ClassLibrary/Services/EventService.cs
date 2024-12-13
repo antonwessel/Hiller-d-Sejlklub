@@ -105,6 +105,22 @@ public class EventService : IEventService
         return [];
     }
 
+    public void RemoveParticipantFromEvent(Guid participantId, Guid eventId)
+    {
+        foreach (var evt in _eventsList)
+        {
+            if (evt.Id == eventId)
+            {
+                var participantToRemove = evt.Participants.FirstOrDefault(p => p.Id == participantId);
+                if (participantToRemove != null)
+                {
+                    evt.Participants.Remove(participantToRemove);
+                    JsonDataService.SaveData(_eventsList);
+                }
+                break;
+            }
+        }
+    }
 
     public void UpdateBegivenhed(Event begivenhed)
     {

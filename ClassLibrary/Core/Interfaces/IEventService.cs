@@ -16,6 +16,7 @@ public interface IEventService
     Event GetEvent(Guid id);
     Event DeleteBegivenhed(string navn);
     void AddParticipantToEvent(Medlem participant, Guid eventId);
+    void RemoveParticipantFromEvent(Guid participantId, Guid eventId);
     List<Medlem> GetParticipants(Guid eventId);
     List<Event> FilterByDates(DateTime startDate, DateTime endDate);
     IJsonDataService<Event> JsonDataService { get; }

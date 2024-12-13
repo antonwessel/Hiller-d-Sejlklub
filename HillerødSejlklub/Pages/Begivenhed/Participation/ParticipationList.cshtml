@@ -18,6 +18,10 @@
                     <th>Navn</th>
                     <th>Telefonnummer</th>
                     <th>Email</th>
+                    @if (AdminState.IsAdminLoggedIn)
+                    {
+                        <th>Håndtering</th>
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +31,16 @@
                         <td>@participant.Navn</td>
                         <td>@participant.TelefonNummer</td>
                         <td>@participant.Email</td>
+                        @if (AdminState.IsAdminLoggedIn)
+                        {
+                            <td>
+                                <form method="post" asp-page-handler="RemoveParticipant" asp-route-eventId="@Model.CurrentEvent.Id" asp-route-participantId="@participant.Id">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i> Slet
+                                    </button>
+                                </form>
+                            </td>
+                        }
                     </tr>
                 }
             </tbody>
