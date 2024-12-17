@@ -1,27 +1,24 @@
 using ClassLibrary.Core.Helpers;
 using ClassLibrary.Core.Interfaces;
 using ClassLibrary.Core.Models;
-using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HillerødSejlklub.Pages.Events;
 
-public class SletBegivenhedModel : PageModel
+public class AddEventModel : PageModel
 {
-    private IEventService _begivenhedService;
+    private readonly IEventService _eventService;
 
     [BindProperty]
+    public Event Event { get; set; }
 
-    public Event Begivenhed { get; set; }
-
-
-    public SletBegivenhedModel(IEventService begivenhedService)
+    public AddEventModel(IEventService eventService)
     {
-        _begivenhedService = begivenhedService;
+        _eventService = eventService;
     }
 
-    public IActionResult OnGet(string navn)
+    public IActionResult OnGet()
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -29,13 +26,20 @@ public class SletBegivenhedModel : PageModel
             return RedirectToPage("Begivenheder");
         }
 
-        Begivenhed = _begivenhedService.GetEvent(navn);
         return Page();
     }
 
     public IActionResult OnPost()
     {
-        _begivenhedService.DeleteEvent(Begivenhed.Name);
-        return RedirectToPage("Begivenheder");
+
+        if (!ModelState.IsValid)
+        {
+
+            return Page();
+        }
+        _eventService.AddEvent(Event);
+
+
+        return RedirectToPage("AllEvents");
     }
 }

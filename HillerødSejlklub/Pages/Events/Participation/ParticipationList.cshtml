@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-5">
-    <a asp-page="../Begivenheder" class="btn btn-secondary btn-sm mt-3">
+    <a asp-page="../AllEvents" class="btn btn-secondary btn-sm mt-3">
         <i class="bi bi-arrow-left"></i> Tilbage
     </a>
 
@@ -29,7 +29,7 @@
                 {
                     <tr>
                         <td>@participant.Name</td>
-                        <td>@participant.TelefonNummer</td>
+                        <td>@participant.PhoneNumber</td>
                         <td>@participant.Email</td>
                         @if (AdminState.IsAdminLoggedIn)
                         {

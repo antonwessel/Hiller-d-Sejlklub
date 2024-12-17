@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using ClassLibrary.Core.Models;
 using ClassLibrary.Core.Interfaces;
 
 namespace HillerødSejlklub.Pages.Events;
 
-public class BegivenhederModel : PageModel
+public class AllEventsModel : PageModel
 {
-    private IEventService _begivenhedService;
+    private readonly IEventService _eventService;
 
     [BindProperty]
     public DateTime MinDate { get; set; }
@@ -18,22 +17,21 @@ public class BegivenhederModel : PageModel
 
     public List<Event> Begivenheder { get; set; }
 
-    public BegivenhederModel(IEventService begivenhedService)
+    public AllEventsModel(IEventService eventService)
     {
-        _begivenhedService = begivenhedService;
+        _eventService = eventService;
     }
-
 
     public void OnGet()
     {
         MinDate = DateTime.Today;
         MaxDate = DateTime.Today.AddYears(1);
-        Begivenheder = _begivenhedService.GetEvents();
+        Begivenheder = _eventService.GetEvents();
     }
 
     public IActionResult OnPostFilter()
     {
-        Begivenheder = _begivenhedService.FilterByDates(MinDate, MaxDate);
+        Begivenheder = _eventService.FilterByDates(MinDate, MaxDate);
         return Page();
     }
 
@@ -41,7 +39,7 @@ public class BegivenhederModel : PageModel
     {
         MinDate = DateTime.Today;
         MaxDate = DateTime.Today.AddYears(1);
-        Begivenheder = _begivenhedService.GetEvents();
+        Begivenheder = _eventService.GetEvents();
         return Page();
     }
 }

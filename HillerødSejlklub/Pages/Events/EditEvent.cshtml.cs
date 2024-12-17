@@ -6,29 +6,27 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HillerødSejlklub.Pages.Events;
 
-public class RedigerBegivenhedModel : PageModel
+public class EditEventModel : PageModel
 {
-
-    private IEventService _begivenhedService;
+    private readonly IEventService _eventService;
 
     [BindProperty]
-
     public Event Event { get; set; }
-    public RedigerBegivenhedModel(IEventService begivenhedService)
+
+    public EditEventModel(IEventService eventService)
     {
-        _begivenhedService = begivenhedService;
+        _eventService = eventService;
     }
 
-
-    public IActionResult OnGet(string navn)
+    public IActionResult OnGet(string eventName)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
-            return RedirectToPage("Begivenheder");
+            return RedirectToPage("AllEvents");
         }
 
-        Event = _begivenhedService.GetEvent(navn);
+        Event = _eventService.GetEvent(eventName);
         return Page();
     }
 
@@ -40,7 +38,7 @@ public class RedigerBegivenhedModel : PageModel
 
         }
 
-        _begivenhedService.UpdateEvent(Event);
-        return RedirectToPage("Begivenheder");
+        _eventService.UpdateEvent(Event);
+        return RedirectToPage("AllEvents");
     }
 }

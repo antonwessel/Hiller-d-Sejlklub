@@ -3,7 +3,6 @@ using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace HillerødSejlklub.Pages.Events.Participation;
 
@@ -13,10 +12,10 @@ public class ParticipationListModel : PageModel
     private readonly IMemberService _medlemService;
 
     [BindProperty]
-    public List<ClassLibrary.Core.Models.Member> Participants { get; set; }
+    public List<Member> Participants { get; set; }
 
     [BindProperty]
-    public List<ClassLibrary.Core.Models.Member> AllAvailableParticipants { get; set; }
+    public List<Member> AllAvailableParticipants { get; set; }
 
     [Required]
     [BindProperty]
