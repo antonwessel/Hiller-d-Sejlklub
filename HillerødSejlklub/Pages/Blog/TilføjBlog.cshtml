@@ -7,19 +7,19 @@
     <h1 class="mb-4">Tilføj Blog</h1>
     <form method="post">
         <div class="mb-3">
-            <label asp-for="@Model.Blog.BlogTitel" class="form-label"></label>
-            <input asp-for="@Model.Blog.BlogTitel" class="form-control" />
-            <span asp-validation-for="@Model.Blog.BlogTitel" class="text-danger"></span>
+            <label asp-for="@Model.Blog.BlogTitle" class="form-label"></label>
+            <input asp-for="@Model.Blog.BlogTitle" class="form-control" />
+            <span asp-validation-for="@Model.Blog.BlogTitle" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.Blog.BlogForfatter" class="form-label"></label>
-            <input asp-for="@Model.Blog.BlogForfatter" class="form-control" />
-            <span asp-validation-for="@Model.Blog.BlogForfatter" class="text-danger"></span>
+            <label asp-for="@Model.Blog.BlogAuthor" class="form-label"></label>
+            <input asp-for="@Model.Blog.BlogAuthor" class="form-control" />
+            <span asp-validation-for="@Model.Blog.BlogAuthor" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.Blog.BlogIndhold" class="form-label"></label>
-            <textarea asp-for="@Model.Blog.BlogIndhold" class="form-control" rows="10"></textarea>
-            <span asp-validation-for="@Model.Blog.BlogIndhold" class="text-danger"></span>
+            <label asp-for="@Model.Blog.BlogContent" class="form-label"></label>
+            <textarea asp-for="@Model.Blog.BlogContent" class="form-control" rows="10"></textarea>
+            <span asp-validation-for="@Model.Blog.BlogContent" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">
             <i class="bi bi-save"></i> Opret

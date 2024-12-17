@@ -8,53 +8,53 @@ namespace HillerødSejlklub.Pages.Både.Booking;
 public class AllBookingsModel : PageModel
 {
     private readonly IBookingService _bookingService;
-    private readonly IBoatService _bådService;
-    private readonly IMemberService _medlemService;
+    private readonly IBoatService _boatService;
+    private readonly IMemberService _memberService;
 
     [BindProperty] public List<ClassLibrary.Core.Models.Booking> Bookings { get; set; }
     [BindProperty] public string CurrentBoatName { get; set; }
     [BindProperty] public Boat BoatToBook { get; set; }
-    [BindProperty] public ClassLibrary.Core.Models.Member MemberToBook { get; set; }
+    [BindProperty] public Member MemberToBook { get; set; }
     [BindProperty] public Guid MemberToBookId { get; set; }
-    [BindProperty] public List<ClassLibrary.Core.Models.Member> AllMembers { get; set; }
+    [BindProperty] public List<Member> AllMembers { get; set; }
     [BindProperty] public DateTime DateToBook { get; set; }
 
-    public AllBookingsModel(IBookingService bookingService, IBoatService bådService, IMemberService medlemService)
+    public AllBookingsModel(IBookingService bookingService, IBoatService boatService, IMemberService medlemService)
     {
         _bookingService = bookingService;
-        _bådService = bådService;
-        _medlemService = medlemService;
+        _boatService = boatService;
+        _memberService = medlemService;
     }
 
-    public IActionResult OnGet(string bådNavn)
+    public IActionResult OnGet(string boatName)
     {
-        LoadData(bådNavn);
+        LoadData(boatName);
         return Page();
     }
 
-    public IActionResult OnPost(string bådNavn)
+    public IActionResult OnPost(string boatName)
     {
-        MemberToBook = _medlemService.GetMember(MemberToBookId);
-        BoatToBook = _bådService.GetBoat(bådNavn);
+        MemberToBook = _memberService.GetMember(MemberToBookId);
+        BoatToBook = _boatService.GetBoat(boatName);
 
         // Check om der allerede er en booking med samme dato.
         if (_bookingService.BookingExists(BoatToBook, DateToBook))
         {
             ModelState.AddModelError(string.Empty, "Der eksisterer allerede en booking for denne dato.");
-            LoadData(bådNavn);
+            LoadData(boatName);
             return Page();
         }
 
 
         _bookingService.AddBooking(BoatToBook, MemberToBook, DateToBook);
-        LoadData(bådNavn);
+        LoadData(boatName);
         return Page();
     }
 
-    private void LoadData(string bådNavn)
+    private void LoadData(string boatName)
     {
-        CurrentBoatName = bådNavn;
-        Bookings = _bookingService.GetAllBookings(bådNavn);
-        AllMembers = _medlemService.GetMembers();
+        CurrentBoatName = boatName;
+        Bookings = _bookingService.GetAllBookings(boatName);
+        AllMembers = _memberService.GetMembers();
     }
 }

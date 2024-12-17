@@ -1,5 +1,4 @@
 using ClassLibrary.Core.Interfaces;
-using ClassLibrary.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

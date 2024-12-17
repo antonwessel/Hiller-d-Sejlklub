@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HillerødSejlklub.Pages.Både;
 
-public class SletBådModel : PageModel
+public class SletBoatModel : PageModel
 {
     private IBoatService _bådService;
 
     [BindProperty]
     public Boat Båd { get; set; }
 
-    public SletBådModel(IBoatService bådService)
+    public SletBoatModel(IBoatService bådService)
     {
         _bådService = bådService;
     }

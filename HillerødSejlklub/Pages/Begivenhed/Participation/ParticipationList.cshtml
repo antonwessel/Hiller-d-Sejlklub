@@ -28,7 +28,7 @@
                 @foreach (var participant in Model.Participants)
                 {
                     <tr>
-                        <td>@participant.Navn</td>
+                        <td>@participant.Name</td>
                         <td>@participant.TelefonNummer</td>
                         <td>@participant.Email</td>
                         @if (AdminState.IsAdminLoggedIn)
@@ -61,7 +61,7 @@
                     <option value="" disabled selected>Vælg deltager</option>
                     @foreach (var participant in Model.AllAvailableParticipants)
                     {
-                        <option value="@participant.Id">@participant.Navn</option>
+                        <option value="@participant.Id">@participant.Name</option>
                     }
                 </select>
                 <button type="submit" class="btn btn-primary btn-sm">

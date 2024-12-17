@@ -20,7 +20,7 @@ public class RedigerBlogModel : PageModel
         _blogService = blogService;
     }
 
-    public IActionResult OnGet(string BlogTitel)
+    public IActionResult OnGet(string BlogTitle)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -28,7 +28,7 @@ public class RedigerBlogModel : PageModel
             return RedirectToPage("AlleBlogs");
         }
 
-        Blog = _blogService.GetBlog(BlogTitel);
+        Blog = _blogService.GetBlog(BlogTitle);
         return Page();
     }
     public IActionResult OnPost()

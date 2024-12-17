@@ -9,8 +9,8 @@
       "Email": "ib.andersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
-      "BådType": "Sejljolle",
-      "BådModel": "J123",
+      "BoatType": "Sejljolle",
+      "BoatModel": "J123",
       "Navn": "Havfruen",
       "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
       "Maintenances": [
@@ -39,8 +39,8 @@
       "Email": "emma.pedersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
-      "BådType": "Sejlbåd",
-      "BådModel": "S456",
+      "BoatType": "Sejlbåd",
+      "BoatModel": "S456",
       "Navn": "Vinden",
       "BilledeUrl": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
       "Maintenances": [

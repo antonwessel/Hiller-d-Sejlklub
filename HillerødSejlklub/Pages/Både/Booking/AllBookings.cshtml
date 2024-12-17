@@ -64,7 +64,7 @@
                 </div>
             }
 
-            <form method="post" asp-page-handler="OnPost" asp-route-bådNavn="@Model.CurrentBoatName" class="row g-2">
+            <form method="post" asp-page-handler="OnPost" asp-route-boatName="@Model.CurrentBoatName" class="row g-2">
                 <div class="col-auto">
                     <select asp-for="MemberToBookId" class="form-select form-select-sm" aria-label="Vælg medlem" required>
                         <option value="" disabled selected>Vælg deltager</option>
