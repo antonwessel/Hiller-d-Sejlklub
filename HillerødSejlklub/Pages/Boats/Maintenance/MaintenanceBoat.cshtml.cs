@@ -25,11 +25,11 @@ public class MaintenanceBoatModel : PageModel
         _maintenanceService = maintenanceService;
     }
 
-    public IActionResult OnGet(string Name)
+    public IActionResult OnGet(string boatName)
     {
-        Boat = _boatService.GetBoat(Name);
-        Maintenances = _maintenanceService.GetMaintenances(Name);
-        MaintenancesDone = _maintenanceService.GetMaintenancesDone(Name);
+        Boat = _boatService.GetBoat(boatName);
+        Maintenances = _maintenanceService.GetMaintenances(boatName);
+        MaintenancesDone = _maintenanceService.GetMaintenancesDone(boatName);
         return Page();
     }
 }

@@ -8,8 +8,8 @@ namespace HillerødSejlklub.Pages.Boats.Maintenance;
 
 public class DeleteMaintenanceModel : PageModel
 {
-    private IMaintenanceService _maintenanceService;
-    private IBoatService _boatService;
+    private readonly IMaintenanceService _maintenanceService;
+    private readonly IBoatService _boatService;
 
     [BindProperty]
     public Boat Boat { get; set; }
@@ -23,24 +23,24 @@ public class DeleteMaintenanceModel : PageModel
         _boatService = boatService;
     }
 
-    public IActionResult OnGet(string Name, Guid maintenanceId)
+    public IActionResult OnGet(string boatName, Guid maintenanceId)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
-            return RedirectToPage("../AlleBåde");
+            return RedirectToPage("../AllBoats");
         }
 
-        Boat = _boatService.GetBoat(Name);
-        Maintenance = _maintenanceService.GetMaintenance(Name, maintenanceId);
+        Boat = _boatService.GetBoat(boatName);
+        Maintenance = _maintenanceService.GetMaintenance(boatName, maintenanceId);
         return Page();
     }
 
-    public IActionResult OnPost(string Name, Guid maintenanceId)
+    public IActionResult OnPost(string boatName, Guid maintenanceId)
     {
-        Boat = _boatService.GetBoat(Name);
-        Maintenance = _maintenanceService.GetMaintenance(Name, maintenanceId);
-        _maintenanceService.DeleteMaintenance(Name, Maintenance);
-        return RedirectToPage("MaintenanceBoat", new { Name });
+        Boat = _boatService.GetBoat(boatName);
+        Maintenance = _maintenanceService.GetMaintenance(boatName, maintenanceId);
+        _maintenanceService.DeleteMaintenance(boatName, Maintenance);
+        return RedirectToPage("MaintenanceBoat", new { boatName });
     }
 }

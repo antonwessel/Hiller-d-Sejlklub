@@ -11,7 +11,7 @@
     "BoatToBook": {
       "BoatType": "Sejljolle",
       "BoatModel": "J123",
-      "Name": "Havfruen",
+      "BoatName": null,
       "ImageURL": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
       "Maintenances": [
         {
@@ -39,9 +39,9 @@
       "Email": "emma.pedersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
-      "BoatType": "Sejlbåd",
+      "BoatType": "Sejlb\u00E5d",
       "BoatModel": "S456",
-      "Name": "Vinden",
+      "BoatName": null,
       "ImageURL": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
       "Maintenances": [
         {
@@ -53,10 +53,44 @@
         {
           "Status": 0,
           "Date": "2023-12-06T23:50:00",
-          "Description": "Justering af sejlhæfter",
+          "Description": "Justering af sejlh\u00E6fter",
           "MaintenanceId": "d8eb5f10-8198-4ea0-8798-531e9b8f5ae8"
         }
       ]
+    }
+  },
+  {
+    "Id": "21b0c09a-915f-4136-8dc3-65fbb486de51",
+    "DateBooked": "2024-12-17T00:00:00",
+    "MemberToBook": {
+      "Id": "65226f1b-7fba-44bb-b5aa-aa9ace5886b9",
+      "Name": "Ib Andersen",
+      "PhoneNumber": "24473004",
+      "Email": "ib.andersen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "BoatType": "test",
+      "BoatModel": "test",
+      "BoatName": "test",
+      "ImageURL": "https://img.freepik.com/premium-vector/red-boat-with-windows-down-side-is-shown_9493-77425.jpg",
+      "Maintenances": []
+    }
+  },
+  {
+    "Id": "b5f25e03-2475-4c03-bd4e-01569939fb29",
+    "DateBooked": "2024-12-18T00:00:00",
+    "MemberToBook": {
+      "Id": "ea3d135b-bf30-4982-bc0f-18b1e7bee678",
+      "Name": "Lars Nielsen",
+      "PhoneNumber": "55667788",
+      "Email": "lars.nielsen@hillerodsejlklub.dk"
+    },
+    "BoatToBook": {
+      "BoatType": "test",
+      "BoatModel": "test",
+      "BoatName": "test",
+      "ImageURL": "https://img.freepik.com/premium-vector/red-boat-with-windows-down-side-is-shown_9493-77425.jpg",
+      "Maintenances": []
     }
   }
 ]

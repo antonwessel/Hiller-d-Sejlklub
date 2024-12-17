@@ -5,11 +5,11 @@
 }
 
 <div class="container mt-5">
-    <a asp-page="../AlleBåde" class="btn btn-secondary btn-sm mt-3">
+    <a asp-page="../AllBoats" class="btn btn-secondary btn-sm mt-3">
         <i class="bi bi-arrow-left"></i> Tilbage
     </a>
 
-    <h1 class="text-center mb-4">Alle Bookinger for <span class="text-primary">@Model.CurrentName</span></h1>
+    <h1 class="text-center mb-4">Alle Bookinger for <span class="text-primary">@Model.CurrentBoatName</span></h1>
 
     @if (!Model.Bookings.Any())
     {
@@ -64,7 +64,7 @@
                 </div>
             }
 
-            <form method="post" asp-page-handler="OnPost" asp-route-Name="@Model.CurrentName" class="row g-2">
+            <form method="post" asp-page-handler="OnPost" asp-route-boatName="@Model.CurrentBoatName" class="row g-2">
                 <div class="col-auto">
                     <select asp-for="MemberToBookId" class="form-select form-select-sm" aria-label="Vælg medlem" required>
                         <option value="" disabled selected>Vælg deltager</option>

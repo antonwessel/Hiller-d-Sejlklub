@@ -26,10 +26,10 @@ public class MaintenanceService : IMaintenanceService
         return maintenanceData;
     }
 
-    public void SaveMaintenanceJsonData(string Name, List<Maintenance> maintenances)
+    public void SaveMaintenanceJsonData(string boatName, List<Maintenance> maintenances)
     {
         var boats = _jsonBoatService.LoadData().ToList();
-        var boat = boats.FirstOrDefault(b => b.BoatName == Name);
+        var boat = boats.FirstOrDefault(b => b.BoatName == boatName);
         if (boat != null)
         {
             boat.Maintenances = maintenances;
@@ -37,41 +37,41 @@ public class MaintenanceService : IMaintenanceService
         }
     }
 
-    public void AddMaintenance(string Name, Maintenance maintenance)
+    public void AddMaintenance(string boatName, Maintenance maintenance)
     {
-        if (!_maintenanceData.TryGetValue(Name, out var maintenances))
+        if (!_maintenanceData.TryGetValue(boatName, out var maintenances))
         {
             // Hvis båden ikke findes, opret en ny liste
             maintenances = [];
-            _maintenanceData[Name] = maintenances;
+            _maintenanceData[boatName] = maintenances;
         }
 
         // Tjek for at undgå kopier
         if (!maintenances.Any(m => m.MaintenanceId == maintenance.MaintenanceId))
         {
             maintenances.Add(maintenance);
-            SaveMaintenanceJsonData(Name, maintenances);
+            SaveMaintenanceJsonData(boatName, maintenances);
         }
     }
 
-    public void DeleteMaintenance(string Name, Maintenance maintenance)
+    public void DeleteMaintenance(string boatName, Maintenance maintenance)
     {
-        if (_maintenanceData.TryGetValue(Name, out var maintenances))
+        if (_maintenanceData.TryGetValue(boatName, out var maintenances))
         {
             // Find den vedligeholdelse, der skal slettes
             var maintenanceToRemove = maintenances.FirstOrDefault(m => m.MaintenanceId == maintenance.MaintenanceId);
             if (maintenanceToRemove != null)
             {
                 maintenances.Remove(maintenanceToRemove);
-                SaveMaintenanceJsonData(Name, maintenances);
+                SaveMaintenanceJsonData(boatName, maintenances);
             }
         }
     }
 
-    public Maintenance GetMaintenance(string Name, Guid maintenanceId)
+    public Maintenance GetMaintenance(string boatName, Guid maintenanceId)
     {
         // Tjekker om der findes vedligeholdelser for den givne båd
-        if (_maintenanceData.TryGetValue(Name, out var maintenances))
+        if (_maintenanceData.TryGetValue(boatName, out var maintenances))
         {
             // Gennemgår listen for at finde vedligeholdelsen med det specifikke ID
             foreach (var maintenance in maintenances)
@@ -86,10 +86,10 @@ public class MaintenanceService : IMaintenanceService
         return null;
     }
 
-    public List<Maintenance> GetMaintenances(string Name)
+    public List<Maintenance> GetMaintenances(string boatName)
     {
         // Tjekker om der findes vedligeholdelser for den givne båd
-        if (_maintenanceData.TryGetValue(Name, out var maintenances))
+        if (_maintenanceData.TryGetValue(boatName, out var maintenances))
         {
             return maintenances;
         }

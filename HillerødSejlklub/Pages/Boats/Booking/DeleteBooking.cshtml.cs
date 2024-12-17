@@ -25,9 +25,9 @@ public class DeleteBookingModel : PageModel
         BookingId = id;
     }
 
-    public IActionResult OnPost()
+    public IActionResult OnPost(string boatName)
     {
         _bookingService.DeleteBooking(BookingId);
-        return RedirectToPage("AllBookings");
+        return RedirectToPage("AllBookings", new { boatName });
     }
 }
