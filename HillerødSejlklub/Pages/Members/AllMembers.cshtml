@@ -1,6 +1,6 @@
 ﻿@page
 @using ClassLibrary.Core.Helpers
-@model HillerødSejlklub.Pages.Medlem.MedlemmerModel
+@model AllMembersModel
 @{
 }
 
@@ -17,37 +17,37 @@
                 <th>Telefonnummer</th>
                 <th>Email</th>
                 @if (AdminState.IsAdminLoggedIn)
-            {
-                <th>Håndtering</th>
-            }
+                {
+                    <th>Håndtering</th>
+                }
             </tr>
         </thead>
         <tbody>
-            @foreach (var medlem in Model.Medlemmer)
-        {
-            <tr>
-                    <td>@medlem.Name</td>
-                    <td>@medlem.TelefonNummer</td>
-                    <td>@medlem.Email</td>
+            @foreach (var member in Model.Members)
+            {
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.PhoneNumber</td>
+                    <td>@member.Email</td>
                     @if (AdminState.IsAdminLoggedIn)
-                {
-                    <td>
-                            <a class="btn btn-danger btn-sm" asp-page="SletMedlem" asp-route-email="@medlem.Email" title="Slet">
+                    {
+                        <td>
+                            <a class="btn btn-danger btn-sm" asp-page="DeleteMember" asp-route-email="@member.Email" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
-                            <a class="btn btn-primary btn-sm" asp-page="RedigerMedlem" asp-route-email="@medlem.Email" title="Rediger">
+                            <a class="btn btn-primary btn-sm" asp-page="EditMember" asp-route-email="@member.Email" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
                         </td>
-                }
+                    }
                 </tr>
-        }
+            }
         </tbody>
     </table>
     @if (AdminState.IsAdminLoggedIn)
-{
-    <a class="btn btn-success" asp-page="TilFøjMedlem">
+    {
+        <a class="btn btn-success" asp-page="AddMember">
             <i class="bi bi-person-plus"></i> Tilføj medlem
         </a>
-}
+    }
 </div>

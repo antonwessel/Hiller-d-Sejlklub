@@ -1,21 +1,20 @@
 using ClassLibrary.Core.Helpers;
 using ClassLibrary.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HillerødSejlklub.Pages.Medlem;
+namespace HillerødSejlklub.Pages.Members;
 
-public class TilføjMedlemModel : PageModel
+public class AddMemberModel : PageModel
 {
-    private IMemberService _medlemService;
+    private readonly IMemberService _memberService;
 
     [BindProperty]
-    public ClassLibrary.Core.Models.Member Medlem { get; set; }
+    public ClassLibrary.Core.Models.Member Member { get; set; }
 
-    public TilføjMedlemModel(IMemberService medlemService)
+    public AddMemberModel(IMemberService memberService)
     {
-        _medlemService = medlemService;
+        _memberService = memberService;
     }
 
     public IActionResult OnGet()
@@ -23,7 +22,7 @@ public class TilføjMedlemModel : PageModel
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
-            return RedirectToPage("Medlemmer");
+            return RedirectToPage("AllMembers");
         }
 
         return Page();
@@ -35,7 +34,7 @@ public class TilføjMedlemModel : PageModel
         {
             return Page();
         }
-        _medlemService.AddMember(Medlem);
-        return RedirectToPage("Medlemmer");
+        _memberService.AddMember(Member);
+        return RedirectToPage("AllMembers");
     }
 }
