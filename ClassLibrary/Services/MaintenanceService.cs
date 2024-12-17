@@ -5,9 +5,9 @@ using System.Linq;
 public class MaintenanceService : IMaintenanceService
 {
     private readonly Dictionary<string, List<Maintenance>> _maintenanceData;
-    private readonly IJsonDataService<Båd> _jsonBoatService;
+    private readonly IJsonDataService<Boat> _jsonBoatService;
 
-    public MaintenanceService(IJsonDataService<Båd> jsonBoatService)
+    public MaintenanceService(IJsonDataService<Boat> jsonBoatService)
     {
         _jsonBoatService = jsonBoatService;
         _maintenanceData = LoadMaintenanceJsonData();

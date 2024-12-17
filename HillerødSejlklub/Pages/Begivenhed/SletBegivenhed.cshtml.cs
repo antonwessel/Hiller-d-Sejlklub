@@ -35,7 +35,7 @@ public class SletBegivenhedModel : PageModel
 
     public IActionResult OnPost()
     {
-        _begivenhedService.DeleteBegivenhed(Begivenhed.Navn);
+        _begivenhedService.DeleteEvent(Begivenhed.Navn);
         return RedirectToPage("Begivenheder");
     }
 }

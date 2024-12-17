@@ -10,15 +10,15 @@ namespace HillerødSejlklub.Pages.Både.Maintenance;
 public class AddMaintenanceModel : PageModel
 {
     private readonly IMaintenanceService _maintenanceService;
-    private readonly IBådService _bådService;
+    private readonly IBoatService _bådService;
 
     [BindNever] // Lad være med at data validere dette
-    public Båd Båd { get; private set; }
+    public Boat Båd { get; private set; }
 
     [BindProperty]
     public ClassLibrary.Core.Models.Maintenance Maintenance { get; set; }
 
-    public AddMaintenanceModel(IMaintenanceService maintenanceService, IBådService bådService)
+    public AddMaintenanceModel(IMaintenanceService maintenanceService, IBoatService bådService)
     {
         _maintenanceService = maintenanceService;
         _bådService = bådService;
@@ -32,7 +32,7 @@ public class AddMaintenanceModel : PageModel
             return RedirectToPage("../AlleBåde");
         }
 
-        Båd = _bådService.GetBåd(bådNavn);
+        Båd = _bådService.GetBoat(bådNavn);
         return Page();
     }
 
@@ -40,7 +40,7 @@ public class AddMaintenanceModel : PageModel
     {
         if (!ModelState.IsValid)
         {
-            Båd = _bådService.GetBåd(bådNavn); // For at undgå null reference exception 
+            Båd = _bådService.GetBoat(bådNavn); // For at undgå null reference exception 
             return Page();
         }
 

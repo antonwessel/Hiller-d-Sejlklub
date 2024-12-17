@@ -10,13 +10,13 @@ namespace HillerødSejlklub.Pages.Begivenhed.Participation;
 public class ParticipationListModel : PageModel
 {
     private readonly IEventService _begivenhedService;
-    private readonly IMedlemService _medlemService;
+    private readonly IMemberService _medlemService;
 
     [BindProperty]
-    public List<ClassLibrary.Core.Models.Medlem> Participants { get; set; }
+    public List<ClassLibrary.Core.Models.Member> Participants { get; set; }
 
     [BindProperty]
-    public List<ClassLibrary.Core.Models.Medlem> AllAvailableParticipants { get; set; }
+    public List<ClassLibrary.Core.Models.Member> AllAvailableParticipants { get; set; }
 
     [Required]
     [BindProperty]
@@ -25,7 +25,7 @@ public class ParticipationListModel : PageModel
     [BindProperty]
     public Event CurrentEvent { get; set; }
 
-    public ParticipationListModel(IEventService begivenhedService, IMedlemService medlemService)
+    public ParticipationListModel(IEventService begivenhedService, IMemberService medlemService)
     {
         _begivenhedService = begivenhedService;
         _medlemService = medlemService;
@@ -40,7 +40,7 @@ public class ParticipationListModel : PageModel
     public IActionResult OnPost(Guid eventId)
     {
         // Find den valgte deltager fra listen af medlemmer
-        var selectedParticipant = _medlemService.GetMedlemmer()
+        var selectedParticipant = _medlemService.GetMembers()
             .FirstOrDefault(m => m.Id == NewParticipantId);
 
         _begivenhedService.AddParticipantToEvent(selectedParticipant, eventId);
@@ -62,7 +62,7 @@ public class ParticipationListModel : PageModel
         Participants = _begivenhedService.GetParticipants(eventId);
 
         // Hent alle tilgængelige deltagere, som ikke allerede er med
-        AllAvailableParticipants = _medlemService.GetMedlemmer()
+        AllAvailableParticipants = _medlemService.GetMembers()
             .Where(member => !Participants.Contains(member))
             .ToList();
     }

@@ -38,7 +38,7 @@ public class TilføjBegivenhedModel : PageModel
 
             return Page();
         }
-        _begivenhedService.AddBegivenhed(Begivenhed);
+        _begivenhedService.AddEvent(Begivenhed);
 
 
         return RedirectToPage("Begivenheder");

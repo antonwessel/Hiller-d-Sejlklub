@@ -3,27 +3,27 @@ using ClassLibrary.Core.Models;
 
 namespace ClassLibrary.Services;
 
-public class MedlemService : IMedlemService
+public class MedlemService : IMemberService
 {
-    private List<Medlem> _medlemList = [];
+    private List<Member> _medlemList = [];
 
-    public IJsonDataService<Medlem> JsonDataService { get; }
+    public IJsonDataService<Member> JsonDataService { get; }
 
-    public MedlemService(IJsonDataService<Medlem> jsonDataService)
+    public MedlemService(IJsonDataService<Member> jsonDataService)
     {
         JsonDataService = jsonDataService;
         _medlemList = JsonDataService.LoadData().ToList();
     }
 
-    public void AddMedlem(Medlem medlem)
+    public void AddMember(Member medlem)
     {
         _medlemList.Add(medlem);
         JsonDataService.SaveData(_medlemList);
     }
 
-    public Medlem DeleteMedlem(string? email)
+    public Member DeleteMember(string? email)
     {
-        Medlem medlemToDelete = _medlemList.FirstOrDefault(m => m.Email == email);
+        Member medlemToDelete = _medlemList.FirstOrDefault(m => m.Email == email);
         if (medlemToDelete != null)
         {
             _medlemList.Remove(medlemToDelete);
@@ -32,26 +32,26 @@ public class MedlemService : IMedlemService
         return medlemToDelete;
     }
 
-    public List<Medlem> FilterMembersByName(string name)
+    public List<Member> FilterMembersByName(string name)
     {
         return _medlemList
             .Where(m => m.Navn.Contains(name, StringComparison.CurrentCultureIgnoreCase))
             .ToList();
     }
 
-    public Medlem GetMedlem(string email)
+    public Member GetMember(string email)
     {
         return _medlemList.FirstOrDefault(m => m.Email == email);
     }
 
-    public Medlem GetMedlem(Guid id)
+    public Member GetMember(Guid id)
     {
         return _medlemList.FirstOrDefault(m => m.Id == id);
     }
 
-    public List<Medlem> GetMedlemmer() => _medlemList;
+    public List<Member> GetMembers() => _medlemList;
 
-    public void UpdateMedlem(Medlem medlem)
+    public void UpdateMember(Member medlem)
     {
         var existingMedlem = _medlemList.FirstOrDefault(m => m.Email == medlem.Email);
         if (existingMedlem != null)

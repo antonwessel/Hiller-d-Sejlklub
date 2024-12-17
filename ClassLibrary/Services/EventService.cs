@@ -14,13 +14,13 @@ public class EventService : IEventService
         _eventsList = JsonDataService.LoadData().ToList();
     }
 
-    public void AddBegivenhed(Event begivenhed)
+    public void AddEvent(Event begivenhed)
     {
         _eventsList.Add(begivenhed);
         JsonDataService.SaveData(_eventsList);
     }
 
-    public void AddParticipantToEvent(Medlem participant, Guid eventId)
+    public void AddParticipantToEvent(Member participant, Guid eventId)
     {
         foreach (var evt in _eventsList)
         {
@@ -33,7 +33,7 @@ public class EventService : IEventService
         }
     }
 
-    public Event DeleteBegivenhed(string? navn)
+    public Event DeleteEvent(string? navn)
     {
         Event eventToDelete = null;
 
@@ -93,7 +93,7 @@ public class EventService : IEventService
 
     public List<Event> GetEvents() => _eventsList;
 
-    public List<Medlem> GetParticipants(Guid eventId)
+    public List<Member> GetParticipants(Guid eventId)
     {
         foreach (var @event in _eventsList)
         {
@@ -122,7 +122,7 @@ public class EventService : IEventService
         }
     }
 
-    public void UpdateBegivenhed(Event begivenhed)
+    public void UpdateEvent(Event begivenhed)
     {
         foreach (var events in _eventsList)
         {

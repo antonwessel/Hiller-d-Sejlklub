@@ -8,12 +8,12 @@ namespace HillerødSejlklub.Pages.Medlem;
 
 public class TilføjMedlemModel : PageModel
 {
-    private IMedlemService _medlemService;
+    private IMemberService _medlemService;
 
     [BindProperty]
-    public ClassLibrary.Core.Models.Medlem Medlem { get; set; }
+    public ClassLibrary.Core.Models.Member Medlem { get; set; }
 
-    public TilføjMedlemModel(IMedlemService medlemService)
+    public TilføjMedlemModel(IMemberService medlemService)
     {
         _medlemService = medlemService;
     }
@@ -35,7 +35,7 @@ public class TilføjMedlemModel : PageModel
         {
             return Page();
         }
-        _medlemService.AddMedlem(Medlem);
+        _medlemService.AddMember(Medlem);
         return RedirectToPage("Medlemmer");
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ClassLibrary.Core.Models;
 
-public class Båd
+public class Boat
 {
     [Required(ErrorMessage = "BådType er påkrævet.")]
     [StringLength(50, ErrorMessage = "BådType må højst være 50 tegn.")]
@@ -23,7 +23,7 @@ public class Båd
 
     public List<Maintenance> Maintenances { get; set; } // Til vedligeholdese liste
 
-    public Båd(string bådType, string model, string navn, string billedeUrl, List<Maintenance> maintenances)
+    public Boat(string bådType, string model, string navn, string billedeUrl, List<Maintenance> maintenances)
     {
         BådType = bådType;
         BådModel = model;
@@ -32,7 +32,7 @@ public class Båd
         Maintenances = maintenances;
     }
 
-    public Båd()
+    public Boat()
     {
         Maintenances = new List<Maintenance>();
     }

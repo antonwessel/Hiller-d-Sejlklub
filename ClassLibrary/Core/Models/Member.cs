@@ -2,7 +2,7 @@
 
 namespace ClassLibrary.Core.Models;
 
-public class Medlem
+public class Member
 {
     public Guid Id { get; set; }
 
@@ -18,7 +18,7 @@ public class Medlem
     [EmailAddress(ErrorMessage = "Indtast en gyldig email-adresse.")]
     public string Email { get; set; }
 
-    public Medlem(string navn, string telefonNummer, string email)
+    public Member(string navn, string telefonNummer, string email)
     {
         Id = Guid.NewGuid();
         Navn = navn;
@@ -26,14 +26,14 @@ public class Medlem
         Email = email;
     }
 
-    public Medlem()
+    public Member()
     {
         Id = Guid.NewGuid();
     }
 
     public override bool Equals(object obj)
     {
-        if (obj is not Medlem other)
+        if (obj is not Member other)
             return false;
 
         return Id == other.Id;

@@ -8,12 +8,12 @@ namespace HillerødSejlklub.Pages.Både;
 
 public class SletBådModel : PageModel
 {
-    private IBådService _bådService;
+    private IBoatService _bådService;
 
     [BindProperty]
-    public Båd Båd { get; set; }
+    public Boat Båd { get; set; }
 
-    public SletBådModel(IBådService bådService)
+    public SletBådModel(IBoatService bådService)
     {
         _bådService = bådService;
     }
@@ -26,13 +26,13 @@ public class SletBådModel : PageModel
             return RedirectToPage("AlleBåde");
         }
 
-        Båd = _bådService.GetBåd(navn);
+        Båd = _bådService.GetBoat(navn);
         return Page();
     }
 
     public IActionResult OnPost()
     {
-        _bådService.DeleteBåd(Båd.Navn);
+        _bådService.DeleteBoat(Båd.Navn);
         return RedirectToPage("AlleBåde");
     }
 }

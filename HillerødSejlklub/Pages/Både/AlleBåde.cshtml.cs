@@ -6,16 +6,16 @@ namespace HillerødSejlklub.Pages.Både;
 
 public class AlleBådeModel : PageModel
 {
-    private IBådService _bådService;
-    public List<Båd> Både { get; set; }
+    private IBoatService _bådService;
+    public List<Boat> Både { get; set; }
 
-    public AlleBådeModel(IBådService bådService)
+    public AlleBådeModel(IBoatService bådService)
     {
         _bådService = bådService;
     }
 
     public void OnGet()
     {
-        Både = _bådService.GetBåde();
+        Både = _bådService.GetBoats();
     }
 }

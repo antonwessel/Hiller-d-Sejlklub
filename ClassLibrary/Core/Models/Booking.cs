@@ -6,10 +6,10 @@ public class Booking
 {
     public Guid Id { get; set; }
     public DateTime DateBooked { get; set; }
-    public Medlem MedlemToBook { get; set; }
-    public Båd BoatToBook { get; set; }
+    public Member MedlemToBook { get; set; }
+    public Boat BoatToBook { get; set; }
 
-    public Booking(Medlem medlem, Båd boat, DateTime date)
+    public Booking(Member medlem, Boat boat, DateTime date)
     {
         Id = Guid.NewGuid();
         MedlemToBook = medlem;

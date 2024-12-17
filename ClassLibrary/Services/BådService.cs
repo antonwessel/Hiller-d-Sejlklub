@@ -3,14 +3,14 @@ using ClassLibrary.Core.Models;
 
 namespace ClassLibrary.Services;
 
-public class BådService : IBådService
+public class BådService : IBoatService
 {
-    private List<Båd> _bådeListe;
+    private List<Boat> _bådeListe;
     private readonly IMaintenanceService _maintenanceService;
 
-    public IJsonDataService<Båd> JsonDataService { get; }
+    public IJsonDataService<Boat> JsonDataService { get; }
 
-    public BådService(IMaintenanceService maintenanceService, IJsonDataService<Båd> jsonDataService)
+    public BådService(IMaintenanceService maintenanceService, IJsonDataService<Boat> jsonDataService)
     {
         _maintenanceService = maintenanceService;
         JsonDataService = jsonDataService;
@@ -25,13 +25,13 @@ public class BådService : IBådService
         }
     }
 
-    public void AddBåd(Båd båd)
+    public void AddBoat(Boat båd)
     {
         _bådeListe.Add(båd);
         JsonDataService.SaveData(_bådeListe);
     }
 
-    public Båd DeleteBåd(string? navn)
+    public Boat DeleteBoat(string? navn)
     {
         // forsøg at find en båd der matcher navn
         var båd = _bådeListe.FirstOrDefault(b => b.Navn == navn);
@@ -43,11 +43,11 @@ public class BådService : IBådService
         return båd;
     }
 
-    public Båd GetBåd(string navn) => _bådeListe.FirstOrDefault(b => b.Navn == navn);
+    public Boat GetBoat(string navn) => _bådeListe.FirstOrDefault(b => b.Navn == navn);
 
-    public List<Båd> GetBåde() => _bådeListe;
+    public List<Boat> GetBoats() => _bådeListe;
 
-    public void UpdateBåd(Båd båd)
+    public void UpdateBoat(Boat båd)
     {
         var existingBåd = _bådeListe.FirstOrDefault(b => b.Navn == båd.Navn);
         if (existingBåd != null)

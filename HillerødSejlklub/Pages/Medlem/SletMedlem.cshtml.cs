@@ -7,12 +7,12 @@ namespace HillerødSejlklub.Pages.Medlem;
 
 public class SletMedlemModel : PageModel
 {
-    private IMedlemService _medlemService;
+    private IMemberService _medlemService;
 
     [BindProperty]
-    public ClassLibrary.Core.Models.Medlem Medlem { get; set; }
+    public ClassLibrary.Core.Models.Member Medlem { get; set; }
 
-    public SletMedlemModel(IMedlemService medlemService)
+    public SletMedlemModel(IMemberService medlemService)
     {
         _medlemService = medlemService;
     }
@@ -27,13 +27,13 @@ public class SletMedlemModel : PageModel
 
         // 'asp-route-email' under Medlemmer.cshtml bliver brugt med parameter 'email'. Argumentet til email bliver givet når man klikker (router) til denne page.
 
-        Medlem = _medlemService.GetMedlem(email);
+        Medlem = _medlemService.GetMember(email);
         return Page();
     }
 
     public IActionResult OnPost()
     {
-        _medlemService.DeleteMedlem(Medlem.Email);
+        _medlemService.DeleteMember(Medlem.Email);
         return RedirectToPage("Medlemmer");
     }
 }

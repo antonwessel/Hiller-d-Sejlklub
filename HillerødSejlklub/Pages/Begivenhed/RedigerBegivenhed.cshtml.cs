@@ -40,7 +40,7 @@ public class RedigerBegivenhedModel : PageModel
 
         }
 
-        _begivenhedService.UpdateBegivenhed(Event);
+        _begivenhedService.UpdateEvent(Event);
         return RedirectToPage("Begivenheder");
     }
 }

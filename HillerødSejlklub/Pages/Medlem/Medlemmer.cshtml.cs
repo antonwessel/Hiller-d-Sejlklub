@@ -6,21 +6,21 @@ namespace HillerødSejlklub.Pages.Medlem;
 
 public class MedlemmerModel : PageModel
 {
-    private IMedlemService _medlemService;
+    private IMemberService _medlemService;
 
     [BindProperty]
     public string NameSearch { get; set; }
 
-    public List<ClassLibrary.Core.Models.Medlem> Medlemmer { get; set; }
+    public List<ClassLibrary.Core.Models.Member> Medlemmer { get; set; }
 
-    public MedlemmerModel(IMedlemService medlemService)
+    public MedlemmerModel(IMemberService medlemService)
     {
         _medlemService = medlemService;
     }
 
     public void OnGet()
     {
-        Medlemmer = _medlemService.GetMedlemmer();
+        Medlemmer = _medlemService.GetMembers();
     }
 
     public IActionResult OnPostSearch()
@@ -31,7 +31,7 @@ public class MedlemmerModel : PageModel
         }
         else
         {
-            Medlemmer = _medlemService.GetMedlemmer();
+            Medlemmer = _medlemService.GetMembers();
         }
         return Page();
     }

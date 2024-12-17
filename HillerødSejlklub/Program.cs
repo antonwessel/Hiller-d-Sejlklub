@@ -8,18 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<IMedlemService, MedlemService>();
-builder.Services.AddSingleton<IBådService, BådService>();
+builder.Services.AddSingleton<IMemberService, MedlemService>();
+builder.Services.AddSingleton<IBoatService, BådService>();
 builder.Services.AddSingleton<IEventService, EventService>();
 builder.Services.AddSingleton<IBlogService, BlogService>();
 builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();
 builder.Services.AddSingleton<IBookingService, BookingService>();
 
 
-builder.Services.AddSingleton<IJsonDataService<Medlem>, JsonFileMemberService>();
+builder.Services.AddSingleton<IJsonDataService<Member>, JsonFileMemberService>();
 builder.Services.AddSingleton<IJsonDataService<Blog>, JsonFileBlogService>();
 builder.Services.AddSingleton<IJsonDataService<Event>, JsonFileEventService>();
-builder.Services.AddSingleton<IJsonDataService<Båd>, JsonFileBoatService>();
+builder.Services.AddSingleton<IJsonDataService<Boat>, JsonFileBoatService>();
 builder.Services.AddSingleton<IJsonDataService<Booking>, JsonFileBookingService>();
 
 

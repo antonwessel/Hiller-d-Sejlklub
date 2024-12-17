@@ -8,18 +8,18 @@ namespace HillerødSejlklub.Pages.Både.Booking;
 public class AllBookingsModel : PageModel
 {
     private readonly IBookingService _bookingService;
-    private readonly IBådService _bådService;
-    private readonly IMedlemService _medlemService;
+    private readonly IBoatService _bådService;
+    private readonly IMemberService _medlemService;
 
     [BindProperty] public List<ClassLibrary.Core.Models.Booking> Bookings { get; set; }
     [BindProperty] public string CurrentBoatName { get; set; }
-    [BindProperty] public Båd BoatToBook { get; set; }
-    [BindProperty] public ClassLibrary.Core.Models.Medlem MemberToBook { get; set; }
+    [BindProperty] public Boat BoatToBook { get; set; }
+    [BindProperty] public ClassLibrary.Core.Models.Member MemberToBook { get; set; }
     [BindProperty] public Guid MemberToBookId { get; set; }
-    [BindProperty] public List<ClassLibrary.Core.Models.Medlem> AllMembers { get; set; }
+    [BindProperty] public List<ClassLibrary.Core.Models.Member> AllMembers { get; set; }
     [BindProperty] public DateTime DateToBook { get; set; }
 
-    public AllBookingsModel(IBookingService bookingService, IBådService bådService, IMedlemService medlemService)
+    public AllBookingsModel(IBookingService bookingService, IBoatService bådService, IMemberService medlemService)
     {
         _bookingService = bookingService;
         _bådService = bådService;
@@ -34,8 +34,8 @@ public class AllBookingsModel : PageModel
 
     public IActionResult OnPost(string bådNavn)
     {
-        MemberToBook = _medlemService.GetMedlem(MemberToBookId);
-        BoatToBook = _bådService.GetBåd(bådNavn);
+        MemberToBook = _medlemService.GetMember(MemberToBookId);
+        BoatToBook = _bådService.GetBoat(bådNavn);
 
         // Check om der allerede er en booking med samme dato.
         if (_bookingService.BookingExists(BoatToBook, DateToBook))
@@ -55,6 +55,6 @@ public class AllBookingsModel : PageModel
     {
         CurrentBoatName = bådNavn;
         Bookings = _bookingService.GetAllBookings(bådNavn);
-        AllMembers = _medlemService.GetMedlemmer();
+        AllMembers = _medlemService.GetMembers();
     }
 }

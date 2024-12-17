@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace ClassLibrary.Services.JsonFileServices;
 
-public class JsonFileBoatService : IJsonDataService<Båd>
+public class JsonFileBoatService : IJsonDataService<Boat>
 {
     public string FilePath { get; }
 
@@ -14,7 +14,7 @@ public class JsonFileBoatService : IJsonDataService<Båd>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "boats.json");
     }
 
-    public IEnumerable<Båd> LoadData()
+    public IEnumerable<Boat> LoadData()
     {
         if (!File.Exists(FilePath))
         {
@@ -22,10 +22,10 @@ public class JsonFileBoatService : IJsonDataService<Båd>
         }
 
         var json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<IEnumerable<Båd>>(json) ?? [];
+        return JsonSerializer.Deserialize<IEnumerable<Boat>>(json) ?? [];
     }
 
-    public void SaveData(IEnumerable<Båd> data)
+    public void SaveData(IEnumerable<Boat> data)
     {
         var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
