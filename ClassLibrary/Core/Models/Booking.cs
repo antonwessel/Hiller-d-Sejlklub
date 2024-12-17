@@ -1,18 +1,16 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace ClassLibrary.Core.Models;
+﻿namespace ClassLibrary.Core.Models;
 
 public class Booking
 {
     public Guid Id { get; set; }
     public DateTime DateBooked { get; set; }
-    public Medlem MedlemToBook { get; set; }
-    public Båd BoatToBook { get; set; }
+    public Member MemberToBook { get; set; }
+    public Boat BoatToBook { get; set; }
 
-    public Booking(Medlem medlem, Båd boat, DateTime date)
+    public Booking(Member member, Boat boat, DateTime date)
     {
         Id = Guid.NewGuid();
-        MedlemToBook = medlem;
+        MemberToBook = member;
         BoatToBook = boat;
         DateBooked = date;
     }

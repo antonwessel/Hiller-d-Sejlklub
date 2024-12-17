@@ -11,46 +11,42 @@ public class BookingService : IBookingService
     public BookingService(IJsonDataService<Booking> jsonDataService)
     {
         JsonDataService = jsonDataService;
+
+        // Henter bookinger fra JSON og laver dem til en liste
         _bookings = JsonDataService.LoadData().ToList();
     }
 
-    public void AddBooking(Båd boat, Medlem medlem, DateTime date)
+    public void AddBooking(Boat boatToBook, Member memberToBook, DateTime dateToBok)
     {
-        _bookings.Add(new Booking(medlem, boat, date));
+        _bookings.Add(new Booking(memberToBook, boatToBook, dateToBok));
         JsonDataService.SaveData(_bookings);
     }
 
-    public void DeleteBooking(Guid id)
+    public void DeleteBooking(Guid bookingId)
     {
         foreach (var booking in _bookings)
         {
-            if (booking.Id == id)
+            if (booking.Id == bookingId)
             {
                 _bookings.Remove(booking);
                 JsonDataService.SaveData(_bookings);
-                break;
+                break; // Stopper efter at have fundet og slettet bookingen
             }
         }
     }
 
-    public List<Booking> GetAllBookings(string bådNavn)
+    public List<Booking> GetAllBookings(string boatName)
     {
         List<Booking> allBookings = [];
+
         foreach (var booking in _bookings)
         {
-            if (booking.BoatToBook.Navn == bådNavn)
+            if (booking.BoatToBook.BoatName == boatName)
             {
                 allBookings.Add(booking);
             }
         }
         return allBookings;
-    }
-
-    public List<Båd> GetAvailableBoats(List<Båd> allBoats, DateTime date)
-    {
-        var bookedBoats = _bookings.Where(b => b.DateBooked.Date == date.Date).Select(b => b.BoatToBook).ToList();
-        var availableBoats = allBoats.Where(boat => !bookedBoats.Contains(boat)).ToList();
-        return availableBoats;
     }
 
     public void UpdateBooking(Booking booking)
@@ -59,18 +55,21 @@ public class BookingService : IBookingService
         {
             if (bok.Id == booking.Id)
             {
+                // Opdaterer bookingen med ny information
                 bok.DateBooked = booking.DateBooked;
-                bok.MedlemToBook = booking.MedlemToBook;
+                bok.MemberToBook = booking.MemberToBook;
                 bok.BoatToBook = booking.BoatToBook;
+
                 JsonDataService.SaveData(_bookings);
-                break;
+                break; // Stopper efter opdatering
             }
         }
     }
 
-    public bool BookingExists(Båd boat, DateTime date)
+    public bool BookingExists(Boat boat, DateTime date)
     {
-        return _bookings.Any(b => b.BoatToBook.Navn == boat.Navn && b.DateBooked.Date == date.Date);
+        // Tjekker om der er en booking for denne båd på denne dato
+        return _bookings.Any(b => b.BoatToBook.BoatName == boat.BoatName && b.DateBooked.Date == date.Date);
     }
 
     public Booking GetBooking(Guid id) => _bookings.FirstOrDefault(booking => booking.Id == id);

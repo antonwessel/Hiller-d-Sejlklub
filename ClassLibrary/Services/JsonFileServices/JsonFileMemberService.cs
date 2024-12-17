@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace ClassLibrary.Services.JsonFileServices;
 
-public class JsonFileMemberService : IJsonDataService<Medlem>
+public class JsonFileMemberService : IJsonDataService<Member>
 {
     public string FilePath { get; }
 
@@ -14,23 +14,23 @@ public class JsonFileMemberService : IJsonDataService<Medlem>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "members.json");
     }
 
-    public IEnumerable<Medlem> LoadData()
+    public IEnumerable<Member> LoadData()
     {
         if (!File.Exists(FilePath))
         {
             return [];
         }
 
-        var json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<IEnumerable<Medlem>>(json) ?? [];
+        var jsonData = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<IEnumerable<Member>>(jsonData) ?? [];
     }
 
-    public void SaveData(IEnumerable<Medlem> data)
+    public void SaveData(IEnumerable<Member> data)
     {
-        var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
+        var jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
             WriteIndented = true,
         });
-        File.WriteAllText(FilePath, json);
+        File.WriteAllText(FilePath, jsonData);
     }
 }

@@ -29,40 +29,40 @@ $.extend( $.fn, {
 			return;
 		}
 
-		// Check if a validator for this form was already created
-		var validator = $.data( this[ 0 ], "validator" );
-		if ( validator ) {
-			return validator;
+		// Check if a valiDater for this form was already created
+		var valiDater = $.data( this[ 0 ], "valiDater" );
+		if ( valiDater ) {
+			return valiDater;
 		}
 
 		// Add novalidate tag if HTML5.
 		this.attr( "novalidate", "novalidate" );
 
-		validator = new $.validator( options, this[ 0 ] );
-		$.data( this[ 0 ], "validator", validator );
+		valiDater = new $.valiDater( options, this[ 0 ] );
+		$.data( this[ 0 ], "valiDater", valiDater );
 
-		if ( validator.settings.onsubmit ) {
+		if ( valiDater.settings.onsubmit ) {
 
 			this.on( "click.validate", ":submit", function( event ) {
 
 				// Track the used submit button to properly handle scripted
 				// submits later.
-				validator.submitButton = event.currentTarget;
+				valiDater.submitButton = event.currentTarget;
 
 				// Allow suppressing validation by adding a cancel class to the submit button
 				if ( $( this ).hasClass( "cancel" ) ) {
-					validator.cancelSubmit = true;
+					valiDater.cancelSubmit = true;
 				}
 
 				// Allow suppressing validation by adding the html5 formnovalidate attribute to the submit button
 				if ( $( this ).attr( "formnovalidate" ) !== undefined ) {
-					validator.cancelSubmit = true;
+					valiDater.cancelSubmit = true;
 				}
 			} );
 
 			// Validate the form on submit
 			this.on( "submit.validate", function( event ) {
-				if ( validator.settings.debug ) {
+				if ( valiDater.settings.debug ) {
 
 					// Prevent form submit to be able to see console output
 					event.preventDefault();
@@ -76,15 +76,15 @@ $.extend( $.fn, {
 					//   - A user defined a `submitHandler`
 					//   - There was a pending request due to `remote` method and `stopRequest()`
 					//     was called to submit the form in case it's valid
-					if ( validator.submitButton && ( validator.settings.submitHandler || validator.formSubmitted ) ) {
+					if ( valiDater.submitButton && ( valiDater.settings.submitHandler || valiDater.formSubmitted ) ) {
 						hidden = $( "<input type='hidden'/>" )
-							.attr( "name", validator.submitButton.name )
-							.val( $( validator.submitButton ).val() )
-							.appendTo( validator.currentForm );
+							.attr( "name", valiDater.submitButton.name )
+							.val( $( valiDater.submitButton ).val() )
+							.appendTo( valiDater.currentForm );
 					}
 
-					if ( validator.settings.submitHandler && !validator.settings.debug ) {
-						result = validator.settings.submitHandler.call( validator, validator.currentForm, event );
+					if ( valiDater.settings.submitHandler && !valiDater.settings.debug ) {
+						result = valiDater.settings.submitHandler.call( valiDater, valiDater.currentForm, event );
 						if ( hidden ) {
 
 							// And clean up afterwards; thanks to no-block-scope, hidden can be referenced
@@ -99,43 +99,43 @@ $.extend( $.fn, {
 				}
 
 				// Prevent submit for invalid forms or custom submit handlers
-				if ( validator.cancelSubmit ) {
-					validator.cancelSubmit = false;
+				if ( valiDater.cancelSubmit ) {
+					valiDater.cancelSubmit = false;
 					return handle();
 				}
-				if ( validator.form() ) {
-					if ( validator.pendingRequest ) {
-						validator.formSubmitted = true;
+				if ( valiDater.form() ) {
+					if ( valiDater.pendingRequest ) {
+						valiDater.formSubmitted = true;
 						return false;
 					}
 					return handle();
 				} else {
-					validator.focusInvalid();
+					valiDater.focusInvalid();
 					return false;
 				}
 			} );
 		}
 
-		return validator;
+		return valiDater;
 	},
 
 	// https://jqueryvalidation.org/valid/
 	valid: function() {
-		var valid, validator, errorList;
+		var valid, valiDater, errorList;
 
 		if ( $( this[ 0 ] ).is( "form" ) ) {
 			valid = this.validate().form();
 		} else {
 			errorList = [];
 			valid = true;
-			validator = $( this[ 0 ].form ).validate();
+			valiDater = $( this[ 0 ].form ).validate();
 			this.each( function() {
-				valid = validator.element( this ) && valid;
+				valid = valiDater.element( this ) && valid;
 				if ( !valid ) {
-					errorList = errorList.concat( validator.errorList );
+					errorList = errorList.concat( valiDater.errorList );
 				}
 			} );
-			validator.errorList = errorList;
+			valiDater.errorList = errorList;
 		}
 		return valid;
 	},
@@ -161,12 +161,12 @@ $.extend( $.fn, {
 		}
 
 		if ( command ) {
-			settings = $.data( element.form, "validator" ).settings;
+			settings = $.data( element.form, "valiDater" ).settings;
 			staticRules = settings.rules;
-			existingRules = $.validator.staticRules( element );
+			existingRules = $.valiDater.staticRules( element );
 			switch ( command ) {
 			case "add":
-				$.extend( existingRules, $.validator.normalizeRule( argument ) );
+				$.extend( existingRules, $.valiDater.normalizeRule( argument ) );
 
 				// Remove messages from rules, but allow them to be set separately
 				delete existingRules.messages;
@@ -189,13 +189,13 @@ $.extend( $.fn, {
 			}
 		}
 
-		data = $.validator.normalizeRules(
+		data = $.valiDater.normalizeRules(
 		$.extend(
 			{},
-			$.validator.classRules( element ),
-			$.validator.attributeRules( element ),
-			$.validator.dataRules( element ),
-			$.validator.staticRules( element )
+			$.valiDater.classRules( element ),
+			$.valiDater.attributeRules( element ),
+			$.valiDater.dataRules( element ),
+			$.valiDater.staticRules( element )
 		), element );
 
 		// Make sure required is at front
@@ -243,20 +243,20 @@ $.extend( $.expr.pseudos || $.expr[ ":" ], {		// '|| $.expr[ ":" ]' here enables
 	}
 } );
 
-// Constructor for validator
-$.validator = function( options, form ) {
-	this.settings = $.extend( true, {}, $.validator.defaults, options );
+// Constructor for valiDater
+$.valiDater = function( options, form ) {
+	this.settings = $.extend( true, {}, $.valiDater.defaults, options );
 	this.currentForm = form;
 	this.init();
 };
 
-// https://jqueryvalidation.org/jQuery.validator.format/
-$.validator.format = function( source, params ) {
+// https://jqueryvalidation.org/jQuery.valiDater.format/
+$.valiDater.format = function( source, params ) {
 	if ( arguments.length === 1 ) {
 		return function() {
 			var args = $.makeArray( arguments );
 			args.unshift( source );
-			return $.validator.format.apply( this, args );
+			return $.valiDater.format.apply( this, args );
 		};
 	}
 	if ( params === undefined ) {
@@ -276,7 +276,7 @@ $.validator.format = function( source, params ) {
 	return source;
 };
 
-$.extend( $.validator, {
+$.extend( $.valiDater, {
 
 	defaults: {
 		messages: {},
@@ -363,9 +363,9 @@ $.extend( $.validator, {
 		}
 	},
 
-	// https://jqueryvalidation.org/jQuery.validator.setDefaults/
+	// https://jqueryvalidation.org/jQuery.valiDater.setDefaults/
 	setDefaults: function( settings ) {
-		$.extend( $.validator.defaults, settings );
+		$.extend( $.valiDater.defaults, settings );
 	},
 
 	messages: {
@@ -378,13 +378,13 @@ $.extend( $.validator, {
 		number: "Please enter a valid number.",
 		digits: "Please enter only digits.",
 		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
-		minlength: $.validator.format( "Please enter at least {0} characters." ),
-		rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
-		range: $.validator.format( "Please enter a value between {0} and {1}." ),
-		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
-		min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
-		step: $.validator.format( "Please enter a multiple of {0}." )
+		maxlength: $.valiDater.format( "Please enter no more than {0} characters." ),
+		minlength: $.valiDater.format( "Please enter at least {0} characters." ),
+		rangelength: $.valiDater.format( "Please enter a value between {0} and {1} characters long." ),
+		range: $.valiDater.format( "Please enter a value between {0} and {1}." ),
+		max: $.valiDater.format( "Please enter a value less than or equal to {0}." ),
+		min: $.valiDater.format( "Please enter a value greater than or equal to {0}." ),
+		step: $.valiDater.format( "Please enter a multiple of {0}." )
 	},
 
 	autoCreateRanges: false,
@@ -415,7 +415,7 @@ $.extend( $.validator, {
 			} );
 			rules = this.settings.rules;
 			$.each( rules, function( key, value ) {
-				rules[ key ] = $.validator.normalizeRule( value );
+				rules[ key ] = $.valiDater.normalizeRule( value );
 			} );
 
 			function delegate( event ) {
@@ -433,11 +433,11 @@ $.extend( $.validator, {
 					return;
 				}
 
-				var validator = $.data( this.form, "validator" ),
+				var valiDater = $.data( this.form, "valiDater" ),
 					eventType = "on" + event.type.replace( /^validate/, "" ),
-					settings = validator.settings;
+					settings = valiDater.settings;
 				if ( settings[ eventType ] && !$( this ).is( settings.ignore ) ) {
-					settings[ eventType ].call( validator, this, event );
+					settings[ eventType ].call( valiDater, this, event );
 				}
 			}
 
@@ -457,7 +457,7 @@ $.extend( $.validator, {
 			}
 		},
 
-		// https://jqueryvalidation.org/Validator.form/
+		// https://jqueryvalidation.org/ValiDater.form/
 		form: function() {
 			this.checkForm();
 			$.extend( this.submitted, this.errorMap );
@@ -477,7 +477,7 @@ $.extend( $.validator, {
 			return this.valid();
 		},
 
-		// https://jqueryvalidation.org/Validator.element/
+		// https://jqueryvalidation.org/ValiDater.element/
 		element: function( element ) {
 			var cleanElement = this.clean( element ),
 				checkElement = this.validationTargetFor( cleanElement ),
@@ -528,17 +528,17 @@ $.extend( $.validator, {
 			return result;
 		},
 
-		// https://jqueryvalidation.org/Validator.showErrors/
+		// https://jqueryvalidation.org/ValiDater.showErrors/
 		showErrors: function( errors ) {
 			if ( errors ) {
-				var validator = this;
+				var valiDater = this;
 
 				// Add items to error list and map
 				$.extend( this.errorMap, errors );
 				this.errorList = $.map( this.errorMap, function( message, name ) {
 					return {
 						message: message,
-						element: validator.findByName( name )[ 0 ]
+						element: valiDater.findByName( name )[ 0 ]
 					};
 				} );
 
@@ -554,7 +554,7 @@ $.extend( $.validator, {
 			}
 		},
 
-		// https://jqueryvalidation.org/Validator.resetForm/
+		// https://jqueryvalidation.org/ValiDater.resetForm/
 		resetForm: function() {
 			if ( $.fn.resetForm ) {
 				$( this.currentForm ).resetForm();
@@ -646,7 +646,7 @@ $.extend( $.validator, {
 		},
 
 		elements: function() {
-			var validator = this,
+			var valiDater = this,
 				rulesCache = {};
 
 			// Select all valid inputs inside the form (no submit or reset buttons)
@@ -658,7 +658,7 @@ $.extend( $.validator, {
 				var name = this.name || $( this ).attr( "name" ); // For contenteditable
 				var isContentEditable = typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
 
-				if ( !name && validator.settings.debug && window.console ) {
+				if ( !name && valiDater.settings.debug && window.console ) {
 					console.error( "%o has no name assigned", this );
 				}
 
@@ -669,12 +669,12 @@ $.extend( $.validator, {
 				}
 
 				// Ignore elements that belong to other/nested forms
-				if ( this.form !== validator.currentForm ) {
+				if ( this.form !== valiDater.currentForm ) {
 					return false;
 				}
 
 				// Select only the first element for each name, and only those with rules specified
-				if ( name in rulesCache || !validator.objectLength( $( this ).rules() ) ) {
+				if ( name in rulesCache || !valiDater.objectLength( $( this ).rules() ) ) {
 					return false;
 				}
 
@@ -795,7 +795,7 @@ $.extend( $.validator, {
 			for ( method in rules ) {
 				rule = { method: method, parameters: rules[ method ] };
 				try {
-					result = $.validator.methods[ method ].call( this, val, element, rule.parameters );
+					result = $.valiDater.methods[ method ].call( this, val, element, rule.parameters );
 
 					// If a method indicates that the field is optional and therefore valid,
 					// don't mark it as valid when there are no other rules
@@ -878,14 +878,14 @@ $.extend( $.validator, {
 
 					// 'title' is never undefined, so handle empty string as undefined
 					!this.settings.ignoreTitle && element.title || undefined,
-					$.validator.messages[ rule.method ],
+					$.valiDater.messages[ rule.method ],
 					"<strong>Warning: No message defined for " + element.name + "</strong>"
 				),
 				theregex = /\$?\{(\d+)\}/g;
 			if ( typeof message === "function" ) {
 				message = message.call( this, rule.parameters, element );
 			} else if ( theregex.test( message ) ) {
-				message = $.validator.format( message.replace( theregex, "{$1}" ), rule.parameters );
+				message = $.valiDater.format( message.replace( theregex, "{$1}" ), rule.parameters );
 			}
 
 			return message;
@@ -1110,7 +1110,7 @@ $.extend( $.validator, {
 
 		optional: function( element ) {
 			var val = this.elementValue( element );
-			return !$.validator.methods.required.call( this, val, element ) && "dependency-mismatch";
+			return !$.valiDater.methods.required.call( this, val, element ) && "dependency-mismatch";
 		},
 
 		startRequest: function( element ) {
@@ -1158,13 +1158,13 @@ $.extend( $.validator, {
 			} );
 		},
 
-		// Cleans up all forms and elements, removes validator-specific events
+		// Cleans up all forms and elements, removes valiDater-specific events
 		destroy: function() {
 			this.resetForm();
 
 			$( this.currentForm )
 				.off( ".validate" )
-				.removeData( "validator" )
+				.removeData( "valiDater" )
 				.find( ".validate-equalTo-blur" )
 					.off( ".validate-equalTo" )
 					.removeClass( "validate-equalTo-blur" )
@@ -1209,8 +1209,8 @@ $.extend( $.validator, {
 
 		if ( classes ) {
 			$.each( classes.split( " " ), function() {
-				if ( this in $.validator.classRuleSettings ) {
-					$.extend( rules, $.validator.classRuleSettings[ this ] );
+				if ( this in $.valiDater.classRuleSettings ) {
+					$.extend( rules, $.valiDater.classRuleSettings[ this ] );
 				}
 			} );
 		}
@@ -1246,7 +1246,7 @@ $.extend( $.validator, {
 			type = element.getAttribute( "type" ),
 			method, value;
 
-		for ( method in $.validator.methods ) {
+		for ( method in $.valiDater.methods ) {
 
 			// Support for <input required> in both html5 and older browsers
 			if ( method === "required" ) {
@@ -1281,7 +1281,7 @@ $.extend( $.validator, {
 			type = element.getAttribute( "type" ),
 			method, value;
 
-		for ( method in $.validator.methods ) {
+		for ( method in $.valiDater.methods ) {
 			value = $element.data( "rule" + method.charAt( 0 ).toUpperCase() + method.substring( 1 ).toLowerCase() );
 
 			// Cast empty attributes like `data-rule-required` to `true`
@@ -1296,10 +1296,10 @@ $.extend( $.validator, {
 
 	staticRules: function( element ) {
 		var rules = {},
-			validator = $.data( element.form, "validator" );
+			valiDater = $.data( element.form, "valiDater" );
 
-		if ( validator.settings.rules ) {
-			rules = $.validator.normalizeRule( validator.settings.rules[ element.name ] ) || {};
+		if ( valiDater.settings.rules ) {
+			rules = $.valiDater.normalizeRule( valiDater.settings.rules[ element.name ] ) || {};
 		}
 		return rules;
 	},
@@ -1327,7 +1327,7 @@ $.extend( $.validator, {
 				if ( keepRule ) {
 					rules[ prop ] = val.param !== undefined ? val.param : true;
 				} else {
-					$.data( element.form, "validator" ).resetElements( $( element ) );
+					$.data( element.form, "valiDater" ).resetElements( $( element ) );
 					delete rules[ prop ];
 				}
 			}
@@ -1356,7 +1356,7 @@ $.extend( $.validator, {
 			}
 		} );
 
-		if ( $.validator.autoCreateRanges ) {
+		if ( $.valiDater.autoCreateRanges ) {
 
 			// Auto-create ranges
 			if ( rules.min != null && rules.max != null ) {
@@ -1386,16 +1386,16 @@ $.extend( $.validator, {
 		return data;
 	},
 
-	// https://jqueryvalidation.org/jQuery.validator.addMethod/
+	// https://jqueryvalidation.org/jQuery.valiDater.addMethod/
 	addMethod: function( name, method, message ) {
-		$.validator.methods[ name ] = method;
-		$.validator.messages[ name ] = message !== undefined ? message : $.validator.messages[ name ];
+		$.valiDater.methods[ name ] = method;
+		$.valiDater.messages[ name ] = message !== undefined ? message : $.valiDater.messages[ name ];
 		if ( method.length < 3 ) {
-			$.validator.addClassRules( name, $.validator.normalizeRule( name ) );
+			$.valiDater.addClassRules( name, $.valiDater.normalizeRule( name ) );
 		}
 	},
 
-	// https://jqueryvalidation.org/jQuery.validator.methods/
+	// https://jqueryvalidation.org/jQuery.valiDater.methods/
 	methods: {
 
 		// https://jqueryvalidation.org/required-method/
@@ -1567,7 +1567,7 @@ $.extend( $.validator, {
 			method = typeof method === "string" && method || "remote";
 
 			var previous = this.previousValue( element, method ),
-				validator, data, optionDataString;
+				valiDater, data, optionDataString;
 
 			if ( !this.settings.messages[ element.name ] ) {
 				this.settings.messages[ element.name ] = {};
@@ -1582,7 +1582,7 @@ $.extend( $.validator, {
 			}
 
 			previous.old = optionDataString;
-			validator = this;
+			valiDater = this;
 			this.startRequest( element );
 			data = {};
 			data[ element.name ] = value;
@@ -1591,29 +1591,29 @@ $.extend( $.validator, {
 				port: "validate" + element.name,
 				dataType: "json",
 				data: data,
-				context: validator.currentForm,
+				context: valiDater.currentForm,
 				success: function( response ) {
 					var valid = response === true || response === "true",
 						errors, message, submitted;
 
-					validator.settings.messages[ element.name ][ method ] = previous.originalMessage;
+					valiDater.settings.messages[ element.name ][ method ] = previous.originalMessage;
 					if ( valid ) {
-						submitted = validator.formSubmitted;
-						validator.resetInternals();
-						validator.toHide = validator.errorsFor( element );
-						validator.formSubmitted = submitted;
-						validator.successList.push( element );
-						validator.invalid[ element.name ] = false;
-						validator.showErrors();
+						submitted = valiDater.formSubmitted;
+						valiDater.resetInternals();
+						valiDater.toHide = valiDater.errorsFor( element );
+						valiDater.formSubmitted = submitted;
+						valiDater.successList.push( element );
+						valiDater.invalid[ element.name ] = false;
+						valiDater.showErrors();
 					} else {
 						errors = {};
-						message = response || validator.defaultMessage( element, { method: method, parameters: value } );
+						message = response || valiDater.defaultMessage( element, { method: method, parameters: value } );
 						errors[ element.name ] = previous.message = message;
-						validator.invalid[ element.name ] = true;
-						validator.showErrors( errors );
+						valiDater.invalid[ element.name ] = true;
+						valiDater.showErrors( errors );
 					}
 					previous.valid = valid;
-					validator.stopRequest( element, valid );
+					valiDater.stopRequest( element, valid );
 				}
 			}, param ) );
 			return "pending";

@@ -21,16 +21,16 @@ public class JsonFileBookingService : IJsonDataService<Booking>
             return [];
         }
 
-        var json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<IEnumerable<Booking>>(json) ?? [];
+        var jsonData = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<IEnumerable<Booking>>(jsonData) ?? [];
     }
 
     public void SaveData(IEnumerable<Booking> data)
     {
-        var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
+        var jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
             WriteIndented = true,
         });
-        File.WriteAllText(FilePath, json);
+        File.WriteAllText(FilePath, jsonData);
     }
 }

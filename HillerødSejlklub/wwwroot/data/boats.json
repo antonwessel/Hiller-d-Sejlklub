@@ -1,9 +1,9 @@
 [
   {
-    "B\u00E5dType": "Sejljolle",
-    "B\u00E5dModel": "J123",
-    "Navn": "Havfruen",
-    "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+    "BoatType": "Sejljolle",
+    "BoatModel": "J123",
+    "BoatName": "Havfruen",
+    "ImageURL": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
     "Maintenances": [
       {
         "Status": 1,
@@ -20,10 +20,10 @@
     ]
   },
   {
-    "B\u00E5dType": "Sejlb\u00E5d",
-    "B\u00E5dModel": "S456",
-    "Navn": "Vinden",
-    "BilledeUrl": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
+    "BoatType": "Sejlb\u00E5d",
+    "BoatModel": "S456",
+    "BoatName": "Vinden",
+    "ImageURL": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
     "Maintenances": [
       {
         "Status": 0,
@@ -46,10 +46,10 @@
     ]
   },
   {
-    "B\u00E5dType": "Jolle",
-    "B\u00E5dModel": "J789",
-    "Navn": "Lillebror",
-    "BilledeUrl": "https://dansksejlunion.dk/media/dykg05ll/190629-sommerlejr-2019-044.jpg?width=730\u0026height=382\u0026format=jpg\u0026rnd=133209435279400000",
+    "BoatType": "Jolle",
+    "BoatModel": "J789",
+    "BoatName": "Lillebror",
+    "ImageURL": "https://dansksejlunion.dk/media/dykg05ll/190629-sommerlejr-2019-044.jpg?width=730\u0026height=382\u0026format=jpg\u0026rnd=133209435279400000",
     "Maintenances": [
       {
         "Status": 0,
@@ -78,10 +78,10 @@
     ]
   },
   {
-    "B\u00E5dType": "Kajak",
-    "B\u00E5dModel": "K101",
-    "Navn": "Eventyreren",
-    "BilledeUrl": "https://image.alt.dk/1513646.webp?imageId=1513646\u0026width=960\u0026height=574\u0026format=jpg",
+    "BoatType": "Kajak",
+    "BoatModel": "K101",
+    "BoatName": "Eventyreren",
+    "ImageURL": "https://image.alt.dk/1513646.webp?imageId=1513646\u0026width=960\u0026height=574\u0026format=jpg",
     "Maintenances": [
       {
         "Status": 2,
@@ -98,10 +98,10 @@
     ]
   },
   {
-    "B\u00E5dType": "Kapsejladsb\u00E5",
-    "B\u00E5dModel": "R999",
-    "Navn": "Svanen",
-    "BilledeUrl": "https://www.baadmagasinet.dk/images/stories/egen%20ann/_DSC0095-web.jpg",
+    "BoatType": "Kapsejladsb\u00E5",
+    "BoatModel": "R999",
+    "BoatName": "Svanen",
+    "ImageURL": "https://www.baadmagasinet.dk/images/stories/egen%20ann/_DSC0095-web.jpg",
     "Maintenances": [
       {
         "Status": 0,

@@ -28,7 +28,7 @@ public class AdminLoginModel : PageModel
         // forsøg at logge ind
         if (!AdminState.AdminLogin(UsernameInput, PasswordInput))
         {
-            ErrorMessage = "Forkert brugernavn eller adgangskode.";
+            ErrorMessage = "Forkert brugerName eller adgangskode.";
             return Page();
         }
 

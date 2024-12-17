@@ -1,60 +1,36 @@
 [
   {
-    "Id": "c0a80247-690e-42cb-8b56-83b8a8d5df7f",
-    "DateBooked": "2024-12-12T10:00:00",
-    "MedlemToBook": {
+    "Id": "9136f31c-314e-47d7-8269-14fd20fa8fa8",
+    "DateBooked": "2024-12-17T00:00:00",
+    "MemberToBook": {
       "Id": "65226f1b-7fba-44bb-b5aa-aa9ace5886b9",
-      "Navn": "Ib Andersen",
-      "TelefonNummer": "24473004",
+      "Name": "Ib Andersen",
+      "PhoneNumber": "24473004",
       "Email": "ib.andersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
-      "BådType": "Sejljolle",
-      "BådModel": "J123",
-      "Navn": "Havfruen",
-      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "BoatType": "Kapsejladsb\u00E5",
+      "BoatModel": "R999",
+      "BoatName": "Svanen",
+      "ImageURL": "https://www.baadmagasinet.dk/images/stories/egen%20ann/_DSC0095-web.jpg",
       "Maintenances": [
         {
           "Status": 0,
-          "Date": "2023-10-10T20:15:00",
-          "Description": "Udskiftning af ror",
-          "MaintenanceId": "6cb40a99-fa23-4ea7-a4ed-3708fc82a665"
+          "Date": "2023-09-10T21:10:00",
+          "Description": "Udskiftning af sejl",
+          "MaintenanceId": "65c29a5e-1fc0-4d6d-962c-951108861b6c"
         },
         {
-          "Status": 0,
-          "Date": "2023-12-08T22:30:00",
-          "Description": "Reparation af bom",
-          "MaintenanceId": "6a522ca8-da67-4135-aa81-8f107ebd3ea2"
-        }
-      ]
-    }
-  },
-  {
-    "Id": "6d898a9e-6e7c-481e-98e2-e2c819b14f3f",
-    "DateBooked": "2024-12-12T15:00:00",
-    "MedlemToBook": {
-      "Id": "135b2615-8352-4c0f-9cd7-3dedfb7dfb84",
-      "Navn": "Emma Pedersen",
-      "TelefonNummer": "26807755",
-      "Email": "emma.pedersen@hillerodsejlklub.dk"
-    },
-    "BoatToBook": {
-      "BådType": "Sejlbåd",
-      "BådModel": "S456",
-      "Navn": "Vinden",
-      "BilledeUrl": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
-      "Maintenances": [
-        {
-          "Status": 0,
-          "Date": "2023-12-01T22:40:00",
-          "Description": "Udskiftning af mast",
-          "MaintenanceId": "e45428dc-d971-4b81-ac25-4c458c74c700"
-        },
-        {
-          "Status": 0,
+          "Status": 1,
           "Date": "2023-12-06T23:50:00",
-          "Description": "Justering af sejlhæfter",
-          "MaintenanceId": "d8eb5f10-8198-4ea0-8798-531e9b8f5ae8"
+          "Description": "Tjek af rig",
+          "MaintenanceId": "d0b9c89d-6540-476c-8c35-e5677e0a6c97"
+        },
+        {
+          "Status": 0,
+          "Date": "2023-11-21T22:40:00",
+          "Description": "Opgradering af skrog",
+          "MaintenanceId": "b62cd02c-c8c5-47c2-b809-1c87168e4f6b"
         }
       ]
     }

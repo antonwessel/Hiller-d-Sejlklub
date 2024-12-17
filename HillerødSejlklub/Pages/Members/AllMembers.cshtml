@@ -1,0 +1,53 @@
+﻿@page
+@using ClassLibrary.Core.Helpers
+@model AllMembersModel
+@{
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Vores Medlemmer</h1>
+    <form method="post" asp-page-handler="Search" class="d-flex align-items-center mb-3 w-auto">
+        <input type="text" asp-for="NameSearch" class="form-control me-2 w-auto" placeholder="Søg efter Name">
+        <button type="submit" class="btn btn-primary">Søg</button>
+    </form>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>PhoneNumber</th>
+                <th>Email</th>
+                @if (AdminState.IsAdminLoggedIn)
+                {
+                    <th>Håndtering</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model.Members)
+            {
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.PhoneNumber</td>
+                    <td>@member.Email</td>
+                    @if (AdminState.IsAdminLoggedIn)
+                    {
+                        <td>
+                            <a class="btn btn-danger btn-sm" asp-page="DeleteMember" asp-route-memberEmail="@member.Email" title="Slet">
+                                <i class="bi bi-trash"></i> Slet
+                            </a>
+                            <a class="btn btn-primary btn-sm" asp-page="EditMember" asp-route-memberEmail="@member.Email" title="Rediger">
+                                <i class="bi bi-pencil"></i> Rediger
+                            </a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (AdminState.IsAdminLoggedIn)
+    {
+        <a class="btn btn-success" asp-page="AddMember">
+            <i class="bi bi-person-plus"></i> Tilføj medlem
+        </a>
+    }
+</div>

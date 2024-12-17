@@ -18,10 +18,10 @@
         module.exports = factory(require('jquery-validation'));
     } else {
         // Browser global
-        jQuery.validator.unobtrusive = factory(jQuery);
+        jQuery.valiDater.unobtrusive = factory(jQuery);
     }
 }(function ($) {
-    var $jQval = $.validator,
+    var $jQval = $.valiDater,
         adapters,
         data_validation = "unobtrusiveValidation";
 
@@ -69,15 +69,15 @@
         }
     }
 
-    function onErrors(event, validator) {  // 'this' is the form element
+    function onErrors(event, valiDater) {  // 'this' is the form element
         var container = $(this).find("[data-valmsg-summary=true]"),
             list = container.find("ul");
 
-        if (list && list.length && validator.errorList.length) {
+        if (list && list.length && valiDater.errorList.length) {
             list.empty();
             container.addClass("validation-summary-errors").removeClass("validation-summary-valid");
 
-            $.each(validator.errorList, function () {
+            $.each(valiDater.errorList, function () {
                 $("<li />").html(this.message).appendTo(list);
             });
         }
@@ -108,7 +108,7 @@
         // Set a flag that indicates we're currently resetting the form.
         $form.data(key, true);
         try {
-            $form.data("validator").resetForm();
+            $form.data("valiDater").resetForm();
         } finally {
             $form.removeData(key);
         }
@@ -266,7 +266,7 @@
         /// mmmm is the parameter name).</param>
         /// <param name="fn" type="Function">The function to call, which adapts the values from the HTML
         /// attributes into jQuery Validate rules and/or messages.</param>
-        /// <returns type="jQuery.validator.unobtrusive.adapters" />
+        /// <returns type="jQuery.valiDater.unobtrusive.adapters" />
         if (!fn) {  // Called with no params, just a function
             fn = params;
             params = [];
@@ -282,7 +282,7 @@
         /// in the data-val-nnnn HTML attribute (where nnnn is the adapter name).</param>
         /// <param name="ruleName" type="String" optional="true">[Optional] The name of the jQuery Validate rule. If not provided, the value
         /// of adapterName will be used instead.</param>
-        /// <returns type="jQuery.validator.unobtrusive.adapters" />
+        /// <returns type="jQuery.valiDater.unobtrusive.adapters" />
         return this.add(adapterName, function (options) {
             setValidationValues(options, ruleName || adapterName, true);
         });
@@ -304,7 +304,7 @@
         /// contains the minimum value. The default is "min".</param>
         /// <param name="maxAttribute" type="String" optional="true">[Optional] The name of the HTML attribute that
         /// contains the maximum value. The default is "max".</param>
-        /// <returns type="jQuery.validator.unobtrusive.adapters" />
+        /// <returns type="jQuery.valiDater.unobtrusive.adapters" />
         return this.add(adapterName, [minAttribute || "min", maxAttribute || "max"], function (options) {
             var min = options.params.min,
                 max = options.params.max;
@@ -330,7 +330,7 @@
         /// The default is "val".</param>
         /// <param name="ruleName" type="String" optional="true">[Optional] The name of the jQuery Validate rule. If not provided, the value
         /// of adapterName will be used instead.</param>
-        /// <returns type="jQuery.validator.unobtrusive.adapters" />
+        /// <returns type="jQuery.valiDater.unobtrusive.adapters" />
         return this.add(adapterName, [attribute || "val"], function (options) {
             setValidationValues(options, ruleName || adapterName, options.params[attribute]);
         });
@@ -382,7 +382,7 @@
         setValidationValues(options, "equalTo", element);
     });
     adapters.add("required", function (options) {
-        // jQuery Validate equates "required" with "mandatory" for checkbox elements
+        // jQuery Validate equates "required" with "manDatery" for checkbox elements
         if (options.element.tagName.toUpperCase() !== "INPUT" || options.element.type.toUpperCase() !== "CHECKBOX") {
             setValidationValues(options, "required", true);
         }
