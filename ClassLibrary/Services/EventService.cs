@@ -14,9 +14,9 @@ public class EventService : IEventService
         _eventsList = JsonDataService.LoadData().ToList();
     }
 
-    public void AddEvent(Event begivenhed)
+    public void AddEvent(Event @event)
     {
-        _eventsList.Add(begivenhed);
+        _eventsList.Add(@event);
         JsonDataService.SaveData(_eventsList);
     }
 
@@ -33,13 +33,13 @@ public class EventService : IEventService
         }
     }
 
-    public Event DeleteEvent(string? navn)
+    public Event DeleteEvent(string? name)
     {
         Event eventToDelete = null;
 
         foreach (Event events in _eventsList)
         {
-            if (navn == events.Name)
+            if (name == events.Name)
             {
                 eventToDelete = events;
                 break;
@@ -65,11 +65,11 @@ public class EventService : IEventService
         return _eventsList.Where(evt => evt.Date >= startDate && evt.Date <= adjustedEndDate).ToList();
     }
 
-    public Event GetEvent(string navn)
+    public Event GetEvent(string name)
     {
         foreach (var @event in _eventsList)
         {
-            if (navn == @event.Name)
+            if (name == @event.Name)
             {
                 return @event;
             }
@@ -122,15 +122,15 @@ public class EventService : IEventService
         }
     }
 
-    public void UpdateEvent(Event begivenhed)
+    public void UpdateEvent(Event @event)
     {
         foreach (var events in _eventsList)
         {
-            if (events.Name == begivenhed.Name)
+            if (events.Name == @event.Name)
 
             {
-                events.Date = begivenhed.Date;
-                events.Location = begivenhed.Location;
+                events.Date = @event.Date;
+                events.Location = @event.Location;
                 JsonDataService.SaveData(_eventsList);
                 break;
             }

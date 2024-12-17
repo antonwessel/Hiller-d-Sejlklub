@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<IMemberService, MedlemService>();
-builder.Services.AddSingleton<IBoatService, BådService>();
+builder.Services.AddSingleton<IMemberService, MemberService>();
+builder.Services.AddSingleton<IBoatService, BoatService>();
 builder.Services.AddSingleton<IEventService, EventService>();
 builder.Services.AddSingleton<IBlogService, BlogService>();
 builder.Services.AddSingleton<IMaintenanceService, MaintenanceService>();

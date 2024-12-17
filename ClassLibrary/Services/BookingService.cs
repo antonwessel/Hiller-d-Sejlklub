@@ -14,9 +14,9 @@ public class BookingService : IBookingService
         _bookings = JsonDataService.LoadData().ToList();
     }
 
-    public void AddBooking(Boat boat, Member medlem, DateTime date)
+    public void AddBooking(Boat boat, Member member, DateTime date)
     {
-        _bookings.Add(new Booking(medlem, boat, date));
+        _bookings.Add(new Booking(member, boat, date));
         JsonDataService.SaveData(_bookings);
     }
 
@@ -33,12 +33,12 @@ public class BookingService : IBookingService
         }
     }
 
-    public List<Booking> GetAllBookings(string bådNavn)
+    public List<Booking> GetAllBookings(string boatName)
     {
         List<Booking> allBookings = [];
         foreach (var booking in _bookings)
         {
-            if (booking.BoatToBook.BoatName == bådNavn)
+            if (booking.BoatToBook.BoatName == boatName)
             {
                 allBookings.Add(booking);
             }
