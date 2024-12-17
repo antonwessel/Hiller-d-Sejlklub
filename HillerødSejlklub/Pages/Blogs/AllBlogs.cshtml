@@ -30,10 +30,10 @@
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
                         {
-                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="EditBlog" asp-route-BlogTitle="@blog.BlogTitle" title="Rediger">
+                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="EditBlog" asp-route-blogTitle="@blog.BlogTitle" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-                            <a class="btn btn-outline-danger btn-sm" asp-page="DeleteBlog" asp-route-BlogTitle="@blog.BlogTitle" title="Slet">
+                            <a class="btn btn-outline-danger btn-sm" asp-page="DeleteBlog" asp-route-blogTitle="@blog.BlogTitle" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
                         }

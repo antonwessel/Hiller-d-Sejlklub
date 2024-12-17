@@ -24,7 +24,7 @@ public class AddBlogModel : PageModel
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
-            return RedirectToPage("AlleBlogs");
+            return RedirectToPage("AllBlogs");
         }
 
         return Page();
@@ -37,6 +37,6 @@ public class AddBlogModel : PageModel
             return Page();
         }
         _blogService.AddBlog(Blog);
-        return RedirectToPage("AlleBlogs");
+        return RedirectToPage("AllBlogs");
     }
 }

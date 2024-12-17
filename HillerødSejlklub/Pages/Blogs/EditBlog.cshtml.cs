@@ -18,15 +18,15 @@ public class EditBlogModel : PageModel
         _blogService = blogService;
     }
 
-    public IActionResult OnGet(string BlogTitle)
+    public IActionResult OnGet(string blogTitle)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
-            return RedirectToPage("AlleBlogs");
+            return RedirectToPage("AllBlogs");
         }
 
-        Blog = _blogService.GetBlog(BlogTitle);
+        Blog = _blogService.GetBlog(blogTitle);
         return Page();
     }
     public IActionResult OnPost()
@@ -36,6 +36,6 @@ public class EditBlogModel : PageModel
             return Page();
         }
         _blogService.UpdateBlog(Blog);
-        return RedirectToPage("AlleBlogs");
+        return RedirectToPage("AllBlogs");
     }
 }

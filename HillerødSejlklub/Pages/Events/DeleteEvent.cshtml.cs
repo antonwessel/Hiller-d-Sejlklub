@@ -30,9 +30,9 @@ public class DeleteEventModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPost()
+    public IActionResult OnPost(string eventName)
     {
-        _eventService.DeleteEvent(Event.Name);
+        _eventService.DeleteEvent(eventName);
         return RedirectToPage("AllEvents");
     }
 }
