@@ -6,12 +6,12 @@ public class Member
 {
     public Guid Id { get; set; }
 
-    [Required(ErrorMessage = "Navn er påkrævet.")]
-    [StringLength(50, ErrorMessage = "Navn må ikke være længere end 50 tegn.")]
+    [Required(ErrorMessage = "Name er påkrævet.")]
+    [StringLength(50, ErrorMessage = "Name må ikke være længere end 50 tegn.")]
     public string Name { get; set; }
 
-    [Required(ErrorMessage = "Telefonnummer er påkrævet.")]
-    [RegularExpression(@"^\d{8}$", ErrorMessage = "Telefonnummer skal være et gyldigt 8-cifret tal.")]
+    [Required(ErrorMessage = "PhoneNumber er påkrævet.")]
+    [RegularExpression(@"^\d{8}$", ErrorMessage = "PhoneNumber skal være et gyldigt 8-cifret tal.")]
     public string PhoneNumber { get; set; }
 
     [Required(ErrorMessage = "Email er påkrævet.")]

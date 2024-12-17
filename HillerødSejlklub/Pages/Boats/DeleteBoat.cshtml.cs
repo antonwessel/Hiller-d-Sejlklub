@@ -18,7 +18,7 @@ public class DeleteBoatModel : PageModel
         _boatService = boatService;
     }
 
-    public IActionResult OnGet(string boatName)
+    public IActionResult OnGet(string Name)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -26,7 +26,7 @@ public class DeleteBoatModel : PageModel
             return RedirectToPage("AlleBåde");
         }
 
-        Boat = _boatService.GetBoat(boatName);
+        Boat = _boatService.GetBoat(Name);
         return Page();
     }
 

@@ -33,12 +33,12 @@ public class BookingService : IBookingService
         }
     }
 
-    public List<Booking> GetAllBookings(string boatName)
+    public List<Booking> GetAllBookings(string Name)
     {
         List<Booking> allBookings = [];
         foreach (var booking in _bookings)
         {
-            if (booking.BoatToBook.BoatName == boatName)
+            if (booking.BoatToBook.BoatName == Name)
             {
                 allBookings.Add(booking);
             }

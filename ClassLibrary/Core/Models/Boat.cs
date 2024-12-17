@@ -12,8 +12,8 @@ public class Boat
     [StringLength(50, ErrorMessage = "Båd model må højst være 50 tegn.")]
     public string BoatModel { get; set; }
 
-    [Required(ErrorMessage = "Navn er påkrævet.")]
-    [StringLength(100, ErrorMessage = "Navn må højst være 100 tegn.")]
+    [Required(ErrorMessage = "Name er påkrævet.")]
+    [StringLength(100, ErrorMessage = "Name må højst være 100 tegn.")]
     public string BoatName { get; set; }
 
     [Required(ErrorMessage = "Billede Url er påkrævet.")]

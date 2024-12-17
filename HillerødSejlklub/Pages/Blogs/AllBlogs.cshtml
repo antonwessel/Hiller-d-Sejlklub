@@ -23,7 +23,7 @@
                         <h5 class="card-title text-primary fw-bold">@blog.BlogTitle</h5>
                         <p class="text-muted mb-2">
                             <strong>Forfatter:</strong> @blog.BlogAuthor<br />
-                            <strong>Dato:</strong> @blog.BlogDato.ToString("dd-MM-yyyy") <!-- Kun se dato -->
+                            <strong>Date:</strong> @blog.BlogDate.ToString("dd-MM-yyyy") <!-- Kun se Date -->
                         </p>
                         <p class="card-text">
                             @Html.Raw(blog.BlogContent.Replace("\n", "<br>")) <!-- To preserve newlines -->

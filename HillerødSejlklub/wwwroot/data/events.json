@@ -1,83 +1,83 @@
 [
   {
-    "Navn": "Sommersejlads",
-    "Dato": "2025-07-10T14:00:00",
-    "Lokation": "Esrum S\u00F8",
+    "Name": "Sommersejlads",
+    "Date": "2025-07-10T14:00:00",
+    "Location": "Esrum S\u00F8",
     "Participants": [
       {
         "Id": "e1e1775a-311b-4097-b2da-e2538083199b",
-        "Navn": "Henrik Thomsen",
-        "TelefonNummer": "22233344",
+        "Name": "Henrik Thomsen",
+        "PhoneNumber": "22233344",
         "Email": "henrik.thomsen@hillerodsejlklub.dk"
       },
       {
         "Id": "eba8f788-d207-4291-a99e-ca4b45f8e722",
-        "Navn": "Jens Bach",
-        "TelefonNummer": "11223344",
+        "Name": "Jens Bach",
+        "PhoneNumber": "11223344",
         "Email": "jens.bach@hillerodsejlklub.dk"
       },
       {
         "Id": "81af5006-5cd1-4895-b0b5-3b4db32e59fe",
-        "Navn": "Lotte Knudsen",
-        "TelefonNummer": "55664433",
+        "Name": "Lotte Knudsen",
+        "PhoneNumber": "55664433",
         "Email": "lotte.knudsen@hillerodsejlklub.dk"
       }
     ],
     "Id": "d9c86c01-57a6-44fd-96e0-f98dbfb1fd89"
   },
   {
-    "Navn": "Efter\u00E5rshygge",
-    "Dato": "2025-10-15T16:00:00",
-    "Lokation": "N\u00F8debo Jollehavn",
+    "Name": "Efter\u00E5rshygge",
+    "Date": "2025-10-15T16:00:00",
+    "Location": "N\u00F8debo Jollehavn",
     "Participants": [
       {
         "Id": "3c19d9fd-ae4b-4159-8ac4-6e3cc0d546f7",
-        "Navn": "Karen Madsen",
-        "TelefonNummer": "99887766",
+        "Name": "Karen Madsen",
+        "PhoneNumber": "99887766",
         "Email": "karen.madsen@hillerodsejlklub.dk"
       },
       {
         "Id": "28d4fb31-3e87-429d-9c33-9e550e8968da",
-        "Navn": "Niels Hansen",
-        "TelefonNummer": "12345678",
+        "Name": "Niels Hansen",
+        "PhoneNumber": "12345678",
         "Email": "niels.hansen@hillerodsejlklub.dk"
       },
       {
         "Id": "8c6c99a5-7e99-4bbc-a9c2-025180fbca58",
-        "Navn": "Camilla Vestergaard",
-        "TelefonNummer": "33447788",
+        "Name": "Camilla Vestergaard",
+        "PhoneNumber": "33447788",
         "Email": "camilla.vestergaard@hillerodsejlklub.dk"
       },
       {
         "Id": "37b79b5c-d648-46bf-9acf-e18ac4ec73cf",
-        "Navn": "Peter Olsen",
-        "TelefonNummer": "44556677",
+        "Name": "Peter Olsen",
+        "PhoneNumber": "44556677",
         "Email": "peter.olsen@hillerodsejlklub.dk"
       }
     ],
     "Id": "277f25ad-a3b1-48f9-951b-d45c800dcb52"
   },
   {
-    "Navn": "Julefrokost",
-    "Dato": "2026-12-20T18:00:00",
-    "Lokation": "Hiller\u00F8d Klubhus",
+    "Name": "Julefrokost",
+    "Date": "2026-12-20T18:00:00",
+    "Location": "Hiller\u00F8d Klubhus",
     "Participants": [
       {
         "Id": "e1e1775a-311b-4097-b2da-e2538083199b",
-        "Navn": "Henrik Thomsen",
-        "TelefonNummer": "22233344",
+        "Name": "Henrik Thomsen",
+        "PhoneNumber": "22233344",
         "Email": "henrik.thomsen@hillerodsejlklub.dk"
       },
       {
         "Id": "6895452e-d0c7-4a42-a69f-67d9d349e414",
-        "Navn": "Lone J\u00F8rgensen",
-        "TelefonNummer": "98765432",
+        "Name": "Lone J\u00F8rgensen",
+        "PhoneNumber": "98765432",
         "Email": "lone.jorgensen@hillerodsejlklub.dk"
       },
       {
         "Id": "65226f1b-7fba-44bb-b5aa-aa9ace5886b9",
-        "Navn": "Ib Andersen",
-        "TelefonNummer": "24473004",
+        "Name": "Ib Andersen",
+        "PhoneNumber": "24473004",
         "Email": "ib.andersen@hillerodsejlklub.dk"
       }
     ],

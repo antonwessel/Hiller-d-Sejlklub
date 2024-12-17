@@ -24,7 +24,7 @@ public class AddMaintenanceModel : PageModel
         _boatService = boatService;
     }
 
-    public IActionResult OnGet(string boatName)
+    public IActionResult OnGet(string Name)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -32,19 +32,19 @@ public class AddMaintenanceModel : PageModel
             return RedirectToPage("../AlleBåde");
         }
 
-        Boat = _boatService.GetBoat(boatName);
+        Boat = _boatService.GetBoat(Name);
         return Page();
     }
 
-    public IActionResult OnPost(string boatName)
+    public IActionResult OnPost(string Name)
     {
         if (!ModelState.IsValid)
         {
-            Boat = _boatService.GetBoat(boatName); // For at undgå null reference exception 
+            Boat = _boatService.GetBoat(Name); // For at undgå null reference exception 
             return Page();
         }
 
-        _maintenanceService.AddMaintenance(boatName, Maintenance);
-        return RedirectToPage("MaintenanceBoat", new { navn = boatName }); // Så vi router tilbage til korrekte båd
+        _maintenanceService.AddMaintenance(Name, Maintenance);
+        return RedirectToPage("MaintenanceBoat", new { Name = Name }); // Så vi router tilbage til korrekte båd
     }
 }

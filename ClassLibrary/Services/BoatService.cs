@@ -33,7 +33,7 @@ public class BoatService : IBoatService
 
     public Boat DeleteBoat(string? name)
     {
-        // forsøg at find en båd der matcher navn
+        // forsøg at find en båd der matcher Name
         var boat = _boatList.FirstOrDefault(b => b.BoatName == name);
         if (boat != null)
         {

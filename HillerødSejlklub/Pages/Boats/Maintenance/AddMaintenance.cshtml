@@ -6,7 +6,7 @@
 <div class="container mt-5">
     <h1 class="mb-4">Tilføj vedligeholdelse til @Model.Boat.BoatName</h1>
     <form method="post">
-        <input type="hidden" name="bådNavn" value="@Model.Boat.BoatName" />
+        <input type="hidden" name="bådName" value="@Model.Boat.BoatName" />
 
         <div class="mb-3">
             <label asp-for="@Model.Maintenance.Status" class="form-label">Status</label>

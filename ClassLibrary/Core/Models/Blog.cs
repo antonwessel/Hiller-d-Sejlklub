@@ -8,10 +8,10 @@ public class Blog
     [StringLength(100, ErrorMessage = "Titel må højst være 100 tegn.")]
     public string BlogTitle { get; set; }
 
-    public DateTime BlogDato { get; set; }
+    public DateTime BlogDate { get; set; }
 
     [Required(ErrorMessage = "Forfatter er påkrævet.")]
-    [StringLength(50, ErrorMessage = "Navn må højst være 50 tegn.")]
+    [StringLength(50, ErrorMessage = "Name må højst være 50 tegn.")]
     public string BlogAuthor { get; set; }
 
     [Required(ErrorMessage = "Indhold er påkrævet.")]
@@ -21,14 +21,14 @@ public class Blog
     public Blog(string blogTitle, string blogAuthor, string blogContent, DateTime dateWritten)
     {
         BlogTitle = blogTitle;
-        BlogDato = DateTime.Now;
+        BlogDate = DateTime.Now;
         BlogAuthor = blogAuthor;
         BlogContent = blogContent;
-        BlogDato = dateWritten;
+        BlogDate = dateWritten;
     }
 
     public Blog()
     {
-        BlogDato = DateTime.Now;
+        BlogDate = DateTime.Now;
     }
 }

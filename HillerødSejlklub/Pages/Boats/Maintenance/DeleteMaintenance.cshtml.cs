@@ -23,7 +23,7 @@ public class DeleteMaintenanceModel : PageModel
         _boatService = boatService;
     }
 
-    public IActionResult OnGet(string boatName, Guid maintenanceId)
+    public IActionResult OnGet(string Name, Guid maintenanceId)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -31,16 +31,16 @@ public class DeleteMaintenanceModel : PageModel
             return RedirectToPage("../AlleBåde");
         }
 
-        Boat = _boatService.GetBoat(boatName);
-        Maintenance = _maintenanceService.GetMaintenance(boatName, maintenanceId);
+        Boat = _boatService.GetBoat(Name);
+        Maintenance = _maintenanceService.GetMaintenance(Name, maintenanceId);
         return Page();
     }
 
-    public IActionResult OnPost(string boatName, Guid maintenanceId)
+    public IActionResult OnPost(string Name, Guid maintenanceId)
     {
-        Boat = _boatService.GetBoat(boatName);
-        Maintenance = _maintenanceService.GetMaintenance(boatName, maintenanceId);
-        _maintenanceService.DeleteMaintenance(boatName, Maintenance);
-        return RedirectToPage("MaintenanceBoat", new { boatName });
+        Boat = _boatService.GetBoat(Name);
+        Maintenance = _maintenanceService.GetMaintenance(Name, maintenanceId);
+        _maintenanceService.DeleteMaintenance(Name, Maintenance);
+        return RedirectToPage("MaintenanceBoat", new { Name });
     }
 }

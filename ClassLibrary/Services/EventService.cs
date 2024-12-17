@@ -58,10 +58,10 @@ public class EventService : IEventService
 
     public List<Event> FilterByDates(DateTime startDate, DateTime endDate)
     {
-        // Gør slutdatoen til hele dagen
+        // Gør slutDateen til hele dagen
         DateTime adjustedEndDate = endDate.Date.AddDays(1).AddTicks(-1);
 
-        // Find begivenheder i dato-intervallet
+        // Find begivenheder i Date-intervallet
         return _eventsList.Where(evt => evt.Date >= startDate && evt.Date <= adjustedEndDate).ToList();
     }
 

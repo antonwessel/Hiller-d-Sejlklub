@@ -2,17 +2,17 @@
   {
     "Id": "c0a80247-690e-42cb-8b56-83b8a8d5df7f",
     "DateBooked": "2024-12-12T10:00:00",
-    "MedlemToBook": {
+    "MemberToBook": {
       "Id": "65226f1b-7fba-44bb-b5aa-aa9ace5886b9",
-      "Navn": "Ib Andersen",
-      "TelefonNummer": "24473004",
+      "Name": "Ib Andersen",
+      "PhoneNumber": "24473004",
       "Email": "ib.andersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
       "BoatType": "Sejljolle",
       "BoatModel": "J123",
-      "Navn": "Havfruen",
-      "BilledeUrl": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
+      "Name": "Havfruen",
+      "ImageURL": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
       "Maintenances": [
         {
           "Status": 0,
@@ -32,17 +32,17 @@
   {
     "Id": "6d898a9e-6e7c-481e-98e2-e2c819b14f3f",
     "DateBooked": "2024-12-12T15:00:00",
-    "MedlemToBook": {
+    "MemberToBook": {
       "Id": "135b2615-8352-4c0f-9cd7-3dedfb7dfb84",
-      "Navn": "Emma Pedersen",
-      "TelefonNummer": "26807755",
+      "Name": "Emma Pedersen",
+      "PhoneNumber": "26807755",
       "Email": "emma.pedersen@hillerodsejlklub.dk"
     },
     "BoatToBook": {
       "BoatType": "Sejlbåd",
       "BoatModel": "S456",
-      "Navn": "Vinden",
-      "BilledeUrl": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
+      "Name": "Vinden",
+      "ImageURL": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
       "Maintenances": [
         {
           "Status": 0,

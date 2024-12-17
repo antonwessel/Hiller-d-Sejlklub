@@ -5,7 +5,7 @@ namespace ClassLibrary.Services;
 
 public class BlogService : IBlogService
 {
-    private List<Blog> _blogListe;
+    private readonly List<Blog> _blogListe;
     public IJsonDataService<Blog> JsonDataService { get; }
 
     public BlogService(IJsonDataService<Blog> jsonDataService)
@@ -20,11 +20,11 @@ public class BlogService : IBlogService
         JsonDataService.SaveData(_blogListe);
     }
 
-    public Blog DeleteBlog(string? navn)
+    public Blog DeleteBlog(string? Name)
     {
         foreach (var blog in _blogListe)
         {
-            if (blog.BlogTitle == navn)
+            if (blog.BlogTitle == Name)
             {
                 _blogListe.Remove(blog);
                 JsonDataService.SaveData(_blogListe);
@@ -34,11 +34,11 @@ public class BlogService : IBlogService
         return null;
     }
 
-    public Blog GetBlog(string navn)
+    public Blog GetBlog(string Name)
     {
         foreach (var blog in _blogListe)
         {
-            if (blog.BlogTitle == navn)
+            if (blog.BlogTitle == Name)
             {
                 return blog;
             }

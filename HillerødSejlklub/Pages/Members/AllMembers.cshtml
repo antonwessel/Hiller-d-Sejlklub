@@ -7,14 +7,14 @@
 <div class="container mt-5">
     <h1 class="mb-4">Vores Medlemmer</h1>
     <form method="post" asp-page-handler="Search" class="d-flex align-items-center mb-3 w-auto">
-        <input type="text" asp-for="NameSearch" class="form-control me-2 w-auto" placeholder="Søg efter navn">
+        <input type="text" asp-for="NameSearch" class="form-control me-2 w-auto" placeholder="Søg efter Name">
         <button type="submit" class="btn btn-primary">Søg</button>
     </form>
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
-                <th>Navn</th>
-                <th>Telefonnummer</th>
+                <th>Name</th>
+                <th>PhoneNumber</th>
                 <th>Email</th>
                 @if (AdminState.IsAdminLoggedIn)
                 {
@@ -32,10 +32,10 @@
                     @if (AdminState.IsAdminLoggedIn)
                     {
                         <td>
-                            <a class="btn btn-danger btn-sm" asp-page="DeleteMember" asp-route-email="@member.Email" title="Slet">
+                            <a class="btn btn-danger btn-sm" asp-page="DeleteMember" asp-route-memberEmail="@member.Email" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
-                            <a class="btn btn-primary btn-sm" asp-page="EditMember" asp-route-email="@member.Email" title="Rediger">
+                            <a class="btn btn-primary btn-sm" asp-page="EditMember" asp-route-memberEmail="@member.Email" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
                         </td>

@@ -24,7 +24,7 @@ public class EditMaintenanceModel : PageModel
         _boatService = boatService;
     }
 
-    public IActionResult OnGet(string boatName, Guid id)
+    public IActionResult OnGet(string Name, Guid id)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -32,22 +32,22 @@ public class EditMaintenanceModel : PageModel
             return RedirectToPage("../AlleBåde");
         }
 
-        Boat = _boatService.GetBoat(boatName);
-        Maintenance = _maintenanceService.GetMaintenance(boatName, id);
+        Boat = _boatService.GetBoat(Name);
+        Maintenance = _maintenanceService.GetMaintenance(Name, id);
         return Page();
     }
 
-    public IActionResult OnPost(string boatName)
+    public IActionResult OnPost(string Name)
     {
-        Boat = _boatService.GetBoat(boatName);
+        Boat = _boatService.GetBoat(Name);
 
         if (!ModelState.IsValid)
         {
-            Boat = _boatService.GetBoat(boatName);
+            Boat = _boatService.GetBoat(Name);
             return Page();
         }
 
-        _maintenanceService.UpdateMaintenance(boatName, Maintenance);
-        return RedirectToPage("MaintenanceBoat", new { boatName });
+        _maintenanceService.UpdateMaintenance(Name, Maintenance);
+        return RedirectToPage("MaintenanceBoat", new { Name });
     }
 }

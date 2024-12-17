@@ -9,7 +9,7 @@
     </div>
 
     <form method="post">
-        <input type="hidden" name="boatNavn" value="@Model.Boat.BoatName" />
+        <input type="hidden" name="boatName" value="@Model.Boat.BoatName" />
         <input type="hidden" asp-for="Maintenance.MaintenanceId" /> <!-- Til at sende Id med, ellers kan vi ikke identificere den under MaintenanceService -->
 
         <div class="mb-3">

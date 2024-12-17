@@ -31,9 +31,9 @@ public class DeleteMemberModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPost()
+    public IActionResult OnPost(string memberEmail)
     {
-        _memberService.DeleteMember(Member.Email);
+        _memberService.DeleteMember(memberEmail);
         return RedirectToPage("AllMembers");
     }
 }
