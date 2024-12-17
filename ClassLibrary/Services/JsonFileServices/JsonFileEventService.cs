@@ -21,16 +21,16 @@ public class JsonFileEventService : IJsonDataService<Event>
             return [];
         }
 
-        var json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<IEnumerable<Event>>(json) ?? [];
+        var jsonData = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<IEnumerable<Event>>(jsonData) ?? [];
     }
 
     public void SaveData(IEnumerable<Event> data)
     {
-        var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
+        var jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
             WriteIndented = true,
         });
-        File.WriteAllText(FilePath, json);
+        File.WriteAllText(FilePath, jsonData);
     }
 }

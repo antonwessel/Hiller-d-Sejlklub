@@ -5,135 +5,109 @@ namespace ClassLibrary.Services;
 
 public class EventService : IEventService
 {
-    private readonly List<Event> _eventsList;
+    private readonly List<Event> _eventsList; // Liste med alle events
     public IJsonDataService<Event> JsonDataService { get; }
 
     public EventService(IJsonDataService<Event> jsonDataService)
     {
         JsonDataService = jsonDataService;
+
         _eventsList = JsonDataService.LoadData().ToList();
     }
 
-    public void AddEvent(Event @event)
+    public void AddEvent(Event eventToAdd)
     {
-        _eventsList.Add(@event);
-        JsonDataService.SaveData(_eventsList);
+        _eventsList.Add(eventToAdd);
+        SaveEvents();
     }
 
     public void AddParticipantToEvent(Member participant, Guid eventId)
     {
-        foreach (var evt in _eventsList)
+        var eventToUpdate = FindEventById(eventId);
+        if (eventToUpdate != null)
         {
-            if (evt.Id == eventId)
-            {
-                evt.Participants.Add(participant);
-                JsonDataService.SaveData(_eventsList);
-                break;
-            }
+            eventToUpdate.Participants.Add(participant);
+            SaveEvents();
         }
     }
 
-    public Event DeleteEvent(string? name)
+    public Event DeleteEvent(string eventName)
     {
-        Event eventToDelete = null;
-
-        foreach (Event events in _eventsList)
-        {
-            if (name == events.Name)
-            {
-                eventToDelete = events;
-                break;
-            }
-        }
-
+        var eventToDelete = FindEventByName(eventName);
         if (eventToDelete != null)
         {
             _eventsList.Remove(eventToDelete);
+            SaveEvents();
         }
-
-        JsonDataService.SaveData(_eventsList);
         return eventToDelete;
-
     }
 
     public List<Event> FilterByDates(DateTime startDate, DateTime endDate)
     {
-        // Gør slutDateen til hele dagen
         DateTime adjustedEndDate = endDate.Date.AddDays(1).AddTicks(-1);
+        // Sørger for at slutdatoen dækker hele dagen
 
-        // Find begivenheder i Date-intervallet
-        return _eventsList.Where(evt => evt.Date >= startDate && evt.Date <= adjustedEndDate).ToList();
+        return _eventsList.Where(e => e.Date >= startDate && e.Date <= adjustedEndDate).ToList();
     }
 
-    public Event GetEvent(string name)
+    public Event GetEvent(string eventName)
     {
-        foreach (var @event in _eventsList)
-        {
-            if (name == @event.Name)
-            {
-                return @event;
-            }
-
-        }
-        return null;
+        return FindEventByName(eventName);
     }
 
-    public Event GetEvent(Guid id)
+    public Event GetEvent(Guid eventId)
     {
-        foreach (var @event in _eventsList)
-        {
-            if (@event.Id == id)
-            {
-                return @event;
-            }
-
-        }
-        return null;
+        return FindEventById(eventId);
     }
 
-    public List<Event> GetEvents() => _eventsList;
+    public List<Event> GetEvents()
+    {
+        return _eventsList;
+    }
 
     public List<Member> GetParticipants(Guid eventId)
     {
-        foreach (var @event in _eventsList)
-        {
-            if (eventId == @event.Id)
-            {
-                return @event.Participants ?? []; // Tjek om Participants er null
-            }
-        }
-        return [];
+        var eventFound = FindEventById(eventId);
+        return eventFound?.Participants ?? [];
     }
 
     public void RemoveParticipantFromEvent(Guid participantId, Guid eventId)
     {
-        foreach (var evt in _eventsList)
+        var eventToUpdate = FindEventById(eventId);
+        if (eventToUpdate != null)
         {
-            if (evt.Id == eventId)
+            var participantToRemove = eventToUpdate.Participants.FirstOrDefault(p => p.Id == participantId);
+            if (participantToRemove != null)
             {
-                var participantToRemove = evt.Participants.FirstOrDefault(p => p.Id == participantId);
-                if (participantToRemove != null)
-                {
-                    evt.Participants.Remove(participantToRemove);
-                    JsonDataService.SaveData(_eventsList);
-                }
-                break;
+                eventToUpdate.Participants.Remove(participantToRemove);
+                SaveEvents();
             }
         }
     }
 
-    public void UpdateEvent(Event @event)
+    public void UpdateEvent(Event eventToUpdate)
     {
-        foreach (var events in _eventsList)
+        var existingEvent = FindEventByName(eventToUpdate.Name);
+        if (existingEvent != null)
         {
-            if (events.Name == @event.Name)
-
-            {
-                events.Date = @event.Date;
-                events.Location = @event.Location;
-                JsonDataService.SaveData(_eventsList);
-                break;
-            }
+            existingEvent.Date = eventToUpdate.Date;
+            existingEvent.Location = eventToUpdate.Location;
+            SaveEvents();
         }
+    }
+
+    private Event FindEventByName(string name)
+    {
+        return _eventsList.FirstOrDefault(e => e.Name == name);
+    }
+
+    private Event FindEventById(Guid id)
+    {
+        return _eventsList.FirstOrDefault(e => e.Id == id);
+    }
+
+    private void SaveEvents()
+    {
+        JsonDataService.SaveData(_eventsList);
     }
 }

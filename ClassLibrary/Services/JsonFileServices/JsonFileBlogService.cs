@@ -21,16 +21,17 @@ public class JsonFileBlogService : IJsonDataService<Blog>
             return [];
         }
 
-        var json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<IEnumerable<Blog>>(json) ?? [];
+        var jsonData = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<IEnumerable<Blog>>(jsonData) ?? [];
     }
 
     public void SaveData(IEnumerable<Blog> data)
     {
-        var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
+        var jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
             WriteIndented = true,
         });
-        File.WriteAllText(FilePath, json);
+
+        File.WriteAllText(FilePath, jsonData);
     }
 }

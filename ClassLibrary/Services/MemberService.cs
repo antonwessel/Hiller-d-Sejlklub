@@ -5,13 +5,14 @@ namespace ClassLibrary.Services;
 
 public class MemberService : IMemberService
 {
-    private List<Member> _memberList = [];
-
+    private readonly List<Member> _memberList = [];
     public IJsonDataService<Member> JsonDataService { get; }
 
     public MemberService(IJsonDataService<Member> jsonDataService)
     {
         JsonDataService = jsonDataService;
+
+        // Hent medlemmer fra JSON
         _memberList = JsonDataService.LoadData().ToList();
     }
 
@@ -23,7 +24,7 @@ public class MemberService : IMemberService
 
     public Member DeleteMember(string? email)
     {
-        Member memberToDelete = _memberList.FirstOrDefault(m => m.Email == email);
+        var memberToDelete = _memberList.FirstOrDefault(m => m.Email == email);
         if (memberToDelete != null)
         {
             _memberList.Remove(memberToDelete);
@@ -37,6 +38,7 @@ public class MemberService : IMemberService
         return _memberList
             .Where(m => m.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase))
             .ToList();
+        // Søger medlemmer uden forskel på store og små bogstaver
     }
 
     public Member GetMember(string email)
@@ -49,15 +51,18 @@ public class MemberService : IMemberService
         return _memberList.FirstOrDefault(m => m.Id == id);
     }
 
-    public List<Member> GetMembers() => _memberList;
+    public List<Member> GetMembers()
+    {
+        return _memberList;
+    }
 
     public void UpdateMember(Member member)
     {
-        var existingMedlem = _memberList.FirstOrDefault(m => m.Email == member.Email);
-        if (existingMedlem != null)
+        var existingMember = _memberList.FirstOrDefault(m => m.Email == member.Email);
+        if (existingMember != null)
         {
-            existingMedlem.Name = member.Name;
-            existingMedlem.PhoneNumber = member.PhoneNumber;
+            existingMember.Name = member.Name;
+            existingMember.PhoneNumber = member.PhoneNumber;
         }
         JsonDataService.SaveData(_memberList);
     }

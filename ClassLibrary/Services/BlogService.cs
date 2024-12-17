@@ -5,60 +5,45 @@ namespace ClassLibrary.Services;
 
 public class BlogService : IBlogService
 {
-    private readonly List<Blog> _blogListe;
+    private readonly List<Blog> _blogs;
     public IJsonDataService<Blog> JsonDataService { get; }
 
     public BlogService(IJsonDataService<Blog> jsonDataService)
     {
         JsonDataService = jsonDataService;
-        _blogListe = JsonDataService.LoadData().ToList();
+        _blogs = JsonDataService.LoadData().ToList();
     }
 
-    public void AddBlog(Blog blog)
+    public void AddBlog(Blog blogToAdd)
     {
-        _blogListe.Add(blog);
-        JsonDataService.SaveData(_blogListe);
+        _blogs.Add(blogToAdd);
+        JsonDataService.SaveData(_blogs);
     }
 
-    public Blog DeleteBlog(string? Name)
+    public Blog DeleteBlog(string blogTitle)
     {
-        foreach (var blog in _blogListe)
+        var blogToDelete = _blogs.FirstOrDefault(blog => blog.BlogTitle == blogTitle);
+        if (blogToDelete != null)
         {
-            if (blog.BlogTitle == Name)
-            {
-                _blogListe.Remove(blog);
-                JsonDataService.SaveData(_blogListe);
-                return blog;
-            }
+            _blogs.Remove(blogToDelete);
+            JsonDataService.SaveData(_blogs);
         }
-        return null;
+        return blogToDelete;
     }
 
-    public Blog GetBlog(string Name)
-    {
-        foreach (var blog in _blogListe)
-        {
-            if (blog.BlogTitle == Name)
-            {
-                return blog;
-            }
-        }
-        return null;
-    }
+    public Blog GetBlog(string blogTitle) => _blogs.FirstOrDefault(blog => blog.BlogTitle == blogTitle);
 
-    public List<Blog> GetBlogs() => _blogListe;
+    public List<Blog> GetBlogs() => _blogs;
 
-    public void UpdateBlog(Blog blog)
+    public void UpdateBlog(Blog updatedBlog)
     {
-        foreach (var bd in _blogListe)
+        var existingBlog = _blogs.FirstOrDefault(b => b.BlogTitle == updatedBlog.BlogTitle);
+        if (existingBlog != null)
         {
-            if (bd.BlogTitle == blog.BlogTitle)
-            {
-                bd.BlogAuthor = blog.BlogAuthor;
-                bd.BlogContent = blog.BlogContent;
-                JsonDataService.SaveData(_blogListe);
-                break;
-            }
+            existingBlog.BlogAuthor = updatedBlog.BlogAuthor;
+            existingBlog.BlogContent = updatedBlog.BlogContent;
+            JsonDataService.SaveData(_blogs);
+            // Gemmer ændringer i JSON
         }
     }
 }

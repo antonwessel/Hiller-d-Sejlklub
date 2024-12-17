@@ -5,11 +5,11 @@ namespace ClassLibrary.Core.Interfaces;
 public interface IMemberService
 {
     List<Member> GetMembers();
-    void AddMember(Member member);
-    void UpdateMember(Member member);
-    Member GetMember(string email);
-    Member GetMember(Guid id);
-    Member DeleteMember(string? email);
-    List<Member> FilterMembersByName(string name); // Brugt til søge funktion
+    void AddMember(Member memberToAdd);
+    void UpdateMember(Member updatedMember);
+    Member GetMember(string memberEmail);
+    Member GetMember(Guid memberId);
+    Member DeleteMember(string? memberEmail);
+    List<Member> FilterMembersByName(string nameSearch); // Brugt til søge funktion
     IJsonDataService<Member> JsonDataService { get; }
 }
