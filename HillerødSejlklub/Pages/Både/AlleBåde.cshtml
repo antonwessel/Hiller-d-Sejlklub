@@ -13,30 +13,30 @@
         </a>
     }
     <div class="row">
-        @foreach (var båd in Model.Både)
+        @foreach (var boat in Model.Boats)
         {
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-0">
-                    <img src="@båd.ImageURL" class="card-img-top rounded-top" alt="@båBoatNamevn" style="height: 200px; object-fit: cover;">
+                    <img src="@boat.ImageURL" class="card-img-top rounded-top" alt="@boat.BoatName" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-primary">@båBoatNamevn</h5>
+                        <h5 class="card-title text-primary">@boat.BoatName</h5>
                         <p class="text-muted mb-4">
-                            <strong>BoatType:</strong> @båd.BoatType<br />
-                            <strong>Model:</strong> @båd.BoatModel
+                            <strong>BoatType:</strong> @boat.BoatType<br />
+                            <strong>Model:</strong> @boat.BoatModel
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
                         {
-                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="RedigerBåd" asp-route-navn="@båd.BoatName" title="Rediger">
+                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="RedigerBåd" asp-route-boatName="@boat.BoatName" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-                            <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="SletBåd" asp-route-navn="@båd.BoatName" title="Slet">
+                            <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="SletBåd" asp-route-boatName="@boat.BoatName" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
                         }
-                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-navn="@båd.BoatName" title="Maintenance">
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-boatName="@boat.BoatName" title="Maintenance">
                             <i class="bi bi-wrench"></i> Vedligeholdelse
                         </a>
-                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-bådNavn="@båd.BoatName" title="Booking">
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-boatName="@boat.BoatName" title="Booking">
                             <i class="bi bi-calendar-check"></i> Booking
                         </a>
                     </div>
