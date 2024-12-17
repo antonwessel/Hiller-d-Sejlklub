@@ -5,14 +5,16 @@ namespace ClassLibrary.Services;
 
 public class BoatService : IBoatService
 {
-    private List<Boat> _boatList;
+    private readonly List<Boat> _boatList;
     private readonly IMaintenanceService _maintenanceService;
+    private readonly IBookingService _bookingService;
 
     public IJsonDataService<Boat> JsonDataService { get; }
 
-    public BoatService(IMaintenanceService maintenanceService, IJsonDataService<Boat> jsonDataService)
+    public BoatService(IMaintenanceService maintenanceService, IJsonDataService<Boat> jsonDataService, IBookingService bookingService)
     {
         _maintenanceService = maintenanceService;
+        _bookingService = bookingService;
         JsonDataService = jsonDataService;
         _boatList = jsonDataService.LoadData().ToList();
 
@@ -33,11 +35,17 @@ public class BoatService : IBoatService
 
     public Boat DeleteBoat(string? name)
     {
-        // forsøg at find en båd der matcher Name
+        // Attempt to find a boat that matches the name
         var boat = _boatList.FirstOrDefault(b => b.BoatName == name);
         if (boat != null)
         {
             _boatList.Remove(boat);
+            // Remove associated bookings
+            var bookings = _bookingService.GetAllBookings(name);
+            foreach (var booking in bookings)
+            {
+                _bookingService.DeleteBooking(booking.Id);
+            }
         }
         JsonDataService.SaveData(_boatList);
         return boat;
