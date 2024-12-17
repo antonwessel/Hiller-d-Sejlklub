@@ -9,22 +9,21 @@ namespace HillerødSejlklub.Pages.Både.Maintenance;
 public class DeleteMaintenanceModel : PageModel
 {
     private IMaintenanceService _maintenanceService;
-    private IBoatService _bådService;
+    private IBoatService _boatService;
 
     [BindProperty]
-    public Boat Båd { get; set; }
+    public Boat Boat { get; set; }
 
     [BindProperty]
     public ClassLibrary.Core.Models.Maintenance Maintenance { get; set; }
 
-    public DeleteMaintenanceModel(IMaintenanceService maintenanceService, IBoatService bådService)
+    public DeleteMaintenanceModel(IMaintenanceService maintenanceService, IBoatService boatService)
     {
         _maintenanceService = maintenanceService;
-        _bådService = bådService;
+        _boatService = boatService;
     }
 
-
-    public IActionResult OnGet(string bådNavn, Guid maintenanceId)
+    public IActionResult OnGet(string boatName, Guid maintenanceId)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -32,16 +31,16 @@ public class DeleteMaintenanceModel : PageModel
             return RedirectToPage("../AlleBåde");
         }
 
-        Båd = _bådService.GetBoat(bådNavn);
-        Maintenance = _maintenanceService.GetMaintenance(bådNavn, maintenanceId);
+        Boat = _boatService.GetBoat(boatName);
+        Maintenance = _maintenanceService.GetMaintenance(boatName, maintenanceId);
         return Page();
     }
 
-    public IActionResult OnPost(string bådNavn, Guid maintenanceId)
+    public IActionResult OnPost(string boatName, Guid maintenanceId)
     {
-        Båd = _bådService.GetBoat(bådNavn);
-        Maintenance = _maintenanceService.GetMaintenance(bådNavn, maintenanceId);
-        _maintenanceService.DeleteMaintenance(bådNavn, Maintenance);
-        return RedirectToPage("MaintenanceBoat", new { navn = bådNavn });
+        Boat = _boatService.GetBoat(boatName);
+        Maintenance = _maintenanceService.GetMaintenance(boatName, maintenanceId);
+        _maintenanceService.DeleteMaintenance(boatName, Maintenance);
+        return RedirectToPage("MaintenanceBoat", new { boatName });
     }
 }

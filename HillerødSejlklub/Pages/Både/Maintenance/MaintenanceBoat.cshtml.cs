@@ -7,7 +7,7 @@ namespace HillerødSejlklub.Pages.Både.Maintenance;
 
 public class MaintenanceBoatModel : PageModel
 {
-    private readonly IBoatService _bådService;
+    private readonly IBoatService _boatService;
     private readonly IMaintenanceService _maintenanceService;
 
     [BindProperty]
@@ -17,19 +17,19 @@ public class MaintenanceBoatModel : PageModel
     public float MaintenancesDone { get; set; }
 
     [BindProperty]
-    public Boat Båd { get; set; }
+    public Boat Boat { get; set; }
 
-    public MaintenanceBoatModel(IBoatService bådService, IMaintenanceService maintenanceService)
+    public MaintenanceBoatModel(IBoatService boatService, IMaintenanceService maintenanceService)
     {
-        _bådService = bådService;
+        _boatService = boatService;
         _maintenanceService = maintenanceService;
     }
 
-    public IActionResult OnGet(string navn)
+    public IActionResult OnGet(string boatName)
     {
-        Båd = _bådService.GetBoat(navn);
-        Maintenances = _maintenanceService.GetMaintenances(navn);
-        MaintenancesDone = _maintenanceService.GetMaintenancesDone(navn);
+        Boat = _boatService.GetBoat(boatName);
+        Maintenances = _maintenanceService.GetMaintenances(boatName);
+        MaintenancesDone = _maintenanceService.GetMaintenancesDone(boatName);
         return Page();
     }
 }

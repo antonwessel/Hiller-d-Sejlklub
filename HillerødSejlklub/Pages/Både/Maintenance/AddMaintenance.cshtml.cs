@@ -10,21 +10,21 @@ namespace HillerødSejlklub.Pages.Både.Maintenance;
 public class AddMaintenanceModel : PageModel
 {
     private readonly IMaintenanceService _maintenanceService;
-    private readonly IBoatService _bådService;
+    private readonly IBoatService _boatService;
 
     [BindNever] // Lad være med at data validere dette
-    public Boat Båd { get; private set; }
+    public Boat Boat { get; private set; }
 
     [BindProperty]
     public ClassLibrary.Core.Models.Maintenance Maintenance { get; set; }
 
-    public AddMaintenanceModel(IMaintenanceService maintenanceService, IBoatService bådService)
+    public AddMaintenanceModel(IMaintenanceService maintenanceService, IBoatService boatService)
     {
         _maintenanceService = maintenanceService;
-        _bådService = bådService;
+        _boatService = boatService;
     }
 
-    public IActionResult OnGet(string bådNavn)
+    public IActionResult OnGet(string boatName)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
@@ -32,19 +32,19 @@ public class AddMaintenanceModel : PageModel
             return RedirectToPage("../AlleBåde");
         }
 
-        Båd = _bådService.GetBoat(bådNavn);
+        Boat = _boatService.GetBoat(boatName);
         return Page();
     }
 
-    public IActionResult OnPost(string bådNavn)
+    public IActionResult OnPost(string boatName)
     {
         if (!ModelState.IsValid)
         {
-            Båd = _bådService.GetBoat(bådNavn); // For at undgå null reference exception 
+            Boat = _boatService.GetBoat(boatName); // For at undgå null reference exception 
             return Page();
         }
 
-        _maintenanceService.AddMaintenance(bådNavn, Maintenance);
-        return RedirectToPage("MaintenanceBoat", new { navn = bådNavn }); // Så vi router tilbage til korrekte båd
+        _maintenanceService.AddMaintenance(boatName, Maintenance);
+        return RedirectToPage("MaintenanceBoat", new { navn = boatName }); // Så vi router tilbage til korrekte båd
     }
 }
