@@ -30,17 +30,4 @@ public class Member
     {
         Id = Guid.NewGuid();
     }
-
-    //public override bool Equals(object obj)
-    //{
-    //    if (obj is not Member other)
-    //        return false;
-
-    //    return Id == other.Id;
-    //}
-
-    //public override int GetHashCode()
-    //{
-    //    return Id.GetHashCode();
-    //}
 }
