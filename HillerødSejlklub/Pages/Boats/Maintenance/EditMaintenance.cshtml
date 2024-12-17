@@ -1,0 +1,35 @@
+﻿@page
+@model HillerødSejlklub.Pages.Boats.Maintenance.EditMaintenanceModel
+@{
+}
+
+<div class="container mt-5">
+    <div class="mb-4">
+        <h1 class="h4">Rediger Vedligeholdelse for <span class="text-primary">@Model.Boat.BoatName</span></h1>
+    </div>
+
+    <form method="post">
+        <input type="hidden" name="boatNavn" value="@Model.Boat.BoatName" />
+        <input type="hidden" asp-for="Maintenance.MaintenanceId" /> <!-- Til at sende Id med, ellers kan vi ikke identificere den under MaintenanceService -->
+
+        <div class="mb-3">
+            <label asp-for="Maintenance.Status" class="form-label">Status</label>
+            <select asp-for="Maintenance.Status" class="form-select">
+                <option value="Afventer">Venter med at blive arbejdet på</option>
+                <option value="Igang">Bliver arbejdet på</option>
+                <option value="Færdig">Er færdigt</option>
+            </select>
+            <span asp-validation-for="Maintenance.Status" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Maintenance.Description" class="form-label">Beskrivelse</label>
+            <input asp-for="Maintenance.Description" class="form-control" />
+            <span asp-validation-for="Maintenance.Description" class="text-danger"></span>
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Opdater</button>
+        </div>
+    </form>
+</div>

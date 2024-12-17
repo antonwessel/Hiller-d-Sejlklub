@@ -1,0 +1,95 @@
+﻿@page
+@using ClassLibrary.Core.Helpers
+@model HillerødSejlklub.Pages.Boats.Maintenance.MaintenanceBoatModel
+@{
+    // Sikrer, at MaintenancesDone altid er mellem 0 og 100.
+    var maintenancesDonePercentage = Math.Clamp(Model.MaintenancesDone, 0f, 100f);
+}
+
+<div class="container mt-5">
+    <a asp-page="../AllBoats" class="btn btn-secondary btn-sm mt-3">
+        <i class="bi bi-arrow-left"></i> Tilbage
+    </a>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Vedligeholdelser af @Model.Boat.BoatName</h1>
+
+        <!-- Progress bar -->
+        <div class="w-50 mx-3">
+            <div class="progress" style="height: 30px; border-radius: 15px;">
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+                     style="width: @(maintenancesDonePercentage.ToString("F2", System.Globalization.CultureInfo.InvariantCulture))%;"
+                     aria-valuenow="@maintenancesDonePercentage"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                    @if (maintenancesDonePercentage == 0)
+                    {
+                        <span style="color: black;">0%</span>
+                    }
+                    else
+                    {
+                        @($"{maintenancesDonePercentage.ToString("F1")}%")
+                    }
+                </div>
+            </div>
+            @if (maintenancesDonePercentage == 0)
+            {
+                <small class="text-muted d-block mt-1">Ingen vedligeholdelse er udført endnu.</small>
+            }
+        </div>
+    </div>
+
+    @if (maintenancesDonePercentage == 100)
+    {
+        <div class="alert alert-success mt-3" role="alert">
+            Vedligeholdelsen er færdig!
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Oprettelsesdato</th>
+                    <th scope="col">Beskrivelse</th>
+                    @if (AdminState.IsAdminLoggedIn)
+                    {
+                        <th scope="col">Håndtering</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var maintenance in Model.Maintenances)
+                {
+                    <tr>
+                        <td>@maintenance.Status</td>
+                        <td>@maintenance.Date</td>
+                        <td>@maintenance.Description</td>
+                        @if (AdminState.IsAdminLoggedIn)
+                        {
+                            <td>
+                                <a class="btn btn-outline-primary btn-sm me-2" asp-page="EditMaintenance" asp-route-boatName="@Model.Boat.BoatName" asp-route-id="@maintenance.MaintenanceId" title="Rediger">
+                                    <i class="bi bi-pencil"></i> Rediger
+                                </a>
+                                <a class="btn btn-outline-danger btn-sm" asp-page="DeleteMaintenance" asp-route-boatName="@Model.Boat.BoatName" asp-route-maintenanceId="@maintenance.MaintenanceId" title="Slet">
+                                    <i class="bi bi-trash"></i> Slet
+                                </a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (AdminState.IsAdminLoggedIn)
+    {
+        <div class="d-flex justify-content-start mt-3">
+            <a class="btn btn-sm btn-success" asp-page="AddMaintenance" asp-route-boatName="@Model.Boat.BoatName">
+                <i class="bi bi-file-plus-fill me-1"></i> Tilføj vedligeholdelse
+            </a>
+        </div>
+    }
+</div>
