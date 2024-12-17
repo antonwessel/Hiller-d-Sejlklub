@@ -18,15 +18,15 @@ public class EditBoatModel : PageModel
         _boatService = boatService;
     }
 
-    public IActionResult OnGet(string Name)
+    public IActionResult OnGet(string boatName)
     {
         // Kun admins må være her
         if (!AdminState.IsAdminLoggedIn)
         {
-            return RedirectToPage("AlleBåde");
+            return RedirectToPage("AllBoats");
         }
 
-        Boat = _boatService.GetBoat(Name);
+        Boat = _boatService.GetBoat(boatName);
         return Page();
     }
 
@@ -37,6 +37,6 @@ public class EditBoatModel : PageModel
             return Page();
         }
         _boatService.UpdateBoat(Boat);
-        return RedirectToPage("AlleBåde");
+        return RedirectToPage("AllBoats");
     }
 }

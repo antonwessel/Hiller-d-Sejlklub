@@ -26,17 +26,17 @@
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
                         {
-                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="EditBoat" asp-route-Name="@boat.BoatName" title="Rediger">
+                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="EditBoat" asp-route-boatName="@boat.BoatName" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-                            <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="DeleteBoat" asp-route-Name="@boat.BoatName" title="Slet">
+                            <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="DeleteBoat" asp-route-boatName="@boat.BoatName" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
                         }
-                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-Name="@boat.BoatName" title="Maintenance">
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-boatName="@boat.BoatName" title="Maintenance">
                             <i class="bi bi-wrench"></i> Vedligeholdelse
                         </a>
-                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-Name="@boat.BoatName" title="Booking">
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-boatName="@boat.BoatName" title="Booking">
                             <i class="bi bi-calendar-check"></i> Booking
                         </a>
                     </div>

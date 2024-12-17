@@ -2,7 +2,7 @@
   {
     "BoatType": "Sejljolle",
     "BoatModel": "J123",
-    "Name": "Havfruen",
+    "BoatName": "Havfruen",
     "ImageURL": "https://billeder.dba.dk/dba/4f85a7ef-4805-4344-9602-c4efc3f16fc9.jpeg?class=S960X960",
     "Maintenances": [
       {
@@ -22,7 +22,7 @@
   {
     "BoatType": "Sejlb\u00E5d",
     "BoatModel": "S456",
-    "Name": "Vinden",
+    "BoatName": "Vinden",
     "ImageURL": "https://watergames.dk/wp-content/uploads/2023/02/Sejlbaad-top-scaled.jpg",
     "Maintenances": [
       {
@@ -48,7 +48,7 @@
   {
     "BoatType": "Jolle",
     "BoatModel": "J789",
-    "Name": "Lillebror",
+    "BoatName": "Lillebror",
     "ImageURL": "https://dansksejlunion.dk/media/dykg05ll/190629-sommerlejr-2019-044.jpg?width=730\u0026height=382\u0026format=jpg\u0026rnd=133209435279400000",
     "Maintenances": [
       {
@@ -80,7 +80,7 @@
   {
     "BoatType": "Kajak",
     "BoatModel": "K101",
-    "Name": "Eventyreren",
+    "BoatName": "Eventyreren",
     "ImageURL": "https://image.alt.dk/1513646.webp?imageId=1513646\u0026width=960\u0026height=574\u0026format=jpg",
     "Maintenances": [
       {
@@ -100,7 +100,7 @@
   {
     "BoatType": "Kapsejladsb\u00E5",
     "BoatModel": "R999",
-    "Name": "Svanen",
+    "BoatName": "Svanen",
     "ImageURL": "https://www.baadmagasinet.dk/images/stories/egen%20ann/_DSC0095-web.jpg",
     "Maintenances": [
       {
