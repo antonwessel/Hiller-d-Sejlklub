@@ -12,7 +12,7 @@
     </a>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="fw-bold">Vedligeholdelser af @Model.Båd.Navn</h1>
+        <h1 class="fw-bold">Vedligeholdelser af @Model.Båd.BoatName</h1>
 
         <!-- Progress bar -->
         <div class="w-50 mx-3">
@@ -70,10 +70,10 @@
                         @if (AdminState.IsAdminLoggedIn)
                         {
                             <td>
-                                <a class="btn btn-outline-primary btn-sm me-2" asp-page="EditMaintenance" asp-route-bådNavn="@Model.Båd.Navn" asp-route-id="@maintenance.MaintenanceId" title="Rediger">
+                                <a class="btn btn-outline-primary btn-sm me-2" asp-page="EditMaintenance" asp-route-bådNavn="@Model.Båd.BoatName" asp-route-id="@maintenance.MaintenanceId" title="Rediger">
                                     <i class="bi bi-pencil"></i> Rediger
                                 </a>
-                                <a class="btn btn-outline-danger btn-sm" asp-page="DeleteMaintenance" asp-route-bådNavn="@Model.Båd.Navn" asp-route-maintenanceId="@maintenance.MaintenanceId" title="Slet">
+                                <a class="btn btn-outline-danger btn-sm" asp-page="DeleteMaintenance" asp-route-bådNavn="@Model.Båd.BoatName" asp-route-maintenanceId="@maintenance.MaintenanceId" title="Slet">
                                     <i class="bi bi-trash"></i> Slet
                                 </a>
                             </td>
@@ -87,7 +87,7 @@
     @if (AdminState.IsAdminLoggedIn)
     {
         <div class="d-flex justify-content-start mt-3">
-            <a class="btn btn-sm btn-success" asp-page="AddMaintenance" asp-route-bådNavn="@Model.Båd.Navn">
+            <a class="btn btn-sm btn-success" asp-page="AddMaintenance" asp-route-bådNavn="@Model.Båd.BoatName">
                 <i class="bi bi-file-plus-fill me-1"></i> Tilføj vedligeholdelse
             </a>
         </div>

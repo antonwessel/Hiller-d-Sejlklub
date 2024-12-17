@@ -20,7 +20,7 @@ public class MaintenanceService : IMaintenanceService
 
         foreach (var boat in boats)
         {
-            maintenanceData[boat.Navn] = boat.Maintenances ?? [];
+            maintenanceData[boat.BoatName] = boat.Maintenances ?? [];
         }
 
         return maintenanceData;
@@ -29,7 +29,7 @@ public class MaintenanceService : IMaintenanceService
     public void SaveMaintenanceJsonData(string bådNavn, List<Maintenance> maintenances)
     {
         var boats = _jsonBoatService.LoadData().ToList();
-        var boat = boats.FirstOrDefault(b => b.Navn == bådNavn);
+        var boat = boats.FirstOrDefault(b => b.BoatName == bådNavn);
         if (boat != null)
         {
             boat.Maintenances = maintenances;

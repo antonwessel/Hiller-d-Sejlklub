@@ -39,7 +39,7 @@ public class EventService : IEventService
 
         foreach (Event events in _eventsList)
         {
-            if (navn == events.Navn)
+            if (navn == events.Name)
             {
                 eventToDelete = events;
                 break;
@@ -62,14 +62,14 @@ public class EventService : IEventService
         DateTime adjustedEndDate = endDate.Date.AddDays(1).AddTicks(-1);
 
         // Find begivenheder i dato-intervallet
-        return _eventsList.Where(evt => evt.Dato >= startDate && evt.Dato <= adjustedEndDate).ToList();
+        return _eventsList.Where(evt => evt.Date >= startDate && evt.Date <= adjustedEndDate).ToList();
     }
 
     public Event GetEvent(string navn)
     {
         foreach (var @event in _eventsList)
         {
-            if (navn == @event.Navn)
+            if (navn == @event.Name)
             {
                 return @event;
             }
@@ -126,11 +126,11 @@ public class EventService : IEventService
     {
         foreach (var events in _eventsList)
         {
-            if (events.Navn == begivenhed.Navn)
+            if (events.Name == begivenhed.Name)
 
             {
-                events.Dato = begivenhed.Dato;
-                events.Lokation = begivenhed.Lokation;
+                events.Date = begivenhed.Date;
+                events.Location = begivenhed.Location;
                 JsonDataService.SaveData(_eventsList);
                 break;
             }

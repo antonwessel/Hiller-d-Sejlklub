@@ -7,9 +7,9 @@
     <h1 class="mb-4">Tilføj Båd</h1>
     <form method="post">
         <div class="mb-3">
-            <label asp-for="@Model.Båd.Navn" class="form-label"></label>
-            <input asp-for="@Model.Båd.Navn" class="form-control" />
-            <span asp-validation-for="@Model.Båd.Navn" class="text-danger"></span>
+            <label asp-for="@Model.Båd.BoatName" class="form-label"></label>
+            <input asp-for="@Model.Båd.BoatName" class="form-control" />
+            <span asp-validation-for="@Model.Båd.BoatName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="@Model.Båd.BådType" class="form-label"></label>
@@ -22,9 +22,9 @@
             <span asp-validation-for="@Model.Båd.BådModel" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.Båd.BilledeUrl" class="form-label"></label>
-            <input asp-for="@Model.Båd.BilledeUrl" class="form-control" />
-            <span asp-validation-for="@Model.Båd.BilledeUrl" class="text-danger"></span>
+            <label asp-for="@Model.Båd.ImageURL" class="form-label"></label>
+            <input asp-for="@Model.Båd.ImageURL" class="form-control" />
+            <span asp-validation-for="@Model.Båd.ImageURL" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">
             <i class="bi bi-save"></i> Opret

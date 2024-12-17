@@ -36,7 +36,7 @@
                     {
                         <tr>
                             <td>@booking.DateBooked.ToString("dd-MM-yyyy")</td>
-                            <td>@booking.MedlemToBook.Navn</td>
+                            <td>@booking.MemberToBook.Name</td>
                             @if (AdminState.IsAdminLoggedIn)
                             {
                                 <td>
@@ -70,7 +70,7 @@
                         <option value="" disabled selected>Vælg deltager</option>
                         @foreach (var member in Model.AllMembers)
                         {
-                            <option value="@member.Id">@member.Navn</option>
+                            <option value="@member.Id">@member.Name</option>
                         }
                     </select>
                 </div>

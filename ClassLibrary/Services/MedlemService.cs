@@ -35,7 +35,7 @@ public class MedlemService : IMemberService
     public List<Member> FilterMembersByName(string name)
     {
         return _medlemList
-            .Where(m => m.Navn.Contains(name, StringComparison.CurrentCultureIgnoreCase))
+            .Where(m => m.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase))
             .ToList();
     }
 
@@ -56,8 +56,8 @@ public class MedlemService : IMemberService
         var existingMedlem = _medlemList.FirstOrDefault(m => m.Email == medlem.Email);
         if (existingMedlem != null)
         {
-            existingMedlem.Navn = medlem.Navn;
-            existingMedlem.TelefonNummer = medlem.TelefonNummer;
+            existingMedlem.Name = medlem.Name;
+            existingMedlem.PhoneNumber = medlem.PhoneNumber;
         }
         JsonDataService.SaveData(_medlemList);
     }

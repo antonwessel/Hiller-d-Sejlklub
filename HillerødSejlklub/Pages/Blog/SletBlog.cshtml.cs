@@ -33,7 +33,7 @@ public class SletBlogModel : PageModel
 
     public IActionResult OnPost()
     {
-        _blogService.DeleteBlog(Blog.BlogTitel);
+        _blogService.DeleteBlog(Blog.BlogTitle);
         return RedirectToPage("AlleBlogs");
     }
 }

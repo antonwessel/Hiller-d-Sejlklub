@@ -24,7 +24,7 @@ public class BlogService : IBlogService
     {
         foreach (var blog in _blogListe)
         {
-            if (blog.BlogTitel == navn)
+            if (blog.BlogTitle == navn)
             {
                 _blogListe.Remove(blog);
                 JsonDataService.SaveData(_blogListe);
@@ -38,7 +38,7 @@ public class BlogService : IBlogService
     {
         foreach (var blog in _blogListe)
         {
-            if (blog.BlogTitel == navn)
+            if (blog.BlogTitle == navn)
             {
                 return blog;
             }
@@ -52,10 +52,10 @@ public class BlogService : IBlogService
     {
         foreach (var bd in _blogListe)
         {
-            if (bd.BlogTitel == blog.BlogTitel)
+            if (bd.BlogTitle == blog.BlogTitle)
             {
-                bd.BlogForfatter = blog.BlogForfatter;
-                bd.BlogIndhold = blog.BlogIndhold;
+                bd.BlogAuthor = blog.BlogAuthor;
+                bd.BlogContent = blog.BlogContent;
                 JsonDataService.SaveData(_blogListe);
                 break;
             }

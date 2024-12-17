@@ -20,20 +20,20 @@
             <div class="col-12 col-md-8 mb-4">
                 <div class="card shadow-sm border-0 rounded-3" style="background-color: #f8f9fa;">
                     <div class="card-body">
-                        <h5 class="card-title text-primary fw-bold">@blog.BlogTitel</h5>
+                        <h5 class="card-title text-primary fw-bold">@blog.BlogTitle</h5>
                         <p class="text-muted mb-2">
-                            <strong>Forfatter:</strong> @blog.BlogForfatter<br />
+                            <strong>Forfatter:</strong> @blog.BlogAuthor<br />
                             <strong>Dato:</strong> @blog.BlogDato.ToString("dd-MM-yyyy") <!-- Kun se dato -->
                         </p>
                         <p class="card-text">
-                            @Html.Raw(blog.BlogIndhold.Replace("\n", "<br>")) <!-- To preserve newlines -->
+                            @Html.Raw(blog.BlogContent.Replace("\n", "<br>")) <!-- To preserve newlines -->
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
                         {
-                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Rediger">
+                            <a class="btn btn-outline-primary btn-sm me-2" asp-page="RedigerBlog" asp-route-BlogTitel="@blog.BlogTitle" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-                            <a class="btn btn-outline-danger btn-sm" asp-page="SletBlog" asp-route-BlogTitel="@blog.BlogTitel" title="Slet">
+                            <a class="btn btn-outline-danger btn-sm" asp-page="SletBlog" asp-route-BlogTitel="@blog.BlogTitle" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
                         }

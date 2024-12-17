@@ -17,26 +17,26 @@
         {
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-0">
-                    <img src="@båd.BilledeUrl" class="card-img-top rounded-top" alt="@båd.Navn" style="height: 200px; object-fit: cover;">
+                    <img src="@båd.ImageURL" class="card-img-top rounded-top" alt="@båBoatNamevn" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-primary">@båd.Navn</h5>
+                        <h5 class="card-title text-primary">@båBoatNamevn</h5>
                         <p class="text-muted mb-4">
                             <strong>Bådtype:</strong> @båd.BådType<br />
                             <strong>Model:</strong> @båd.BådModel
                         </p>
                         @if (AdminState.IsAdminLoggedIn)
                         {
-                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="RedigerBåd" asp-route-navn="@båd.Navn" title="Rediger">
+                            <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="RedigerBåd" asp-route-navn="@båd.BoatName" title="Rediger">
                                 <i class="bi bi-pencil"></i> Rediger
                             </a>
-                            <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="SletBåd" asp-route-navn="@båd.Navn" title="Slet">
+                            <a class="btn btn-outline-danger btn-sm me-3 mb-2" asp-page="SletBåd" asp-route-navn="@båd.BoatName" title="Slet">
                                 <i class="bi bi-trash"></i> Slet
                             </a>
                         }
-                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-navn="@båd.Navn" title="Maintenance">
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Maintenance/MaintenanceBoat" asp-route-navn="@båd.BoatName" title="Maintenance">
                             <i class="bi bi-wrench"></i> Vedligeholdelse
                         </a>
-                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-bådNavn="@båd.Navn" title="Booking">
+                        <a class="btn btn-outline-primary btn-sm me-3 mb-2" asp-page="Booking/AllBookings" asp-route-bådNavn="@båd.BoatName" title="Booking">
                             <i class="bi bi-calendar-check"></i> Booking
                         </a>
                     </div>

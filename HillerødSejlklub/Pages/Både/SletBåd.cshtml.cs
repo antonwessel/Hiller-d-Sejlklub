@@ -32,7 +32,7 @@ public class SletBådModel : PageModel
 
     public IActionResult OnPost()
     {
-        _bådService.DeleteBoat(Båd.Navn);
+        _bådService.DeleteBoat(Båd.BoatName);
         return RedirectToPage("AlleBåde");
     }
 }

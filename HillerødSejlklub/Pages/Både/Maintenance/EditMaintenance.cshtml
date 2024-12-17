@@ -5,11 +5,11 @@
 
 <div class="container mt-5">
     <div class="mb-4">
-        <h1 class="h4">Rediger Vedligeholdelse for <span class="text-primary">@Model.Båd.Navn</span></h1>
+        <h1 class="h4">Rediger Vedligeholdelse for <span class="text-primary">@Model.Båd.BoatName</span></h1>
     </div>
 
     <form method="post">
-        <input type="hidden" name="bådNavn" value="@Model.Båd.Navn" />
+        <input type="hidden" name="bådNavn" value="@Model.Båd.BoatName" />
         <input type="hidden" asp-for="Maintenance.MaintenanceId" /> <!-- Til at sende Id med, ellers kan vi ikke identificere den under MaintenanceService -->
 
         <div class="mb-3">

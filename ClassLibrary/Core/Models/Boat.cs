@@ -4,36 +4,36 @@ namespace ClassLibrary.Core.Models;
 
 public class Boat
 {
-    [Required(ErrorMessage = "BådType er påkrævet.")]
-    [StringLength(50, ErrorMessage = "BådType må højst være 50 tegn.")]
-    public string BådType { get; set; }
+    [Required(ErrorMessage = "Båd type er påkrævet.")]
+    [StringLength(50, ErrorMessage = "Båd type må højst være 50 tegn.")]
+    public string BoatType { get; set; }
 
-    [Required(ErrorMessage = "BådModel er påkrævet.")]
-    [StringLength(50, ErrorMessage = "BådModel må højst være 50 tegn.")]
-    public string BådModel { get; set; }
+    [Required(ErrorMessage = "Båd model er påkrævet.")]
+    [StringLength(50, ErrorMessage = "Båd model må højst være 50 tegn.")]
+    public string BoatModel { get; set; }
 
     [Required(ErrorMessage = "Navn er påkrævet.")]
     [StringLength(100, ErrorMessage = "Navn må højst være 100 tegn.")]
-    public string Navn { get; set; }
+    public string BoatName { get; set; }
 
-    [Required(ErrorMessage = "BilledeUrl er påkrævet.")]
-    [Url(ErrorMessage = "BilledeUrl skal være en gyldig URL.")]
-    [RegularExpression(@".+\.(jpg|jpeg|png|gif|bmp)$", ErrorMessage = "BilledeUrl skal være et link til en gyldig billedfil (jpg, jpeg, png, gif, bmp).")]
-    public string BilledeUrl { get; set; }
+    [Required(ErrorMessage = "Billede Url er påkrævet.")]
+    [Url(ErrorMessage = "Billede Url skal være en gyldig URL.")]
+    [RegularExpression(@".+\.(jpg|jpeg|png|gif|bmp)$", ErrorMessage = "Billede Url skal være et link til en gyldig billedfil (jpg, jpeg, png, gif, bmp).")]
+    public string ImageURL { get; set; }
 
     public List<Maintenance> Maintenances { get; set; } // Til vedligeholdese liste
 
-    public Boat(string bådType, string model, string navn, string billedeUrl, List<Maintenance> maintenances)
+    public Boat(string boatType, string boatModel, string boatName, string imageURL, List<Maintenance> maintenances)
     {
-        BådType = bådType;
-        BådModel = model;
-        Navn = navn;
-        BilledeUrl = billedeUrl;
+        BoatType = boatType;
+        BoatModel = boatModel;
+        BoatName = boatName;
+        ImageURL = imageURL;
         Maintenances = maintenances;
     }
 
     public Boat()
     {
-        Maintenances = new List<Maintenance>();
+        Maintenances = [];
     }
 }

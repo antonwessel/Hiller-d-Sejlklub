@@ -20,7 +20,7 @@ public class BådService : IBoatService
         {
             foreach (var maintenance in båd.Maintenances)
             {
-                _maintenanceService.AddMaintenance(båd.Navn, maintenance);
+                _maintenanceService.AddMaintenance(båd.BoatName, maintenance);
             }
         }
     }
@@ -34,7 +34,7 @@ public class BådService : IBoatService
     public Boat DeleteBoat(string? navn)
     {
         // forsøg at find en båd der matcher navn
-        var båd = _bådeListe.FirstOrDefault(b => b.Navn == navn);
+        var båd = _bådeListe.FirstOrDefault(b => b.BoatName == navn);
         if (båd != null)
         {
             _bådeListe.Remove(båd);
@@ -43,18 +43,18 @@ public class BådService : IBoatService
         return båd;
     }
 
-    public Boat GetBoat(string navn) => _bådeListe.FirstOrDefault(b => b.Navn == navn);
+    public Boat GetBoat(string navn) => _bådeListe.FirstOrDefault(b => b.BoatName == navn);
 
     public List<Boat> GetBoats() => _bådeListe;
 
     public void UpdateBoat(Boat båd)
     {
-        var existingBåd = _bådeListe.FirstOrDefault(b => b.Navn == båd.Navn);
+        var existingBåd = _bådeListe.FirstOrDefault(b => b.BoatName == båd.BoatName);
         if (existingBåd != null)
         {
-            existingBåd.BådModel = båd.BådModel;
-            existingBåd.BådType = båd.BådType;
-            existingBåd.BilledeUrl = båd.BilledeUrl;
+            existingBåd.BoatModel = båd.BoatModel;
+            existingBåd.BoatType = båd.BoatType;
+            existingBåd.ImageURL = båd.ImageURL;
         }
         JsonDataService.SaveData(_bådeListe);
     }
