@@ -51,17 +51,20 @@ public class BookingService : IBookingService
 
     public void UpdateBooking(Booking booking)
     {
+        // Gennemgår alle bookinger
         foreach (var bok in _bookings)
         {
+            // Finder booking med samme ID
             if (bok.Id == booking.Id)
             {
-                // Opdaterer bookingen med ny information
+                // Opdaterer booking med ny information
                 bok.DateBooked = booking.DateBooked;
                 bok.MemberToBook = booking.MemberToBook;
                 bok.BoatToBook = booking.BoatToBook;
 
+                // Gemmer ændringer
                 JsonDataService.SaveData(_bookings);
-                break; // Stopper efter opdatering
+                break; // Stop efter opdatering
             }
         }
     }

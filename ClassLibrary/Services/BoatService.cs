@@ -48,12 +48,16 @@ public class BoatService : IBoatService
 
     public void UpdateBoat(Boat updatedBoat)
     {
+        // Finder eksisterende båd med samme navn
         var existingBoat = _boats.FirstOrDefault(b => b.BoatName == updatedBoat.BoatName);
         if (existingBoat != null)
         {
+            // Opdaterer bådens model, type og billede
             existingBoat.BoatModel = updatedBoat.BoatModel;
             existingBoat.BoatType = updatedBoat.BoatType;
             existingBoat.ImageURL = updatedBoat.ImageURL;
+
+            // Gemmer ændringer
             JsonDataService.SaveData(_boats);
         }
     }

@@ -58,12 +58,15 @@ public class MemberService : IMemberService
 
     public void UpdateMember(Member member)
     {
+        // Find medlem med samme email
         var existingMember = _memberList.FirstOrDefault(m => m.Email == member.Email);
         if (existingMember != null)
         {
+            // Opdater medlem med nye oplysninger
             existingMember.Name = member.Name;
             existingMember.PhoneNumber = member.PhoneNumber;
         }
+        // Gem ændringer i data
         JsonDataService.SaveData(_memberList);
     }
 }

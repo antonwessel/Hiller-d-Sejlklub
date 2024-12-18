@@ -87,11 +87,14 @@ public class EventService : IEventService
 
     public void UpdateEvent(Event eventToUpdate)
     {
+        // Find eksisterende begivenhed med samme navn
         var existingEvent = FindEventByName(eventToUpdate.Name);
         if (existingEvent != null)
         {
+            // Opdater dato og sted
             existingEvent.Date = eventToUpdate.Date;
             existingEvent.Location = eventToUpdate.Location;
+            // Gem ændringer
             SaveEvents();
         }
     }

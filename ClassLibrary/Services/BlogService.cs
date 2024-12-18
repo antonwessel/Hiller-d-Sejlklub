@@ -37,13 +37,16 @@ public class BlogService : IBlogService
 
     public void UpdateBlog(Blog updatedBlog)
     {
+        // Finder eksisterende blog med samme titel
         var existingBlog = _blogs.FirstOrDefault(b => b.BlogTitle == updatedBlog.BlogTitle);
         if (existingBlog != null)
         {
+            // Opdaterer bloggens forfatter og indhold
             existingBlog.BlogAuthor = updatedBlog.BlogAuthor;
             existingBlog.BlogContent = updatedBlog.BlogContent;
-            JsonDataService.SaveData(_blogs);
+
             // Gemmer ændringer i JSON
+            JsonDataService.SaveData(_blogs);
         }
     }
 }

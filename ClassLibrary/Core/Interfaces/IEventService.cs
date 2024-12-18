@@ -6,7 +6,13 @@ public interface IEventService
 {
     List<Event> GetEvents();
     void AddEvent(Event eventToAdd);
+
+    /// <summary>
+    /// Opdaterer en eksisterende begivenhed.
+    /// </summary>
+    /// <param name="updatedEvent">Den opdaterede begivenhed.</param>
     void UpdateEvent(Event updatedEvent);
+
     Event GetEvent(string eventName);
     Event GetEvent(Guid eventId);
     Event DeleteEvent(string eventName);

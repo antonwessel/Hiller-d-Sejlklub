@@ -103,13 +103,17 @@ public class MaintenanceService : IMaintenanceService
 
     public void UpdateMaintenance(string boatName, Maintenance maintenance)
     {
+        // Tjek om der findes vedligeholdelsesdata for båden
         if (_maintenanceData.TryGetValue(boatName, out var maintenances))
         {
+            // Find vedligeholdelse med samme ID
             var index = maintenances.FindIndex(m => m.MaintenanceId == maintenance.MaintenanceId);
             if (index >= 0)
             {
-                maintenances[index] = maintenance; // Opdater vedligeholdelse
-                SaveMaintenanceJsonData(boatName, maintenances); // Gem ændringer
+                // Opdater vedligeholdelse
+                maintenances[index] = maintenance;
+                // Gem ændringer
+                SaveMaintenanceJsonData(boatName, maintenances);
             }
         }
     }
