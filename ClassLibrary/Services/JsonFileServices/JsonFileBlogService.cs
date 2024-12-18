@@ -14,6 +14,11 @@ public class JsonFileBlogService : IJsonDataService<Blog>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "blogs.json");
     }
 
+    public JsonFileBlogService(string filePath)
+    {
+        FilePath = filePath;
+    }
+
     public IEnumerable<Blog> LoadData()
     {
         if (!File.Exists(FilePath))

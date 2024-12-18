@@ -14,6 +14,11 @@ public class JsonFileBoatService : IJsonDataService<Boat>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "boats.json");
     }
 
+    public JsonFileBoatService(string filePath)
+    {
+        FilePath = filePath;
+    }
+
     public IEnumerable<Boat> LoadData()
     {
         if (!File.Exists(FilePath))

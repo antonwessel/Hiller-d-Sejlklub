@@ -14,6 +14,11 @@ public class JsonFileMemberService : IJsonDataService<Member>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "members.json");
     }
 
+    public JsonFileMemberService(string filePath)
+    {
+        FilePath = filePath;
+    }
+
     public IEnumerable<Member> LoadData()
     {
         if (!File.Exists(FilePath))

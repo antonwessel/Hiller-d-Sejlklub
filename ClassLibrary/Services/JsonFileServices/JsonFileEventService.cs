@@ -14,6 +14,11 @@ public class JsonFileEventService : IJsonDataService<Event>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "events.json");
     }
 
+    public JsonFileEventService(string filePath)
+    {
+        FilePath = filePath;
+    }
+
     public IEnumerable<Event> LoadData()
     {
         if (!File.Exists(FilePath))

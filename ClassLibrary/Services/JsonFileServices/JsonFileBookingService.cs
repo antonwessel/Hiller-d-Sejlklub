@@ -14,6 +14,11 @@ public class JsonFileBookingService : IJsonDataService<Booking>
         FilePath = Path.Combine(webHostEnvironment.WebRootPath, "data", "bookings.json");
     }
 
+    public JsonFileBookingService(string filePath)
+    {
+        FilePath = filePath;
+    }
+
     public IEnumerable<Booking> LoadData()
     {
         if (!File.Exists(FilePath))

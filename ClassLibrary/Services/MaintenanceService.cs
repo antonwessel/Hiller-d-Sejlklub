@@ -1,6 +1,8 @@
 ﻿using ClassLibrary.Core.Interfaces;
 using ClassLibrary.Core.Models;
 
+namespace ClassLibrary.Services;
+
 public class MaintenanceService : IMaintenanceService
 {
     private readonly Dictionary<string, List<Maintenance>> _maintenanceData;
@@ -98,7 +100,7 @@ public class MaintenanceService : IMaintenanceService
         int total = maintenances.Count; // Samlet antal vedligeholdelser
         int done = maintenances.Count(m => m.Status == Maintenance.WorkStatus.Færdig); // Færdige vedligeholdelser
 
-        return ((float)done / total) * 100; // Udregn procentdel af færdige vedligeholdelser
+        return (float)done / total * 100; // Udregn procentdel af færdige vedligeholdelser
     }
 
     public void UpdateMaintenance(string boatName, Maintenance maintenance)
