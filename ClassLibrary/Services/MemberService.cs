@@ -18,8 +18,12 @@ public class MemberService : IMemberService
 
     public void AddMember(Member member)
     {
-        _memberList.Add(member);
-        JsonDataService.SaveData(_memberList);
+        // Tjekker om medlemmet allerede findes
+        if (!_memberList.Any(m => m.Email == member.Email))
+        {
+            _memberList.Add(member);
+            JsonDataService.SaveData(_memberList); // Gemmer medlemmer
+        }
     }
 
     public Member DeleteMember(string? email)
